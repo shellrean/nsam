@@ -167,13 +167,7 @@ else {$hari=$Dd;}
       </button>
       <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#">Users</a>
-        </li>
-        <li class="nav-item px-3">
-          <a class="nav-link" href="#">Settings</a>
+          <a class="nav-link" href="#"><?php echo $hari; echo date('d M Y'); ?></a>
         </li>
       </ul>
       <ul class="nav navbar-nav ml-auto">
@@ -296,6 +290,99 @@ else {$hari=$Dd;}
         <a href="#">ICT43</a>
       </div>
     </footer>
+
+  <!-- Modal mode server -->
+  <div class="modal fade" id="myServer" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="?&simpan5=yes" method="post" >
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Mode Server</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <select class="form-control" id="server1" name="server1">
+              <option value='lokal' <?php if ($mode=="lokal") {echo "selected";} ?>>Mode Server PUSAT </option>
+              <option value='pusat' <?php if ($mode=="pusat") {echo "selected";} ?>>Mode Server LOKAL </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="zona1" name="zona1">
+              <option value='Asia/Jakarta' <?php if ($zo=="Asia/Jakarta") {echo "selected";} ?>>Asia/Jakarta (WIB)</option>
+              <option value='Asia/Makassar' <?php if ($zo=="Asia/Makassar") {echo "selected";} ?>>Asia/Makassar (WITA)</option>
+              <option value='Asia/Jayapura' <?php if ($zo=="Asia/Jayapura") {echo "selected";}?>>Asia/Jayapura (WIT) </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="hakakses" name="hakakses">
+              <option value='0' <?php if ($hakakses=="0") {echo "selected";} ?>>Tiga Hak Akses (Admin | Siswa | Guru)</option>
+              <option value='1' <?php if ($hakakses=="1") {echo "selected";} ?>>Dua Hak Akses (Admin | Guru)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="nilaikelas" name="nilaikelas">
+              <option value='0' <?php if ($nilaikelas=="0") {echo "selected";} ?>>Nilai Kelas Sembunyi</option>
+              <option value='1' <?php if ($nilaikelas=="1") {echo "selected";} ?>>Nilai Kelas Tampil </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="headerujian" name="headerujian">
+              <option value='0' <?php if ($headerujian=="0") {echo "selected";} ?>>Header Ujian Tampil</option>
+              <option value='1' <?php if ($headerujian=="1") {echo "selected";} ?>>Header Ujian Sembunyi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="header" name="header">
+              <option value='0' <?php if ($header=="0") {echo "selected";} ?>>Header Modern</option>
+              <option value='1' <?php if ($header=="1") {echo "selected";} ?>>Header Klasik </option>
+            </select>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="submit" id="tambah-simpan" class="btn btn-success">Simpan</button>
+        </div>
+    </div>
+    </form>
+  </div>
+  </div>
+
+
+<!-- Modal Database Server  -->
+  <div class="modal fade" id="db_server" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="?&simpan_bd=yes" method="post" >
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Install database server baru</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="form-pesan"></div>
+          <div class="form-group">
+            <label>Ubah db/install db baru</label>
+            <input type="text" class="form-control" name="db_server" value='<?= $db ?>'>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="submit" id="tambah-simpan" class="btn btn-success">Simpan</button>
+        </div>
+    </div>
+    </form>
+  </div>
+  </div>
+
+  <script>
+    function disableBackButton() { this.history.forward(); }
+    setTimeout("disableBackButton()", 0);
+  </script>
 
   </body>
 </html>
