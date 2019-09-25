@@ -191,10 +191,6 @@ if(isset($_REQUEST['tambah'])) {
         <div class="modal-body">
           <div id="form-pesan"></div>
           <div class="form-group">
-            <label>Kode Sekolah</label>
-            <input type="text" class="form-control" name="txt_kodsek">
-          </div>
-          <div class="form-group">
             <label>Nama sekolah</label>
             <input type="text" class="form-control" name="txt_namsek">
           </div>

@@ -22,8 +22,6 @@ if(isset($_REQUEST['aksi1'])) {
 	}
 
 	$sqlpasaif = mysql_query("update cbt_user set Status = '$ubah' where Urut = '$_REQUEST[urut]'");
-
-	var_dump($sqlpasaif);
 }
 
 if(isset($_REQUEST['simpan'])) {
@@ -35,7 +33,7 @@ if(isset($_REQUEST['simpan'])) {
 	}
 
 	if($_REQUEST['txt_pass'] == "") {
-		$sql = mysql_query("update cbt_user set login='$_REQUEST[txt_login]', Username = '$_REQUEST[txt_usern]', NIP = '$_REQUEST[txt_nip]', Nama = '$_REQUEST[txt_nama]', Alamat = '$_REQUEST[txt_alamt]', HP = '$_REQUEST[txt_hp]', Email= '$_REQUEST[txt_email]' where Urut='$_REQUEST[id]'");
+		$sql = mysql_query("update cbt_user set login='$_REQUEST[txt_login]', Username = '$_REQUEST[txt_usern]', NIP = '$_REQUEST[txt_nip]', Nama = '$_REQUEST[txt_nama]', Alamat = '$_REQUEST[txt_alamat]', HP = '$_REQUEST[txt_hp]', Email= '$_REQUEST[txt_email]' where Urut='$_REQUEST[id]'");
 	} else {
 		$sql = mysql_query("update cbt_user set Username = '$_REQUEST[txt_usern]', Password = '$pass', NIP = '$_REQUEST[txt_nip]', 
 		Nama = '$_REQUEST[txt_nama]', Alamat = '$_REQUEST[txt_alamat]', HP = '$_REQUEST[txt_hp]', Email = '$_REQUEST[txt_email]' 
@@ -64,7 +62,7 @@ if(isset($_REQUEST['tambah'])) {
 			echo "<script>alert('$message');</script>";
 		}
 		else {
-			$sql = mysql_query("insert into cbt_user (Username, Password, NIP, Nama, Alamat, HP, Email, login, Status, XPoto) values ('$_REQUEST[txt_usern]', '$pass', '$_REQUEST[txt_nip]', '$_REQUEST[txt_nama]','$_REQUEST[txt_alamat]', '$_REQUEST[txt_hp]','$_REQUEST[txt_email]', '$_REQUEST[txt_level]','1','default.png'");
+			$sql = mysql_query("insert into cbt_user (Username, Password, NIP, Nama, Alamat, HP, Email, login, Status, XPoto) values ('$_REQUEST[txt_usern]','$pass','$_REQUEST[txt_nip]','$_REQUEST[txt_nama]','$_REQUEST[txt_alamat]','$_REQUEST[txt_hp]','$_REQUEST[txt_email]','$_REQUEST[txt_level]','1','default.png')");
 		}
 	}
 }
@@ -130,7 +128,92 @@ if(isset($_REQUEST['tambah'])) {
     </div>
   </div>
 </div>
+<!-- Modal Tambah Data -->
+<div class="modal fade" id="myTam" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <form action="?modul=data_user&tambah=yes" method="post" >
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tambah data user</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Level</label>
+            <select class="form-control" name="txt_level">
+            	<option value="1">Admin</option>
+            	<option value="2">Guru</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" name="txt_usern">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" name="txt_pass">
+          </div>
+          <div class="form-group">
+          	<label>Nama</label>
+          	<input type="text" class="form-control" name="txt_nama">
+          </div>
+          <div class="form-group">
+            <label>NIP</label>
+            <input type="text" class="form-control" name="txt_nip">
+          </div>
+          <div class="form-group">
+            <label>Alamat</label>
+            <input type="text" class="form-control" name="txt_alamat">
+          </div>
+          <div class="form-group">
+            <label>HP/Telp</label>
+            <input type="text" class="form-control" name="txt_hp">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="txt_email">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-success">Tambah</button>
+        </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Tambah Data -->
+<div class="modal fade" id="myModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit data user</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+    	<div class="fetched-data"></div>      
+    </div>
+  </div>
+</div>
+
 
 <script>
 	$('#appTable').DataTable();
+	$(document).ready(function() {
+		$('#myModal').on('show.bs.modal', function(e) {
+			let rowid = $(e.relatedTarget).data('id');
+			$.ajax({
+				type : 'post',
+				url : 'daftar/edit_user.php',
+				data: 'urut='+rowid,
+				success(data) {
+					$('.fetched-data').html(data)
+				}
+			})
+		})
+	})
 </script>
