@@ -209,26 +209,26 @@ else {$hari=$Dd;}
             <?php if($loginx == "1"): ?>
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon-cursor"></i> System Server</a>
+                <i class="nav-icon icon icon-layers"></i> System Server</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="modal" data-target="#myServer">
-                    <i class="nav-icon icon-cursor"></i> Setting Server</a>
+                    <i class="nav-icon icon-arrow-right"></i> Setting Server</a>
                 </li>
                 <?php if($xserver == "lokal"): ?>
                 <li class="nav-item">
                   <a class="nav-link" href="?modul=data_skul">
-                    <i class="nav-icon icon-cursor"></i> Sekolah Klien</a>
+                    <i class="nav-icon icon-arrow-right"></i> Sekolah Klien</a>
                 </li>
                 <?php else: ?>
                 <li class="nav-item">
                   <a class="nav-link" href="?modul=set_server">
-                    <i class="nav-icon icon-cursor"></i> Setting Server Pusat</a>
+                    <i class="nav-icon icon-arrow-right"></i> Setting Server Pusat</a>
                 </li>
             	<?php endif; ?>
                 <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="modal" data-target="#db_server">
-                    <i class="nav-icon icon-cursor"></i> Ubah db/Install Baru</a>
+                    <i class="nav-icon icon-arrow-right"></i> Ubah db/Install Baru</a>
                 </li>
               </ul>
             </li>
@@ -247,6 +247,7 @@ else {$hari=$Dd;}
             <?php
             	if(isset($_REQUEST['modul']) == "") {include "none.php"; }
 
+              elseif($_REQUEST['modul'] == "data_skul") {include "daftar/daftar_sekolah.php"; }
             ?>
           </div> 
         </div>
