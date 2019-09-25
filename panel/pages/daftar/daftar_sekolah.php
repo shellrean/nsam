@@ -223,26 +223,21 @@ if(isset($_REQUEST['tambah'])) {
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
-			<div class="fetched-data"></div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        </div>
+        <div class="fetched-data"></div>
     </div>
-    </form>
   </div>
 </div>
 
 <script >
+	$('#appTable').DataTable();
 	$(document).ready(function() {
 		$('#myModal').on('show.bs.modal', function(e) {
 			var rowid = $(e.relatedTarget).data('id');
 			$.ajax({
 				type : 'post',
-				url  : 'edit_sekolah.php',
+				url  : 'daftar/edit_sekolah.php',
 				data : 'urut='+ rowid,
-				succcess: function(data) {
+				success: function(data) {
 					$('.fetched-data').html(data);
 				}
 			})
