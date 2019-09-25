@@ -74,6 +74,12 @@ if(isset($_REQUEST['tambah'])) {
       <div class="card-header py-3">
         <i class="fa fa-align-justify"></i> Daftar user
         <button class="btn btn-success btn-sm pull-right" id='custId' data-toggle='modal' data-id='' data-target="#myTam">Tambah user</button>
+        <a href="daftar/down_excel_user.php" target="_blank" class="btn btn-success btn-sm pull-right mx-2">
+          <i class="icon-cloud-download"></i> Download data
+        </a>
+        <a href="?modul=upl_user" class="btn btn-primary btn-sm pull-right">
+          <i class="icon-cloud-download"></i> Upload data user
+        </a>
       </div>
       <div class="card-body">
       	 <table class="table table-responsive-sm table-bordered table-striped table-sm" id="appTable">
