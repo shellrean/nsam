@@ -56,4 +56,79 @@ if(!isset($_COOKIE['beeuser'])) {
 
 if($_REQUEST['modul'] == "uploaduser") {
 	include "excel_reader2.php";
-}
+
+	$data = new Spreadsheet_Excel_Reader($_FILES['userfile']['tmp_name']);
+
+	$baris = $data->rowcount($sheet_index=0);
+
+	$sukses = 0;
+	$gagal = 0;
+
+	echo "<br><table>";
+
+	for($i=3; $i<= $baris; $i++) 
+	{
+		$fieldz	= $data->val($i, 0);
+  		$Username 	= $data->val($i, 1);
+  		$Password  	= $data->val($i, 2);
+  		$xnik   	= $data->val($i, 3);
+  		$Nama  	= $data->val($i, 4);
+  		$Alamat 	= $data->val($i, 5);
+  		$HP 	= $data->val($i, 6);
+  		$Faxs 	= $data->val($i, 7);
+  		$Email 	= $data->val($i, 8);
+  		$login  	= $data->val($i, 9);
+  		$Status   	= $data->val($i, 10);
+  		$xfoto  	= $data->val($i, 11);
+  		$Password = md5($Password);
+  		$Nama  	= str_replace("'","\'",$Nama);
+  		$Nama  	= str_replace("'","`",$Nama);
+
+  		if(!str_replace(" ", "", $Username) == "") {
+  			$queryuser = "select Username from cbt_user where Username = '$Username' ";
+  			$hasiluser = mysql_num_rows(mysql_query($queryuser));
+
+  			if($hasiluser > 0) {
+  				echo "<tr><td>Gagal Insert data User <font color=blue> <b>$Username</b>&nbsp;&nbsp;</td><td><font color=red> Username $Username</font> Sudah Ada</td> </tr>";
+		  		$gagal++;
+  			}
+  			else {
+  				$query = "insert into cbt_user (Username,Password,NIP,Nama,Alamat,HP,Faxs,Email,login,Status,XPoto) VALUES 	('$Username','$Password','$xnik','$Nama','$Alamat','$HP','$Faxs','$Email','$login','$Status','$xfoto')";
+		  		$hasil = mysql_query($query);
+  				$sukses++;
+  			}
+  		}
+
+  		$percent = intval($i/$baris * 100)."%";
+
+  		echo '<script language="javascript">
+    document.getElementById("progress").innerHTML="<div style=\"width:'.$percent.';background-image:url(images/pbar-ani1.gif);\">&nbsp;</div>";
+    document.getElementById("information").innerHTML="  Proses Entri : '.$Nama.' ... <b>'.$i.'</b> row(s) of <b>'. $baris.'</b> processed.";
+    </script>';
+
+    	echo str_repeat(' ', 1024*64);
+
+    	flush();
+
+	echo '<script language="javascript">document.getElementById("information").innerHTML=" Proses update database User : Completed"</script>';
+	}
+	echo "</table>";
+?>
+	<div>
+		<div class="alert alert-success">
+			<?php
+			echo "Jumlah data yang sukses diimport : ".$sukses."<br>";
+			?>
+		</div>
+		<?php
+			if($gagal >0) {
+				?>
+			<div class="alert alert-danger">
+				<?php
+				echo "Jumlah data yang gagal diimport :".$gagal;
+				?>
+			</div>
+			<?php  } ?>
+	</div>
+
+<?php }
