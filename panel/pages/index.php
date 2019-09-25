@@ -209,7 +209,7 @@ else {$hari=$Dd;}
             <?php if($loginx == "1"): ?>
             <li class="nav-item nav-dropdown">
               <a class="nav-link nav-dropdown-toggle" href="#">
-                <i class="nav-icon icon icon-layers"></i> System Server</a>
+                <i class="nav-icon icon-layers"></i> System Server</a>
               <ul class="nav-dropdown-items">
                 <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="modal" data-target="#myServer">
@@ -232,7 +232,33 @@ else {$hari=$Dd;}
                 </li>
               </ul>
             </li>
-        	<?php endif; ?>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-book-open"></i>
+                Data sekolah
+              </a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=info_skul">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Identitas sekolah
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=data_user">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Manajemen user
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=backup">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Backup & Restore
+                  </a>
+                </li>
+              </ul>
+            </li>
+        	  <?php endif; ?>
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
@@ -248,6 +274,10 @@ else {$hari=$Dd;}
             	if(isset($_REQUEST['modul']) == "") {include "none.php"; }
 
               elseif($_REQUEST['modul'] == "data_skul") {include "daftar/daftar_sekolah.php"; }
+              
+
+              elseif($_REQUEST['modul'] == "info_skul") {include "sekolah/upl_skul.php"; }
+              elseif($_REQUEST['modul'] == "data_user") {include "daftar/daftar_user.php"; }
             ?>
           </div> 
         </div>
