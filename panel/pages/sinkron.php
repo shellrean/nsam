@@ -169,8 +169,6 @@ else {
 					$sqlcek = mysql_query("select * from cbt_siswa where XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
 					$baris = mysql_num_rows($sqlcek);
 
-					echo "jumlah total paket data : $baris";
-
 					if(mysql_query("select * from cbt_zona LIMIT 1") == true) {
 
 						while($r= mysql_fetch_array($sqlcek)) {
@@ -219,7 +217,115 @@ else {
 					}
 				}
 			}
-			
+
+			if(isset($_REQUEST['data_kelas'])) {
+				if($data2 == 0) {
+					include "../../config/server.php";
+					$sql = mysql_query("truncate table cbt_kelas");
+					$i = 1;
+
+					include "../../config/server_pusat.php";
+					$sqlcek = mysql_query("select * from cbt_kelas where XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+					$baris = mysql_num_rows($sqlcek);
+
+					while($r=mysql_fetch_array($sqlcek)) {
+						include "../../config/server.php";
+
+						$sql = mysql_query("insert into cbt_kelas 
+							(XKodeLevel,XNamaKelas,XKodeJurusan,XKodeKelas,XStatusKelas,XKodeSekolah) values 			
+							('$r[XKodeLevel]','$r[XNamaKelas]','$r[XKodeJurusan]','$r[XKodeKelas]','$r[XStatusKelas]','$r[XKodeSekolah]')");
+						$percent = intval($i/$baris * 100)."%";
+						echo '<script language="javascript">
+						document.getElementById("progress2").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+					    document.getElementById("information2").innerHTML="  Download Berkas Kelas <b>'.$i.'</b> row(s) of <b>'. $baris.'</b> ... '.$percent.'  Completed.";			
+						</script>';
+						echo str_repeat(' ',1024*64);
+						flush();
+						$i++;
+					}
+					include "../../config/server_pusat.php";
+					$now2 = date("Y-m-d H:i:s");
+
+					if($sinch == true) {
+						$sin2 = mysql_query("update cbt_sinc set XData2='1', XTanggal='$now2' where XServerId='$serverid'");
+						$sinb = mysql_query("update server_sekolah set XStatusSinc='1' where XServerId='$serverid'");
+					}
+				}
+			}
+
+			if(isset($_REQUEST['paket_soal'])) {
+				if($data3==0) {
+					include "../../config/server.php";
+					$sql = mysql_query("truncate table cbt_paketsoal");
+					$i = 1;
+
+					include "../../config/server_pusat.php";
+					$sqlcek = mysql_query("select * from cbt_paketsoal where XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+					$baris = mysql_num_rows($sqlcek);
+
+					if(mysql_query("select * from cbt_sinc LIMIT 1") == true) {
+						while($r=mysql_fetch_array($sqlcek)) {
+							include "../../config/server.php";
+							$sql = mysql_query("insert into cbt_paketsoal 
+							(XKodeKelas,XLevel,XKodeJurusan,XKodeMapel,XKodeLevel,
+							XSesi,XJenisSoal,XPilGanda,XEsai,XPersenPil,
+							XPersenEsai,XKodeSoal,XJumPilihan,XJumSoal,JumUjian,
+							XAcakSoal,XGuru,XSetId,XSemua,XStatusSoal,XTglBuat,XKodeSekolah,XPaketSoal
+							) values 			
+							('$r[XKodeKelas]','$r[XLevel]','$r[XKodeJurusan]','$r[XKodeMapel]','$r[XKodeLevel]',
+							'$r[XSesi]','$r[XJenisSoal]','$r[XPilGanda]','$r[XEsai]','$r[XPersenPil]',
+							'$r[XPersenEsai]','$r[XKodeSoal]','$r[XJumPilihan]','$r[XJumSoal]','$r[JumUjian]',
+							'$r[XAcakSoal]','$r[XGuru]','$r[XSetId]','$r[XSemua]','$r[XStatusSoal]','$r[XTglBuat]','$r[XKodeSekolah]','$r[XPaketSoal]')");
+
+							$percent = intval($i/$baris * 100)."%";
+
+							echo '<script language="javascript">
+							document.getElementById("progress3").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+						    document.getElementById("information3").innerHTML="  Download Berkas Paket Soal <b>'.$i.'</b> row(s) of <b>'. $baris.'</b> ... '.$percent.'  Completed.";			
+							</script>';
+
+							echo str_repeat(' ',1024*64);
+
+							flush();
+							$i++;
+						}
+					}
+					else {
+						while($r=mysql_fetch_array($sqlcek)) {
+							include "../../config/server.php";
+
+							$sql = mysql_query("insert into cbt_paketsoal 
+								(XKodeKelas,XLevel,XKodeJurusan,XKodeMapel,XKodeLevel,
+								XSesi,XJenisSoal,XPilGanda,XEsai,XPersenPil,
+								XPersenEsai,XKodeSoal,XJumPilihan,XJumSoal,JumUjian,
+								XAcakSoal,XGuru,XSetId,XStatusSoal,XTglBuat,XKodeSekolah,XPaketSoal
+								) values 			
+								('$r[XKodeKelas]','$r[XLevel]','$r[XKodeJurusan]','$r[XKodeMapel]','$r[XKodeLevel]',
+								'$r[XSesi]','$r[XJenisSoal]','$r[XPilGanda]','$r[XEsai]','$r[XPersenPil]',
+								'$r[XPersenEsai]','$r[XKodeSoal]','$r[XJumPilihan]','$r[XJumSoal]','$r[JumUjian]',
+								'$r[XAcakSoal]','$r[XGuru]','$r[XSetId]','$r[XStatusSoal]','$r[XTglBuat]','$r[XKodeSekolah]','$r[XPaketSoal]')");
+
+							$percent = intval($i/$baris * 100)."%";
+							echo '<script language="javascript">
+								document.getElementById("progress3").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+							    document.getElementById("information3").innerHTML="  Download Berkas Paket Soal <b>'.$i.'</b> row(s) of <b>'. $baris.'</b> ... '.$percent.'  Completed.";			
+								</script>';
+
+							echo str_repeat(' ',1024*64);
+							flush();
+							$i++;
+						}
+					}
+					include "../../config/server_pusat.php";
+					$now3 = date("Y-m-d H:i:s");
+					if($sinch = true) {
+						$sin3 = mysql_query("update cbt_sinc set XData3 = '1', XTangal='$now3' where XServerId='$serverid'");
+						$sinc = mysql_query("update server_sekolah set XStatusSinc='1' where XServerId='$serverid'");
+					}
+				}
+			}
+
+
 
 		}
 
