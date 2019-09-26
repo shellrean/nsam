@@ -325,18 +325,432 @@ else {
 				}
 			}
 
-			//
+			if(isset($_REQUEST['data_soal'])) {
+				if($data4 ==0) {
+					include "../../config/server.php";
+					$sql = mysql_query("truncate table cbt_soal");
+					$i = 1;
 
+					include "../../config/server_pusat.php";
+					$sqlcek = mysql_query("select * from cbt_soal order by Urut");
+					$baris = mysql_num_rows($sqlcek);
+
+					while($r=mysql_fetch_array($sqlcek)) {
+						include "../../config/server.php";
+
+						$hasil= mysql_query("INSERT INTO cbt_soal (XNomerSoal, XKodeMapel, XKodeSoal, XTanya, XJawab1, XGambarJawab1, XJawab2,XGambarJawab2, 
+							 XJawab3,XGambarJawab3, XJawab4,XGambarJawab4, XJawab5,XGambarJawab5, XAudioTanya, XVideoTanya, XGambarTanya, XKunciJawaban,XJenisSoal,XAcakSoal,
+							 XAcakOpsi,XKategori,XAgama) 
+							 VALUES ('$r[XNomerSoal]','$r[XKodeMapel]','$r[XKodeSoal]','$r[XTanya]','$r[XJawab1]','$r[XGambarJawab1]','$r[XJawab2]','$r[XGambarJawab2]',
+							'$r[XJawab3]','$r[XGambarJawab3]','$r[XJawab4]','$r[XGambarJawab4]','$r[XJawab5]','$r[XGambarJawab5]','$r[XAudioTanya]',
+							 '$r[XVideoTanya]','$r[XGambarTanya]','$r[XKunciJawaban]','$r[XJenisSoal]','$r[XAcakSoal]','$r[XAcakOpsi]','$r[XKategori]','$r[XAgama]')");
+
+						$percent = intval($i/$baris * 100)."%";
+
+						echo '<script language="javascript">
+							document.getElementById("progress4").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+						    document.getElementById("information4").innerHTML="  Download Berkas Soal <b>'.$i.'</b> row(s) of <b>'. $baris.'</b> ... '.$percent.'  completed.";			
+							</script>';
+
+						echo str_repeat(' ',1024*64);
+
+						flush();
+
+						$i++;
+					}
+					include "../../config/server_pusat.php";
+					$now4 = date("Y-m-d H:i:s");
+					if($sinch == true) {
+						$sin4 = mysql_query("update cbt_sinc set XData4='1', XTanggal='$now4' where XServerId='$serverid'");
+						$sind = mysql_query("update server_sekolah set XStatusSinc='1' where XServerId='$serverid'");
+					}
+				}
+			}
+
+			if(isset($_REQUEST['data_mapel'])) {
+				if($data5==0) {
+					include "../../config/server.php";
+					$sql = mysql_query("truncate table cbt_mapel");
+					$i = 1;
+
+					include "../../config/server_pusat.php";
+					$sqlcek = mysql_query("select * from cbt_mapel where XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+					$baris = mysql_num_rows($sqlcek);
+
+					while($r=mysql_fetch_array($sqlcek)) {
+						include "../../config/server.php";
+						$query =  mysql_query("INSERT INTO cbt_mapel ( 
+							XKodeMapel, XNamaMapel,XPersenUH,XPersenUTS,XPersenUAS,XKKM,XMapelAgama,XKodeSekolah) VALUES ('$r[XKodeMapel]', '$r[XNamaMapel]', '$r[XPersenUH]', '$r[XPersenUTS]', '$r[XPersenUAS]', '$r[XKKM]','$r[XMapelAgama]','$r[XKodeSekolah]')");
+
+						$percent = intval($i/$baris *100).'%';
+
+						echo '<script language="javascript">
+							document.getElementById("progress5").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+						    document.getElementById("information5").innerHTML="  Download Berkas Mata Pelajaran <b>'.$i.'</b> row(s) of <b>'. $baris.'</b> ... '.$percent.'  completed.";			
+							</script>';
+
+						echo str_repeat(' ',1024*64);
+						flush();
+
+						$i++;
+					}
+					include "../../config/server_pusat.php";
+					$now5=date("Y-m-d H:i:s");
+
+					if($sinch == true ) {
+						$sin5 = mysql_query("update cbt_sinc set XData5='1', XTanggal='$now5' where XServerId='$serverid'");
+						$sine = mysql_query("update server_sekolah set XStatusSinc='1' where XServerId='$serverid'");
+					}
+				}
+			}
+
+			if(isset($_REQUEST['data_gambar'])) {
+				if($data6==0) {
+					include "../../config/server.php";
+
+					$i = 1;
+
+					include "../../config/server_pusat.php";
+					$sqlcek = mysql_query("select * from cbt_upload_file where XFolder='pictures'");
+					$baris = mysql_num_rows($sqlcek);
+
+					while($r=mysql_fetch_array($sqlcek)) {
+						include "../../config/server.php";
+						$hasil= mysql_query("insert into cbt_upload_file (Urut, XNamaFile, XFolder) 
+							 value ('$r[Urut]','$r[XNamaFile]','$r[XFolder]')");
+
+						$i++;
+					}
+					include "../../config/server_pusat.php";
+					$sql1 = mysql_query("select * from cbt_upload_file where XFolder ='pictures' group by XNamaFile");
+					$jum1 = mysql_num_rows($sql1);
+					$i = 0;
+
+					while($r=mysql_fetch_array($sql1)) {
+						if(!$r['XNamaFile'] == '') {
+							$filese = "$r[XNamaFile]";
+
+							$i++;
+
+
+							if($folder==''){$url = 'http://'.$PCSERVER.'/pictures/'.$filese; }else{$url = 'http://'.$PCSERVER.'/'.$folder.'/pictures/'.$filese;}
+
+							$file = fopen('../../pictures/'.$filese,'w+');
+							$curl = curl_init($url);
+							curl_setopt($curl, CURLOPT_TIMEOUT, 0);
+
+							curl_setopt_array($curl, [
+								CURLOPT_URL				> $url,
+								CURLOPT_RETURNTRANSFER => 1,
+							    CURLOPT_FILE           => $file,
+							    CURLOPT_TIMEOUT        => 50,
+							    CURLOPT_USERAGENT      => 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)'
+							]); 
+
+							$response = curl_exec($curl);
+
+							if($response === false) {
+								throw new \Exception('Curl error: '.curl_error($curl));
+							}
+
+							$response;
+							$percent = intval($i/$juml * 100)."%";
+
+							echo '<script language="javascript">
+							document.getElementById("progressG").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+						    document.getElementById("informationG").innerHTML="  Download Berkas Gambar Soal <b>'.$i.'</b> row(s) of <b>'. $jum1.'</b> ... '.$percent.'  completed.";			
+							</script>';
+							
+							echo str_repeat(' ',1024*64);
+							flush();
+
+						}
+					}
+					include "../../config/server_pusat.php";
+					$now6=date("Y-m-d H:i:s");
+					if($sinch == true) {
+						$sin6 = mysql_query("update cbt_sinc set XData6='1', XTanggal='$now6' where XServerId='$serverid'");
+						$sinf = mysql_query("update server_sekolah set XStatusSinc='1' where XServerId='$serverid'");
+					}
+				}
+			}
+
+			if(isset($_REQUEST['data_audio'])) {
+				if($data7==0) {
+					include "../../config/server.php";
+
+					$ia = 1;
+
+					include "../../config/server_pusat.php";
+					$sqlceka = mysql_query("select * from cbt_upload_file where XFolder ='audio'");
+					$barisa = mysql_num_rows($sqlceka);
+
+					while($ra=mysql_fetch_array($sqlceka)){
+
+						include "../../config/server.php";
+						$hasila= mysql_query("insert into cbt_upload_file (Urut, XNamaFile, XFolder) 
+							 VALUES ('$ra[Urut]','$ra[XNamaFile]','$ra[XFolder]')");
+
+						$ia++;
+					}
+
+					include "../../config/server_pusat.php";
+					$sql2 = mysql_query("select * from cbt_upload_file where XFolder ='audio' group by XNamaFile");
+					$jum2 = mysql_num_rows($sql2);
+
+					$i = 0;
+					while($r=mysql_fetch_array($sql2)) {
+						if(!$r['XNamaFile'] == '') {
+							$filese = "$r[XNamaFile]";
+
+							$i++;
+
+							if($folder==''){$url = 'http://'.$PCSERVER.'/audio/'.$filese;}else{$url = 'http://'.$PCSERVER.'/'.$folder.'/audio/'.$filese; }
+
+							$file = fopen('../../audio/'.$filese, 'w+');
+							$curl = curl_init($url);
+							curl_setopt($curl, CURLOPT_TIMEOUT, 0); 
+
+							curl_setopt_array($curl, [
+							    CURLOPT_URL            => $url,
+							    CURLOPT_RETURNTRANSFER => 1,
+							    CURLOPT_FILE           => $file,
+							    CURLOPT_TIMEOUT        => 50,
+							    CURLOPT_USERAGENT      => 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)'
+							]);
+
+							$response = curl_exec($curl);
+
+							if($response === false) {
+								throw new \Exception('Curl error: ' . curl_error($curl));
+							}
+
+							$response;
+							$percent = intval($i/$jum2 * 100)."%";
+
+							echo '<script language="javascript">
+								document.getElementById("progressA").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+							    document.getElementById("informationA").innerHTML="  Download Berkas Audio Soal <b>'.$i.'</b> row(s) of <b>'. $jum2.'</b> ... '.$percent.'  completed.";			
+								</script>';
+							echo str_repeat(' ',1024*64);
+							flush();
+						}
+					}
+					include "../../config/server_pusat.php";
+					$now7=date("Y-m-d H:i:s");
+					if($sinch == true) {
+						$sin7 = mysql_query("update cbt_sinc set XData7='1', XTanggal='$now7' where XServerId='$serverid'");	
+						$sing = mysql_query("update server_sekolah set XStatusSinc='1' where XServerId='$serverid'");
+					}
+				}
+			}
+
+			if(isset($_REQUEST['data_video'])) {
+				if($data8 == 0) {
+					include "../../config/server.php";
+
+					$iv = 1;
+
+					include "../../config/server_pusat.php";
+					$sqlcekv = mysql_query("select * from cbt_upload_file where XFolder ='video'");
+					$barisv = mysql_num_rows($sqlcekv);
+
+					while($rv=mysql_fetch_array($sqlcekv)) {
+						include "../../config/server.php";
+
+						$hasilv= mysql_query("insert into cbt_upload_file (Urut, XNamaFile, XFolder) 
+							 values ('$rv[Urut]','$rv[XNamaFile]','$rv[XFolder]')");
+
+						$iv++;
+					}
+
+					$sql3 = mysql_query("select * from cbt_upload_file where XFolder ='video' group by XNamaFile");
+					$jum3 = mysql_num_rows($sql3);
+					$i = 0;
+					while($r=mysql_fetch_array($sql3)) {
+						if(!$r['XNamaFile'] == '') {
+							$filese = "$r[XNamaFile]";		
+							$i++;
+
+							if ($folder==""){$url = 'http://'.$PCSERVER.'/video/'.$filese; }else{$url = 'http://'.$PCSERVER.'/'.$folder.'/video/'.$filese; }
+
+							$file = fopen('../../video/'.$filese, 'w+');
+							$curl = curl_init($url);
+							curl_setopt($curl, CURLOPT_TIMEOUT, 0);
+							curl_setopt_array($curl, [
+								CURLOPT_URL 			=> $url,
+								CURLOPT_RETURNTRANSFER	=> 1,
+								CURLOPT_FILE			=> $file,
+								CURLOPT_TIMEOUT			=> 50,
+								CURLOPT_USERAGENT      => 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)'
+							]);
+
+							$response = curl_exec($curl);
+
+							if($response === false) {
+								throw new \Exception('Curl error: ' . curl_error($curl));
+							}
+
+							$response;
+							$percent = intval($i/$jum3 * 100)."%";
+
+							echo '<script language="javascript">
+								document.getElementById("progressV").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+							    document.getElementById("informationV").innerHTML="  Download Berkas Video Soal <b>'.$i.'</b> row(s) of <b>'. $jum3.'</b> ... '.$percent.'  completed.";			
+								</script>';
+
+							echo str_repeat(' ',1024*64);
+							flush();
+						}
+					}
+
+					include "../../config/server_pusat.php";
+					$now8=date("Y-m-d H:i:s");
+
+					if($sinch == true) {
+						$sinh = mysql_query("update cbt_sinc SET XData8='1', XTanggal='$now8' where XServerId='$serverid'");
+						$sinc = mysql_query("update server_sekolah SET XStatusSinc='1' where XServerId='$serverid'");
+					}
+				}
+			}
+
+			include "../../config/server_pusat.php";
+			if(mysql_query("select * from cbt_sinc LIMIT 1")== TRUE) {
+				if(isset($_REQUEST['data_pdf'])) {
+					if($data9==0) {
+						include "../../config/server.php";
+
+						$ip = 1;
+
+						include "../../config/server_pusat.php";
+
+						$sqlcekp = mysql_query("select * from cbt_upload_file where XFolder ='file-pdf'");
+						$barisp = mysql_num_rows($sqlcekp);
+						if ($sqlcekp>0){
+							while($rp =mysql_fetch_array($sqlcekp)) {
+								include "../../config/server.php";
+
+								$hasil= mysql_query("insert into cbt_upload_file (Urut, XNamaFile, XFolder) 
+							 	value ('$rp[Urut]','$rp[XNamaFile]','$rp[XFolder]')");
+
+							 	$ip++;
+							}
+
+							$sql4 = mysql_query("select * from cbt_upload_file where XFolder = 'file-pdf' group by XNamaFile");
+							$jum4 = mysql_num_rows($sql4);
+							$i = 0;
+
+							while($r=mysql_fetch_array($sql4)) {
+								if(!$r['XNamaFile'] == '') {
+									$filese = "$r[XNamaFile]";
+
+									$i++;
+
+									if ($folder==""){$url = 'http://'.$PCSERVER.'/file-pdf/'.$filese; }else{$url = 'http://'.$PCSERVER.'/'.$folder.'/file-pdf/'.$filese; }
+
+									$file = fopen('../../file-pdf/'.$filese, 'w+');
+									$curl = curl_init($url);
+									curl_setopt($curl, CURLOPT_TIMEOUT, 0); 
+
+									curl_setopt_array($curl, [
+									    CURLOPT_URL            => $url,
+									    CURLOPT_RETURNTRANSFER => 1,
+									    CURLOPT_FILE           => $file,
+									    CURLOPT_TIMEOUT        => 50,
+									    CURLOPT_USERAGENT      => 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)'
+									]);
+
+									$response = curl_exec($curl);
+
+									if($response === false) {
+									    throw new \Exception('Curl error: ' . curl_error($curl));
+									}
+
+									$response;
+									$percent = intval($i/$jum4 * 100)."%";
+
+									echo '<script language="javascript">
+										document.getElementById("progressP").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
+									    document.getElementById("informationP").innerHTML="  Download Berkas PDF Soal <b>'.$i.'</b> row(s) of <b>'. $jum4.'</b> ... '.$percent.'  completed.";			
+										</script>'; 
+
+									echo str_repeat(' ',1024*64);
+									flush();
+								}
+							}
+						}
+						include "../../config/server_pusat.php";
+						$now9 = date("Y-m-d H:i:s");
+
+						if($sinch == true) {
+							$sinh9 = mysql_query("update cbt_sinc SET XData9='1', XTanggal='$now9' where XServerId='$serverid'");
+							$sinc9 = mysql_query("update server_sekolah SET XStatusSinc='2' where XServerId='$serverid'");
+
+						}
+					}
+				}
+			}
 
 		}
 
+		include "../../config/server_pusat.php";
+		//DATA 1
+		$sqlsw = mysql_query("select * from cbt_siswa WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jumsw = mysql_num_rows($sqlsw);
+		//DATA 2
+		$sqlk = mysql_query("select * from cbt_kelas WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jumk = mysql_num_rows($sqlk);
+		//DATA 3
+		$sqlp = mysql_query("select * from cbt_paketsoal WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jump = mysql_num_rows($sqlp);
+		//DATA 4
+		$sqls = mysql_query("select * from cbt_soal");
+		$jums = mysql_num_rows($sqls);
+		//DATA 5
+		$sqlm = mysql_query("select * from cbt_mapel WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jumm = mysql_num_rows($sqlm);
+		//DATA 6
+		$sql1 = mysql_query("select * from cbt_upload_file where XFolder ='pictures' group by XNamaFile");
+		$jum1 = mysql_num_rows($sql1);
+		//DATA 7
+		$sql2 = mysql_query("select * from cbt_upload_file where XFolder ='audio' group by XNamaFile");
+		$jum2 = mysql_num_rows($sql2);
+		//DATA 8
+		$sql3 = mysql_query("select * from cbt_upload_file where XFolder ='video' group by XNamaFile");
+		$jum3 = mysql_num_rows($sql3);
+		//DATA 9
+		$sql4 = mysql_query("select * from cbt_upload_file where XFolder ='file-pdf' group by XNamaFile");
+		$jum4 = mysql_num_rows($sql4);
 
-
+		include "../../config/server.php";
+		//DATA 1
+		$sqlsw_ = mysql_query("select * from cbt_siswa WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jumsw_ = mysql_num_rows($sqlsw_);
+		//DATA 2
+		$sqlk_ = mysql_query("select * from cbt_kelas WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jumk_ = mysql_num_rows($sqlk_);
+		//DATA 3
+		$sqlp_ = mysql_query("select * from cbt_paketsoal WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jump_ = mysql_num_rows($sqlp_);
+		//DATA 4
+		$sqls_ = mysql_query("select * from cbt_soal");
+		$jums_ = mysql_num_rows($sqls_);
+		//DATA 5
+		$sqlm_ = mysql_query("select * from cbt_mapel WHERE XKodeSekolah='$serverid' or XKodeSekolah='ALL'");
+		$jumm_ = mysql_num_rows($sqlm_);
+		//DATA 6
+		$sql1_ = mysql_query("select * from cbt_upload_file where XFolder ='pictures' group by XNamaFile");
+		$jum1_ = mysql_num_rows($sql1_);
+		//DATA 7
+		$sql2_ = mysql_query("select * from cbt_upload_file where XFolder ='audio' group by XNamaFile");
+		$jum2_ = mysql_num_rows($sql2_);
+		//DATA 8
+		$sql3_ = mysql_query("select * from cbt_upload_file where XFolder ='video' group by XNamaFile");
+		$jum3_ = mysql_num_rows($sql3_);
+		//DATA 9
+		$sql4_ = mysql_query("select * from cbt_upload_file where XFolder ='file-pdf' group by XNamaFile");
+		$jum4_ = mysql_num_rows($sql4_);
 ?>
-
-
-
-
 		</div>
 		
      </div>
@@ -409,4 +823,66 @@ else {
     </div>
     </form>
   </div>
+</div>
+
+<div class="modal fade" id="myInfoz" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Data hasil sinkron</h5>
+        </div>
+        <div class="modal-body">
+			<table class="table table-bordered">
+				<tr>
+	                <th>DATA 1 : Siswa</th>
+					<th><?php echo $jumsw; ?></th>
+					<th><?php echo $jumsw_?> </th>
+                </tr>
+				<tr>
+	                <th>DATA 2 : Kelas</th>
+					<th><?php echo $jumk; ?></th>
+					<th><?php echo $jumk_?> </th>
+                </tr>
+				<tr>
+	                <th>DATA 3 : Paket Soal</th>
+					<th><?php echo $jump; ?></th>
+					<th><?php echo $jump_?> </th>
+                </tr>
+				<tr>
+	                <th>DATA 4 : Soal</th>
+					<th><?php echo $jums; ?></th>
+					<th><?php echo $jums_; ?></th>
+                </tr>
+				<tr>
+	                <th>DATA 5 : Mapel</th>
+					<th><?php echo $jumm_; ?></th>
+					<th><?php echo $jumm; ?></th>
+                </tr>
+				<tr>
+	                <th>DATA 6 : Gambar</th>
+					<th><?php echo $jum1;?></th>
+					<th><?php echo $jum1_;?></th>
+                </tr>
+				<tr>
+	                <th>DATA 7 : Audio</th>
+					<th><?php echo $jum2;?></th>
+					<th><?php echo $jum2_;?></th>
+                </tr>
+				<tr>
+	                <th>DATA 8 : Video</th>
+					<th><?php echo $jum3;?> </th>
+					<th><?php echo $jum3_;?> </th>
+                </tr>
+				<tr>
+	                <th>DATA 9 : PDF</th>
+					<th><?php echo $jum4;?> </th>
+					<th><?php echo $jum4_;?> </th>
+                </tr>
+			</table>
+        </div>
+        <div class="modal-footer">
+			<button type="button" class="btn btn-light" data-dismiss="modal">Tutup</button>
+        </div>
+    </div>
+  </form>
 </div>
