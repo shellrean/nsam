@@ -12,7 +12,7 @@ $skul_tkt	= $log['XTingkat'];
 $skul_warna	= $log['XWarna']; 
 $skul_adm	= strtoupper($log['XAdmin']); 
 
-$status_server = 1;
+$status_server = 1; 
 
 if ($zo == "Asia/Jakarta"){$w ="WIB";} elseif($zo == "Asia/Makassar"){$w ="WITA";} else{$w ="WIT";}
 
@@ -274,6 +274,7 @@ else {$hari=$Dd;}
             	if(isset($_REQUEST['modul']) == "") {include "none.php"; }
 
               elseif($_REQUEST['modul'] == "data_skul") {include "daftar/daftar_sekolah.php"; }
+              elseif($_REQUEST['modul'] == "set_server") {include "set_server.php";}
               
 
               elseif($_REQUEST['modul'] == "info_skul") {include "sekolah/upl_skul.php"; }

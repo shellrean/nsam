@@ -32,5 +32,5 @@ $sql = mysql_query("update server_pusat set
 XSekolah = '$sekolah',
 XServerId = '$_REQUEST[txt_kode]'");
 }
-$data ['pesan' ] = "Ubah data berhasil !"; 
-echo json_decode($data); 
+ 
+echo "Ubah data berhasil !"; 

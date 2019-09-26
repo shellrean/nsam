@@ -179,9 +179,7 @@ $sql1	= mysql_query("select * from inf_lokasi where lokasi_kabupatenkota='$kab' 
 				"&txt_h2=" + txt_h2 + 
 				"&txt_h3=" + txt_h3,
 				success(data) {
-					loading.fadeOut();
-					$('#info').html(data);
-					$('#info').fadeOut(2000);
+					alert(data);
 				}
 
 			})
