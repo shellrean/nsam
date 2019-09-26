@@ -279,6 +279,7 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == "info_skul") {include "sekolah/upl_skul.php"; }
               elseif($_REQUEST['modul'] == "data_user") {include "daftar/daftar_user.php"; }
               elseif($_REQUEST['modul'] == "upl_user" || $_REQUEST['modul'] == "uploaduser"){include "upload/upload_user.php";}
+              elseif($_REQUEST['modul'] == 'backup'){include "tools/backup.php"; }
             ?>
           </div> 
         </div>

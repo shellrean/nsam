@@ -18,7 +18,7 @@ if(!isset($_COOKIE['beeuser'])) {
       	2. Guru  : Hak fitur edit biodata banksoal dan analisa
       </div>
       <div class="card-footer">
-      	<a href="../../file-excel/bee_user_temp.xls" target="_blank" class="btn btn-success btn-sm" >
+      	<a href="../downloads/excel/bee_user_temp.xls" target="_blank" class="btn btn-success btn-sm" >
       		<i class="icon-cloud-download"></i>
       		Download template
       	</a>
@@ -64,7 +64,7 @@ if($_REQUEST['modul'] == "uploaduser") {
 	$sukses = 0;
 	$gagal = 0;
 
-	echo "<br><table>";
+	echo "<div class='card'><div class='card-body'>";
 
 	for($i=3; $i<= $baris; $i++) 
 	{
@@ -89,7 +89,7 @@ if($_REQUEST['modul'] == "uploaduser") {
   			$hasiluser = mysql_num_rows(mysql_query($queryuser));
 
   			if($hasiluser > 0) {
-  				echo "<tr><td>Gagal Insert data User <font color=blue> <b>$Username</b>&nbsp;&nbsp;</td><td><font color=red> Username $Username</font> Sudah Ada</td> </tr>";
+  				echo "<div class='tex-default'>Username <span class='text-danger'>$Username</span> Sudah Ada</div>";
 		  		$gagal++;
   			}
   			else {
@@ -102,7 +102,7 @@ if($_REQUEST['modul'] == "uploaduser") {
   		$percent = intval($i/$baris * 100)."%";
 
   		echo '<script language="javascript">
-    document.getElementById("progress").innerHTML="<div style=\"width:'.$percent.';background-image:url(images/pbar-ani1.gif);\">&nbsp;</div>";
+    document.getElementById("progress").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
     document.getElementById("information").innerHTML="  Proses Entri : '.$Nama.' ... <b>'.$i.'</b> row(s) of <b>'. $baris.'</b> processed.";
     </script>';
 
@@ -112,9 +112,10 @@ if($_REQUEST['modul'] == "uploaduser") {
 
 	echo '<script language="javascript">document.getElementById("information").innerHTML=" Proses update database User : Completed"</script>';
 	}
-	echo "</table>";
+	echo "</table></div></div>";
 ?>
-	<div>
+	<div class="card">
+    <div class="card-body">
 		<div class="alert alert-success">
 			<?php
 			echo "Jumlah data yang sukses diimport : ".$sukses."<br>";
@@ -130,5 +131,6 @@ if($_REQUEST['modul'] == "uploaduser") {
 			</div>
 			<?php  } ?>
 	</div>
+</div>
 
 <?php }
