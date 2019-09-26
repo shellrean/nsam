@@ -3,6 +3,12 @@ if(!isset($_COOKIE['beeuser'])) {
 	header("Location: login.php");
 }
 
+if(!empty($_REQUEST['datax'])&&$_REQUEST['datax']=="ujian"){include "../../database/cbt_ujian.php";}
+if(!empty($_REQUEST['datax'])&&$_REQUEST['datax']=="siswa"){include "../../database/cbt_siswa.php";}
+if(!empty($_REQUEST['datax'])&&$_REQUEST['datax']=="media"){include "../../database/cbt_media.php";}
+if(!empty($_REQUEST['datax'])&&$_REQUEST['datax']=="semua"){include "../../database/cbt_semua.php";}
+if(!empty($_REQUEST['datax'])&&$_REQUEST['datax']=="hasil"){include "../../database/cbt_hasil_ujian.php";}
+
 include "../../config/server.php"
 ?>
 
@@ -123,6 +129,11 @@ include "../../config/server.php"
           	</tr>
           </tbody>
         </table>
+        <form action="?modul=restore" method="post">
+        <input type="file" id="anu" name="anu">
+        <button type="submit" class="btn btn-success btn-sm">
+          <i class="icon-refresh"></i> restore
+        </button>
       </div>
      </form>
       <div class="card-footer">
