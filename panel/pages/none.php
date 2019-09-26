@@ -86,7 +86,7 @@ if(!isset($_COOKIE['beeuser'])) { header("Location: login.php");}
       				} ?>
                   <div>  
                     <div class="row">
-                      <div class="col-4">
+                      <div class="col-md-4">
                         <h3 class="text-center">SERVER SEKOLAH</h3>
                         <div  class="text-center">
                         <h4 style="color:<?= $huruf; ?>; ?>"><?= "<b>$server_status</b>"; ?></h4><br/>
@@ -126,7 +126,7 @@ if(!isset($_COOKIE['beeuser'])) { header("Location: login.php");}
 
             <div>  
               <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                   <h3 class="text-center">SERVER PUSAT</h3> <br>
                   <div class="alert alert-success text-center">
                   CBTSync Lokal Aktif terhubung sebagai Server PUSAT

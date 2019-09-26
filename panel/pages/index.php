@@ -2,7 +2,7 @@
 if(!isset($_COOKIE['beeuser'])){
 	header('Location: login.php');
 }
-
+ 
 include "../../config/server.php";
 
 $skul_pic	= $log['XLogo'];
@@ -202,7 +202,6 @@ else {$hari=$Dd;}
             <li class="nav-item">
               <a class="nav-link" href="?">
                 <i class="nav-icon icon-speedometer"></i> Dashboard
-                <span class="badge badge-primary">Default</span>
               </a>
             </li>
             <li class="nav-title">Utama</li>
@@ -273,10 +272,14 @@ else {$hari=$Dd;}
             <?php
             	if(isset($_REQUEST['modul']) == "") {include "none.php"; }
 
+
+              /** MAIN SECTION **/
               elseif($_REQUEST['modul'] == "data_skul") {include "daftar/daftar_sekolah.php"; }
               elseif($_REQUEST['modul'] == "set_server") {include "set_server.php";}
-              
+              elseif($_REQUEST['modul'] == "sinkron" || $_REQUEST['modul'] == 'sinkronsatu'){include "sinkron.php";}
 
+
+              /** Secondary menu **/
               elseif($_REQUEST['modul'] == "info_skul") {include "sekolah/upl_skul.php"; }
               elseif($_REQUEST['modul'] == "data_user") {include "daftar/daftar_user.php"; }
               elseif($_REQUEST['modul'] == "upl_user" || $_REQUEST['modul'] == "uploaduser"){include "upload/upload_user.php";}
@@ -412,11 +415,5 @@ else {$hari=$Dd;}
     </form>
   </div>
   </div>
-
-  <script>
-    function disableBackButton() { this.history.forward(); }
-    setTimeout("disableBackButton()", 0);
-  </script>
-
   </body>
 </html>
