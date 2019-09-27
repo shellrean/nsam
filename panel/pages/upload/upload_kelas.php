@@ -21,7 +21,7 @@ if(!isset($_COOKIE['beeuser'])) {
       		<i class="icon-cloud-download"></i>
       		Download template
       	</a>
-      	<a href="?modul=data_user" class="btn btn-success btn-sm">
+      	<a href="?modul=daftar_kelas" class="btn btn-success btn-sm">
       		<i class="icon-list"></i>
       		Lihat data kelas
       	</a>

@@ -314,6 +314,7 @@ else {$hari=$Dd;}
               /** 3 **/
               elseif($_REQUEST['modul'] == 'daftar_kelas') {include "daftar/daftar_kelas.php";}
               elseif($_REQUEST['modul'] == 'upl_kelas' || $_REQUEST['modul'] == 'uploadkelas'){include "upload/upload_kelas.php";}
+              elseif($_REQUEST['modul'] == 'daftar_mapel'){include "daftar/daftar_mapel.php";}
 
             ?>
           </div> 
