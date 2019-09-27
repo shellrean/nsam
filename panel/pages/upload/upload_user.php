@@ -68,7 +68,7 @@ if($_REQUEST['modul'] == "uploaduser") {
 
 	for($i=3; $i<= $baris; $i++) 
 	{
-		$fieldz	= $data->val($i, 0);
+		  $fieldz	= $data->val($i, 0);
   		$Username 	= $data->val($i, 1);
   		$Password  	= $data->val($i, 2);
   		$xnik   	= $data->val($i, 3);
