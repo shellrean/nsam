@@ -409,7 +409,10 @@ else {
 					include "../../config/server.php";
 
 					$i = 1;
-
+					$pust = mysql_query("select * from server_pusat");
+					$psat = mysql_fetch_array($pust);
+					$PCSERVER = $psat['XIPSekolah'];
+					
 					include "../../config/server_pusat.php";
 					$sqlcek = mysql_query("select * from cbt_upload_file where XFolder='pictures'");
 					$baris = mysql_num_rows($sqlcek);
@@ -454,7 +457,7 @@ else {
 							}
 
 							$response;
-							$percent = intval($i/$juml * 100)."%";
+							$percent = intval($i/$jum1 * 100)."%";
 
 							echo '<script language="javascript">
 							document.getElementById("progressG").innerHTML="<div style=\"width:'.$percent.';background-image:url(../../images/bar/pbar-ani1.gif);\">&nbsp;</div>";
