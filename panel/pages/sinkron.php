@@ -319,7 +319,7 @@ else {
 					include "../../config/server_pusat.php";
 					$now3 = date("Y-m-d H:i:s");
 					if($sinch = true) {
-						$sin3 = mysql_query("update cbt_sinc set XData3 = '1', XTangal='$now3' where XServerId='$serverid'");
+						$sin3 = mysql_query("update cbt_sinc set XData3 = '1', XTanggal='$now3' where XServerId='$serverid'");
 						$sinc = mysql_query("update server_sekolah set XStatusSinc='1' where XServerId='$serverid'");
 					}
 				}
@@ -683,8 +683,8 @@ else {
 						$now9 = date("Y-m-d H:i:s");
 
 						if($sinch == true) {
-							$sinh9 = mysql_query("update cbt_sinc SET XData9='1', XTanggal='$now9' where XServerId='$serverid'");
-							$sinc9 = mysql_query("update server_sekolah SET XStatusSinc='2' where XServerId='$serverid'");
+							$sinh9 = mysql_query("update cbt_sinc set XData9='1', XTanggal='$now9' where XServerId='$serverid'");
+							$sinc9 = mysql_query("update server_sekolah set XStatusSinc='2' where XServerId='$serverid'");
 
 						}
 					}

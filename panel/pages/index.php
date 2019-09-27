@@ -257,6 +257,32 @@ else {$hari=$Dd;}
                 </li>
               </ul>
             </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-notebook"></i>
+                Administrasi
+              </a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_kelas">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Daftar kelas
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_mapel">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Mata pelajaran
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_siswa">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Daftar siswa
+                  </a>
+                </li>
+              </ul>
+            </li>
         	  <?php endif; ?>
           </ul>
         </nav>
@@ -273,17 +299,21 @@ else {$hari=$Dd;}
             	if(isset($_REQUEST['modul']) == "") {include "none.php"; }
 
 
-              /** MAIN SECTION **/
+              /** 1**/
               elseif($_REQUEST['modul'] == "data_skul") {include "daftar/daftar_sekolah.php"; }
               elseif($_REQUEST['modul'] == "set_server") {include "set_server.php";}
               elseif($_REQUEST['modul'] == "sinkron" || $_REQUEST['modul'] == 'sinkronsatu'){include "sinkron.php";}
 
 
-              /** Secondary menu **/
+              /** 2 **/
               elseif($_REQUEST['modul'] == "info_skul") {include "sekolah/upl_skul.php"; }
               elseif($_REQUEST['modul'] == "data_user") {include "daftar/daftar_user.php"; }
               elseif($_REQUEST['modul'] == "upl_user" || $_REQUEST['modul'] == "uploaduser"){include "upload/upload_user.php";}
               elseif($_REQUEST['modul'] == 'backup'){include "tools/backup.php"; }
+
+              /** 3 **/
+              elseif($_REQUEST['modul'] == 'daftar_kelas') {include "daftar/daftar_kelas.php";}
+
             ?>
           </div> 
         </div>

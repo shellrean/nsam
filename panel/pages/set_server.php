@@ -59,6 +59,10 @@ $dbnama			= $xadm['XDbName'];
       		Simpan
       	</button>
       </div>
+      <div class="card-footer">
+          <i class="icon-info text-info"></i> Pastikan konfigurasi yang dimasukan sesuai dengan server pusat <br>
+          <i class="icon-info text-info"></i> Password bisa dikosongkan bila tidak ada password dalam konfigurasi server pusat
+      </div>
     </div>
   </div>
 </div>
