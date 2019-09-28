@@ -4,7 +4,6 @@ include "server.php";
 $sql 		= mysql_query("select * from server_pusat");
 $xadm 		= mysql_fetch_array($sql);
 $ipserver	= $xadm['XIPSekolah'];
-$kodesekolah= $xadm['XServerId'];
 $db_userm	= $xadm['XUsername'];
 $db_pasw	= $xadm['XPass'];
 $db_nama	= $xadm['XDbName'];

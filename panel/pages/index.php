@@ -283,6 +283,26 @@ else {$hari=$Dd;}
                 </li>
               </ul>
             </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-briefcase"></i>
+                Bank soal
+              </a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_soal">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Banksoal
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=upl_files">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    File pendukung soal
+                  </a>
+                </li>
+              </ul>
+            </li>
         	  <?php endif; ?>
           </ul>
         </nav>
@@ -319,7 +339,10 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == 'daftar_siswa') {include "daftar/daftar_siswa.php";}
               elseif($_REQUEST['modul'] == 'upl_siswa' || $_REQUEST['modul'] == 'uploadsiswa') {include "upload/upload_siswa.php";}
               elseif($_REQUEST['modul'] == 'upl_foto'){include "upload/upload_foto.php";}
+              elseif($_REQUEST['modul'] == 'cetak_kartu'){include "tools/cetak_kartu.php";}
 
+              /** 4 **/
+              elseif($_REQUEST['modul'] == 'daftar_soal'){include "daftar/daftar_soal.php";}
 
             ?>
           </div> 
@@ -356,12 +379,8 @@ else {$hari=$Dd;}
     </div>
     <footer class="app-footer">
       <div>
-        <a href="#">Shellrean</a>
-        <span>&copy; 2019 Kuswandi.</span>
-      </div>
-      <div class="ml-auto">
-        <span>Support</span>
-        <a href="#">ICT43</a>
+        <a href="#">NSam-CBT</a>
+        <span>&copy; 2019 Shellrean.</span>
       </div>
     </footer>
 

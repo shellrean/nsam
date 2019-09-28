@@ -2,7 +2,7 @@
 if(!isset($_COOKIE['beeuser'])) {
 	header("Location: login.php");
 }
-
+ 
 include "../../config/server.php";
 if(isset($_REQUEST['aksi'])) {
 	$sql = mysql_query("delete from cbt_kelas where Urut='$_REQUEST[urut]'");

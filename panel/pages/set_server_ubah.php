@@ -1,7 +1,7 @@
 <?php
 include "../../config/server.php";
 
-$sql = mysql_query("update server_pusat set 
+$sql = mysql_query("update server_pusat set
 	XIPSekolah = '$_REQUEST[txt_ip]',
 	XUsername  = '$_REQUEST[txt_user]',
 	XPass 	   = '$_REQUEST[txt_pas]',

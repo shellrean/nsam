@@ -28,7 +28,7 @@ if(!isset($_COOKIE['beeuser'])) { header("Location: login.php");}
       					$serverIP	= $_SERVER['SERVER_NAME'];
       					$alamat2	= $_SERVER['SERVER_PORT'];
       				}
-
+ 
       				if ($soc = @fsockopen($ipserver, 80, $num, $error, 5)) {
       					$status_server = 1;
 

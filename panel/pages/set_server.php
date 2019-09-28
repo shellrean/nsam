@@ -27,11 +27,7 @@ $dbnama			= $xadm['XDbName'];
       <div class="card-body">
       	<table class="table table-bordered">
       		<tr>
-      			<td width="250px">Folder server pusat</td>
-      			<td><input class="form-control" type="text" id="folderpusat" value="<?= $folderpusat ?>"> </td>
-      		</tr>
-      		<tr>
-      			<td>IP/Hostname server pusat</td>
+      			<td width="250px">IP/Hostname server pusat</td>
       			<td>
       				<input type="text" class="form-control" id="ip_server" value="<?= $ipserver ?>">
       			</td>
