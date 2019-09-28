@@ -315,6 +315,10 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == 'daftar_kelas') {include "daftar/daftar_kelas.php";}
               elseif($_REQUEST['modul'] == 'upl_kelas' || $_REQUEST['modul'] == 'uploadkelas'){include "upload/upload_kelas.php";}
               elseif($_REQUEST['modul'] == 'daftar_mapel'){include "daftar/daftar_mapel.php";}
+              elseif($_REQUEST['modul'] == 'upl_mapel' || $_REQUEST['modul'] == 'uploadmapel') {include "upload/upload_mapel.php";}
+              elseif($_REQUEST['modul'] == 'daftar_siswa') {include "daftar/daftar_siswa.php";}
+              elseif($_REQUEST['modul'] == 'upl_siswa' || $_REQUEST['modul'] == 'uploadsiswa') {include "upload/upload_siswa.php";}
+
 
             ?>
           </div> 
