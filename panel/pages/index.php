@@ -318,6 +318,7 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == 'upl_mapel' || $_REQUEST['modul'] == 'uploadmapel') {include "upload/upload_mapel.php";}
               elseif($_REQUEST['modul'] == 'daftar_siswa') {include "daftar/daftar_siswa.php";}
               elseif($_REQUEST['modul'] == 'upl_siswa' || $_REQUEST['modul'] == 'uploadsiswa') {include "upload/upload_siswa.php";}
+              elseif($_REQUEST['modul'] == 'upl_foto'){include "upload/upload_foto.php";}
 
 
             ?>
