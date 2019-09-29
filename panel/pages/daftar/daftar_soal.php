@@ -93,7 +93,7 @@
                 <a href="?modul=upl_soal&soal=<?= $s['XKodeSoal'] ?>" class="btn btn-warning btn-sm">
                   <i class="icon-cloud-upload"></i>
                 </a>
-                <a href="?modul=edit_soal&jum=<?= $s['XJumPilihan'] ?>" class="btn btn-primary btn-sm <?= $katapakai ?>">
+                <a href="?modul=edit_soal&jum=<?= $s['XJumPilihan'] ?>&soal=<?= $s['XKodeSoal'] ?>" class="btn btn-primary btn-sm <?= $katapakai ?>">
                   <i class="icon-list"></i>
                 </a>
               </td>
@@ -203,7 +203,7 @@
 </div>
 
 <div class="modal fade" id="myModal" aria-hidden="true">
-  <div class="modal-dialog modal-l" role="document">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Buat banksoal</h5>

@@ -343,6 +343,13 @@ else {$hari=$Dd;}
 
               /** 4 **/
               elseif($_REQUEST['modul'] == 'daftar_soal'){include "daftar/daftar_soal.php";}
+              elseif($_REQUEST['modul'] == 'edit_soal'){include "daftar/edit_daftar_soal.php";}
+              elseif($_REQUEST['modul']=="tambah_soal"){
+                if($_REQUEST['jum']==5){include "soal/tambah_soal5.php";}
+                elseif($_REQUEST['jum']==4){include "soal/tambah_soal4.php";}
+                elseif($_REQUEST['jum']==3){include "soal/tambah_soal3.php";}
+                elseif($_REQUEST['jum']==1){include "soal/tambah_soal.php";} 
+              }
 
             ?>
           </div> 
