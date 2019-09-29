@@ -19,9 +19,10 @@
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header py-3">
+      	<input type="hidden" id="txt_koso" name="txt_koso" value="<?php echo $_REQUEST['soal']; ?>">
         <a href="?modul=daftar_soal" class="btn btn-primary btn-sm"><i class="icon-arrow-left-circle"></i> Kembali ke banksoal</a>
         <a href="?modul=tambah_soal&jum=<?= $_REQUEST['jum'] ?>&tambahan=ok&soal=<?= $_REQUEST['soal'] ?>" class="btn btn-success btn-sm"><i class="icon-plus"></i> Pilihan ganda</a>
-        <a href="?modul=tambah_soal&jum=1&pil=<?= $_REQUEST[jum] ?>&tambahan=ok&soal=<?= $_REQUEST[soal] ?>" class="btn btn-success btn-sm"><i class="icon-plus"></i> Soal essai</a>
+        <a href="?modul=tambah_soal&jum=1&pil=<?= $_REQUEST['jum'] ?>&tambahan=ok&soal=<?= $_REQUEST['soal'] ?>" class="btn btn-success btn-sm"><i class="icon-plus"></i> Soal essai</a>
         <a href="?soal_excel_php?idsoal=<?= $_REQUEST['soal'] ?>" target="_blank" class="btn btn-success btn-sm"><i class="icon-doc"></i> Download excel</a>
         <?php if($sqlpakai>0||$sqlsudah>0){ ?>
 		<button type="button" class="btn btn-danger btn-sm" id="btnKosong" disabled><i class='icon-trash'></i> Kosongkan</button>
@@ -82,7 +83,7 @@
           			$ling = "<a href=?modul=edit_data_soal&jum=$_REQUEST[jum]&soal=$xadm[XKodeSoal]&nomer=$xadm[Urut] class='btn btn-primary btn-sm'><i class='icon-pencil'></i></a>";
           		}
           		else {
-          			$ling = "<a href=?modul=edit_soal_esai&jum=$_REQUEST[jum]&soal=$xadm[XKodeSoal]&nomer=$xadm[Urut] class='btn btn-danger btn-sm'><i class='icon-trash'></i></a>";
+          			$ling = "<a href=?modul=edit_soal_esai&jum=$_REQUEST[jum]&soal=$xadm[XKodeSoal]&nomer=$xadm[Urut] class='btn btn-primary btn-sm'><i class='icon-pencil'></i></a>";
           		}
           		?>
           		<td>
@@ -270,7 +271,7 @@
 
 									echo "
 																
-									<p style='background-color:#eee; padding:10px'>$soalnye</font></p>
+									<p style='background-color:#eee; padding:10px'>$soalnye</p>
 									<hr>						
 									<p>$gambarsoalnye</p>								
 									<hr>						
@@ -327,4 +328,20 @@
 
 <script>
 	$('#appTable').DataTable();
+	function deleteItem() {
+ 	var txt_mapel = $("#txt_koso").val();	
+
+    if (confirm("Banksoal ini akan dikosongkan?")) {
+			$.ajax({
+			type:"POST",
+			url:"soal/hapus_isi_soal.php",  
+			data:"aksi=tampil&txt_mapel=" + txt_mapel,  
+			success: function(data){ 
+					alert("Bank soal " + txt_mapel + " berhasil dikosongkan");
+	  				document.location.reload();					
+			   }
+			}); 
+	    }
+	    return false;
+	}
 </script>
