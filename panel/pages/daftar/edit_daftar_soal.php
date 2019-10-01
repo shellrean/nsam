@@ -23,7 +23,7 @@
         <a href="?modul=daftar_soal" class="btn btn-primary btn-sm"><i class="icon-arrow-left-circle"></i> Kembali ke banksoal</a>
         <a href="?modul=tambah_soal&jum=<?= $_REQUEST['jum'] ?>&tambahan=ok&soal=<?= $_REQUEST['soal'] ?>" class="btn btn-success btn-sm"><i class="icon-plus"></i> Pilihan ganda</a>
         <a href="?modul=tambah_soal&jum=1&pil=<?= $_REQUEST['jum'] ?>&tambahan=ok&soal=<?= $_REQUEST['soal'] ?>" class="btn btn-success btn-sm"><i class="icon-plus"></i> Soal essai</a>
-        <a href="?soal_excel_php?idsoal=<?= $_REQUEST['soal'] ?>" target="_blank" class="btn btn-success btn-sm"><i class="icon-doc"></i> Download excel</a>
+        <a href="soal/soal_excel.php?idsoal=<?= $_REQUEST['soal'] ?>" target="_blank" class="btn btn-success btn-sm"><i class="icon-doc"></i> Download excel</a>
         <?php if($sqlpakai>0||$sqlsudah>0){ ?>
 		<button type="button" class="btn btn-danger btn-sm" id="btnKosong" disabled><i class='icon-trash'></i> Kosongkan</button>
 		<?php } else { ?>
