@@ -134,7 +134,24 @@
                   let txt_status  = $("#ingat<?= $s['Urutan']; ?>").val();   
                   
                   $.ajax({
-
+                    type: "POST",
+                    url: "daftar/simpan_soal.php",
+                    data: "aksi=simpan&txt_ujian=" + txt_ujian + "&txt_jawab=" + txt_jawab + "&txt_acak=" + txt_acak + "&txt_telat=" + txt_telat + "&txt_durasi=" + txt_durasi + "&txt_soal=" + txt_soal + "&txt_level=" + txt_level + "&txt_mapel=" + txt_mapel + "&txt_nama=" + txt_nama + "&txt_status=" + txt_status,
+                    success(data) {
+                      if(data > 0) {
+                        alert("Terjadi masalah")
+                      }
+                      else {
+                        if( $("#simpan<?php echo $s['Urutan']; ?>").hasClass( "btn-success" ) ) {
+                          $("#simpan<?php echo $s['Urutan']; ?>").removeClass("btn-success").addClass("btn-default");
+                          $("#simpan<?php echo $s['Urutan']; ?>").val("Aktifkan");
+                        }
+                        else {
+                          $("#simpan<?php echo $s['Urutan']; ?>").removeClass("btn-info").addClass("btn-success");
+                          $("#simpan<?php echo $s['Urutan']; ?>").val("Aktif");  
+                        }
+                      }
+                    }
                   })
                 })
                 $('#acak<?= $s['Urutan'] ?>').click(function() {

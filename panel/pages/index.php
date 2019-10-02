@@ -303,6 +303,38 @@ else {$hari=$Dd;}
                 </li>
               </ul>
             </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-clock"></i>
+                Status ujian
+              </a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_tesbaru">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Settting ujian
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=aktifkan_jadwaltes">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Jadwal ujian
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_waktu">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Edit settting ujian
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_waktu_db">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Database ujian
+                  </a>
+                </li>
+              </ul>
+            </li>
         	  <?php endif; ?>
           </ul>
         </nav>
@@ -350,6 +382,11 @@ else {$hari=$Dd;}
                 elseif($_REQUEST['jum']==3){include "soal/tambah_soal3.php";}
                 elseif($_REQUEST['jum']==1){include "soal/tambah_soal.php";} 
               }
+
+
+              /** 6 **/
+              elseif($_REQUEST['modul'] == "daftar_tesbaru"){include "daftar/daftar_tesbaru.php";}
+              
 
             ?>
           </div> 
