@@ -86,56 +86,55 @@ if (!$sqlconn) { die('Could not connect: '.mysql_error());}
     <!-- Main styles for this application-->
     <link href="../css/style.css" rel="stylesheet">
     <link href="../vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+    <style>
+       body {
+        overflow-x: hidden;
+    }
+    </style>
   </head>
   <body class="app flex-row align-items-center">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card-group">
-            <div class="card p-4">
-              <div class="card-body">
-                <h1>Login</h1>
-                <p class="text-muted">Masuk akun anda</p>
-                <form id="loginform" name="loginform" onSubmit="return validateForm();" method="post" action="ceklogin.php">
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="icon-user"></i>
-                    </span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="Username" id="userz" name="userz" required autofocus>
-                </div>
-                <div class="input-group mb-4">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="icon-lock"></i>
-                    </span>
-                  </div>
-                  <input class="form-control" type="password" placeholder="Password" id="passz" name="passz">
-                </div>
-                <div class="input-group mb-4">
-                	<input type="radio" id="radio_admin" name="loginz" value="admin" checked/> <label for="radio_admin">Admin</label>
-					<input type="radio" id="radio_guru" name="loginz" value="guru" /> <label for="radio_guru">Guru</label>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <button class="btn btn-primary px-4" type="submit">Login</button>
-                  </div>
-                  <div class="col-6 text-right">
-                    <button class="btn btn-link px-0" type="button">Lupa password?</button>
-                  </div>
-                </div>
-                </form>
+    <div class="row bg-white">
+      <div class="col-md-6 bg-white">
+        <img src="../../images/ef.jpg" class="img-fluid">
+      </div>
+      <div class="col-md-6 bg-white my-auto">
+        <div class="row">
+          <div class="col-lg-9">
+            <h1>CBTSync Login</h1>
+            <p class="text-muted">Selamat datang di aplikasi NSAM-CBT. Silahkan masukkan username dan password</p> <br>
+            <form id="loginform" name="loginform" onSubmit="return validateForm();" method="post" action="ceklogin.php">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text rounded-0">
+                  <i class="icon-user"></i>
+                </span>
+              </div>
+              <input class="form-control rounded-0" type="text" placeholder="Username" id="userz" name="userz" required autofocus>
+            </div>
+            <div class="input-group mb-4">
+              <div class="input-group-prepend rounded-0">
+                <span class="input-group-text rounded-0">
+                  <i class="icon-lock"></i>
+                </span>
+              </div>
+              <input class="form-control rounded-0" type="password" placeholder="Password" id="passz" name="passz">
+            </div>
+            <div class="input-group mb-4">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="loginz" value="admin" checked class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Admin</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="loginz" value="guru" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Guru</label>
               </div>
             </div>
-            <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-              <div class="card-body text-center">
-                <div>
-                  <img src="../../images/logo-dki.png" width="100px">
-                  <p>Selamat datang di aplikasi UBK/CBT. Silahkan masukkan Username dan Password </p>
-                </div>
+            <div class="row">
+              <div class="col-6">
+                <button class="btn btn-primary px-4 rounded-0" type="submit">Login</button>
               </div>
             </div>
+            </form>
           </div>
         </div>
       </div>
