@@ -4,7 +4,6 @@
       <div class="card-header py-3">
         <i class="fa fa-align-justify"></i> Set aktifasi waktu ujian
       </div>
-      <form id="form-hapus">
       <input type="hidden" name="check" id="check" value="0">
       <div class="card-body">
         <table class="table table-responsive-sm table-bordered table-striped table-sm" id="appTable">
@@ -60,16 +59,16 @@
                 <?= $s['kokel']."-".$s['XKodeJurusan']; ?>
               </td>
               <td>
-                <?= $ttglujian.$tjamujian; ?>
+                <?= $ttglujian.' '.$tjamujian; ?>
               </td>
               <td>
                 <?= $stu['XSesi']; ?>
               </td>
               <td>
                 <?php if($sttsujian=="1"){ ?>
-                <input type="button" id="simpan<?php echo $s['Urutan']; ?>" class="btn btn-success" value="Dikerjakan"  disabled>
+                <input type="button" id="simpan<?php echo $s['Urutan']; ?>" class="btn btn-success btn-sm" value="Dikerjakan"  disabled>
                 <?php } else { ?>
-                <input type="button" id="simpan<?php echo $s['Urutan']; ?>" class="btn btn-default" value="Matikan">                                        
+                <input type="button" id="simpan<?php echo $s['Urutan']; ?>" class="btn btn-light btn-sm" value="Matikan">                                        
               <?php } ?>
               </td>
               <td>
@@ -78,11 +77,43 @@
                 </a>
               </td>
             </tr>
+            <script>
+              $(document).ready(function() {
+                $('#simpan<?= $s['Urutan']; ?>').click(function() {
+                  let txt_ujian = $("#txt_ujian").val();
+                  let txt_jawab = $("#txt_jawab").val();
+                  let txt_acak = $("#switch_left").val();
+                  let txt_durasi = $("#txt_durasi").val();
+                  let txt_telat = $("#txt_telat").val();
+                  let txt_soal = $("#txt_soal").val();  
+                  let txt_mapel = $("#txt_mapel<?= $s['Urutan']; ?>").val();
+                  let txt_level = $("#txt_level").val(); 
+                  let txt_nama = $("#txt_nama").val();  
+                  let txt_sesi = $("#txt_sesi").val();   
+
+                  $.ajax({
+                    type: 'POST',
+                    url: 'daftar/simpan_soal.php',
+                    data : "aksi=simpan&txt_ujian=" + txt_ujian + "&txt_jawab=" + txt_jawab + "&txt_acak=" + txt_acak + "&txt_telat=" + txt_telat + "&txt_durasi=" + txt_durasi + "&txt_soal=" + txt_soal + "&txt_level=" + txt_level + "&txt_mapel=" + txt_mapel + "&txt_nama=" + txt_nama + "&txt_sesi=" + txt_sesi,
+                    success(data) {
+                      if( $("#simpan<?php echo $s['Urutan']; ?>").hasClass( "btn-success" ) ){
+                        $("#simpan<?php echo $s['Urutan']; ?>").removeClass("btn-success").addClass("btn-default");
+                        $("#simpan<?php echo $s['Urutan']; ?>").val("Aktif");
+                      } else {    
+                        $("#simpan<?php echo $s['Urutan']; ?>").removeClass("btn-info").addClass("btn-success");
+                        $("#simpan<?php echo $s['Urutan']; ?>").val("Matikan");     
+                      }
+
+                      document.location.reload();
+                    }
+                  })
+                })
+              })
+            </script>
            <?php endwhile; ?>
           </tbody>
         </table>
       </div>
-      </form>
     </div>
   </div>
 </div>
