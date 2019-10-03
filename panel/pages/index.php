@@ -387,6 +387,7 @@ else {$hari=$Dd;}
               /** 6 **/
               elseif($_REQUEST['modul'] == "daftar_tesbaru"){include "daftar/daftar_tesbaru.php";}
               elseif($_REQUEST['modul'] == "edit_tes"){include "daftar/edit_tes.php";}
+              elseif($_REQUEST['modul'] == "aktifkan_jadwaltes"){include "daftar/daftar_tes.php";}
 
             ?>
           </div> 
