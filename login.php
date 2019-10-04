@@ -108,7 +108,7 @@ $footer = "BeeSMART-CBT";}
 			  <div class="form-group row">
 			  	<label for="inputPassword" class="col-sm-3 col-form-label">&nbsp;</label>
 			  	<div class="col-sm-9">
-			      <button type="submit" class="btn btn-success btn-block doblockui rounded-0" onClick="validateAndSend()">LOGIN</button>
+			      <button type="submit" class="btn btn-success btn-block doblockui rounded-0" >LOGIN</button>
 			    </div>
 			   </div>
 			</form>

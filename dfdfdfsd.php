@@ -1,28 +1,3 @@
-<script>
-$(document).keypress(function(e){
-	if(e.which == 13){
-		//alert('You pressed enter!');
-		$('#btnNextSoal').trigger('click');
-	}
-});
-$(document).keyup(function(e){
-	if(e.keyCode==27){//escape key maps to keycode '27'
-	//alert('You pressed escape!');
-	$('#btnPrevSoal').trigger('click');
-	}
-});	
-</script>
-<style>
-	.A{background-image:url(images/A.png);}
-	.B{background-image:url(images/B.png);}
-	.C{background-image:url(images/C.png);}
-	.D{background-image:url(images/D.png);}
-	.E{background-image:url(images/E.png);}
-</style>
-<link rel="stylesheet" type="text/css" href="panel/css/getsoal.css">
-
-<div id="slideMenu" class="closed">
-	<div class="contente">
 <?php 
 include "config/server.php";
 	$xkodemapel = "GAL1";
@@ -318,6 +293,8 @@ WHERE j.Urut =  '$_POST[pic]'
 AND s.XKodeSoal =   '$xkodesoal'
 AND XUserJawab =  '$user' and j.XTokenUjian = '$xtokenujian'
 ");
+
+
 
 $sj = mysql_fetch_array($sqlj);
 
@@ -1627,7 +1604,3 @@ $("#pop").click(function() {
     </div>
 </div>
 
-
-	</div>
-
-</div>
