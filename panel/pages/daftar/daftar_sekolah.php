@@ -85,7 +85,7 @@ if(isset($_REQUEST['tambah'])) {
               <th>Status<br>Sinkron</th> 
               <th>Reset<br>Sinkron</th>
               <th>Status<br>Server</th>
-              <th>Tindakan</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -190,6 +190,10 @@ if(isset($_REQUEST['tambah'])) {
         </div>
         <div class="modal-body">
           <div id="form-pesan"></div>
+          <div class="form-group">
+            <label>Kode sekolah</label>
+            <input type="text" class="form-control" name="txt_kodsek">
+          </div>
           <div class="form-group">
             <label>Nama sekolah</label>
             <input type="text" class="form-control" name="txt_namsek">

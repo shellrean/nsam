@@ -133,7 +133,6 @@ else {$hari=$Dd;}
     <!-- Main styles for this application-->
     <link href="../css/style.css" rel="stylesheet">
     <link href="../vendors/pace-progress/css/pace.min.css" rel="stylesheet">
-    <link href="../vendors/toastr/toastr.css" rel="stylesheet" type="text/css">
 
 
     <!-- Script Section -->
@@ -149,7 +148,6 @@ else {$hari=$Dd;}
     <script src="../vendors/datatables/dataTables.reload.js"></script>
     <script src="../vendors/datatables/dataTables.bootstrap4.min.js"></script>
     
-    <script src="../vendors/toastr/toastr.min.js"></script>
     <script src="../js/app.js"></script>
 
   </head>

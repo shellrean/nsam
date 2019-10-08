@@ -11,14 +11,10 @@ XFax	 	= '$_REQUEST[txt_facs]',
 XEmail 		= '$_REQUEST[txt_emai]',
 XWeb 		= '$_REQUEST[txt_webs]',
 XAdmin 		= '$_REQUEST[txt_adm]',
-XWarna 		= '$_REQUEST[txt_col]',
 XKodeSekolah = '$_REQUEST[txt_kode]',
 XNIPKepsek 	= '$_REQUEST[txt_nip1]',
 XNIPAdmin 	= '$_REQUEST[txt_nip2]',
 XKepSek 	= '$_REQUEST[txt_ip]',
-XH1 		= '$_REQUEST[txt_h1]',
-XH2 		= '$_REQUEST[txt_h2]',
-XH3 		= '$_REQUEST[txt_h3]'
 
 ");
 

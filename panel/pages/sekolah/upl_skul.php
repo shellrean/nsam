@@ -29,10 +29,6 @@ $skullogin	= $log['XLogin'];
 $prop		= $log['XProp'];
 $kab		= $log['XKab'];
 $kec		= $log['XKec'];
-$colhead 	= $log['XWarna'];
-$h1			= $log['XH1'];
-$h2			= $log['XH2'];
-$h3			= $log['XH3'];
 
 $sql1	= mysql_query("select * from inf_lokasi where lokasi_kabupatenkota='$kab' and lokasi_propinsi='$prop' and lokasi_kecamatan='0000' and lokasi_kelurahan='0000'");
 
@@ -42,20 +38,20 @@ $sql1	= mysql_query("select * from inf_lokasi where lokasi_kabupatenkota='$kab' 
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header py-3">
-        <i class="fa fa-align-justify"></i> Data sekolah
+        <i class="fa fa-align-justify"></i> Identitas sekolah
       </div>
       <div class="card-body">
       	<div class="form-group">
           <label>Kode sekolah</label>
-          <input type="text" class="form-control" id="txt_kode" value="<?= $skulkode ?>">
+          <input type="text" class="form-control col-md-6" id="txt_kode" value="<?= $skulkode ?>">
         </div>
         <div class="form-group">
           <label>Nama sekolah</label>
-          <input type="text" class="form-control" id="namaskul" value="<?= $skulnam ?>">
+          <input type="text" class="form-control col-md-6" id="namaskul" value="<?= $skulnam ?>">
         </div>
         <div class="form-group">
           <label>Level sekolah</label>
-          <select class="form-control" id="tingkatskul">
+          <select class="form-control col-md-6" id="tingkatskul">
           	<option value="SD" <?= ($skultin == "SD") ? 'selected' : '' ?>>
           		SD
           	</option>
@@ -78,55 +74,39 @@ $sql1	= mysql_query("select * from inf_lokasi where lokasi_kabupatenkota='$kab' 
         </div>
         <div class="form-group">
           <label>Alamat sekolah</label>
-          <input type="text" class="form-control" id="alamatskul" value="<?= $skulala ?>">
-        </div>
-        <div class="form-group">
-          <label>Login Header 1</label>
-          <input type="text" class="form-control" id="txt_h1" value="<?= $h1 ?>">
-        </div>
-        <div class="form-group">
-          <label>Login Header 2</label>
-          <input type="text" class="form-control" id="txt_h2" value="<?= $h1 ?>">
-        </div>
-        <div class="form-group">
-          <label>Teks login</label>
-          <input type="text" class="form-control" id="txt_h3" value="<?= $h3 ?>">
+          <input type="text" class="form-control col-md-6" id="alamatskul" value="<?= $skulala ?>">
         </div>
         <div class="form-group">
           <label>No. telp</label>
-          <input type="text" class="form-control" id="telpskul" value="<?= $skultel ?>">
+          <input type="text" class="form-control col-md-6" id="telpskul" value="<?= $skultel ?>">
         </div>
         <div class="form-group">
           <label>No. fax.</label>
-          <input type="text" class="form-control" id="faxskul" value="<?= $skulfax ?>">
+          <input type="text" class="form-control col-md-6" id="faxskul" value="<?= $skulfax ?>">
         </div>
         <div class="form-group">
           <label>Email sekolah</label>
-          <input type="text" class="form-control" id="emailskul" value="<?= $skulema ?>">
+          <input type="text" class="form-control col-md-6" id="emailskul" value="<?= $skulema ?>">
         </div>
         <div class="form-group">
           <label>Website sekolah</label>
-          <input type="text" class="form-control" id="webskul" value="<?= $skulweb ?>">
+          <input type="text" class="form-control col-md-6" id="webskul" value="<?= $skulweb ?>">
         </div>
         <div class="form-group">
           <label>Kepala sekolah</label>
-          <input type="text" class="form-control" id="kepsek" value="<?= $skulkep ?>">
+          <input type="text" class="form-control col-md-6" id="kepsek" value="<?= $skulkep ?>">
         </div>
         <div class="form-group">
           <label>NIP Kepsek</label>
-          <input type="text" class="form-control" id="nipkepsek" value="<?= $skulnip1 ?>">
+          <input type="text" class="form-control col-md-6" id="nipkepsek" value="<?= $skulnip1 ?>">
         </div>
         <div class="form-group">
           <label>CBT Administrator</label>
-          <input type="text" class="form-control" id="txt_adm" value="<?= $skuladm ?>">
+          <input type="text" class="form-control col-md-6" id="txt_adm" value="<?= $skuladm ?>">
         </div>
         <div class="form-group">
           <label>NIP Admin</label>
-          <input type="text" class="form-control" id="nipadmin" value="<?= $skulnip2 ?>">
-        </div>
-        <div class="form-group">
-          <label>Warna header</label>
-          <input type="text" class="form-control" id="txt_col" value="<?= $colhead ?>">
+          <input type="text" class="form-control col-md-6" id="nipadmin" value="<?= $skulnip2 ?>">
         </div>
       </div>
       <div class="card-footer">
@@ -153,11 +133,7 @@ $sql1	= mysql_query("select * from inf_lokasi where lokasi_kabupatenkota='$kab' 
 			let txt_adm		= $('#txt_adm').val();
 			let txt_nip1	= $('#nipkepsek').val();
 			let txt_nip2	= $('#nipadmin').val();
-			let txt_col		= $('#txt_col').val();
 			let txt_kode	= $('#txt_kode').val();
-			let txt_h1		= $('#txt_h1').val();
-			let txt_h2 		= $('#txt_h2').val();
-			let txt_h3		= $('#txt_h3').val();
 
 			$.ajax({
 				type : "POST",
@@ -171,13 +147,9 @@ $sql1	= mysql_query("select * from inf_lokasi where lokasi_kabupatenkota='$kab' 
 				"&txt_webs=" + txt_webs + 
 				"&txt_ip=" + txt_ip + 
 				"&txt_adm=" + txt_adm + 
-				"&txt_col=" + txt_col + 
 				"&txt_kode=" + txt_kode + 
 				"&txt_nip1=" + txt_nip1 + 
-				"&txt_nip2=" + txt_nip2 + 
-				"&txt_h1=" + txt_h1 + 
-				"&txt_h2=" + txt_h2 + 
-				"&txt_h3=" + txt_h3,
+				"&txt_nip2=" + txt_nip2 ,
 				success(data) {
 					alert(data);
 				}

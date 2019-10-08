@@ -122,6 +122,13 @@ if(!isset($_COOKIE['beeuser'])) { header("Location: login.php");}
             $status_server = 0;
             $status_internet = "Jaringan server ke Internet : Terhubung";
 
+            $jumkelas = mysql_num_rows(mysql_query("select * from cbt_kelas"));
+            $jumsiswa = mysql_num_rows(mysql_query("select * from cbt_siswa"));
+            $jummapel = mysql_num_rows(mysql_query("select * from cbt_mapel"));
+            $jumsoal = mysql_num_rows(mysql_query("select * from cbt_paketsoal"));
+            $jumsek = mysql_num_rows(mysql_query("select * from server_sekolah"));
+            $jummedia = mysql_num_rows(mysql_query("select * from cbt_upload_file"));
+
             ?>
 
             <div>  
@@ -145,6 +152,98 @@ if(!isset($_COOKIE['beeuser'])) { header("Location: login.php");}
                 </div>
                 </div>
               </div>
+              <div class="row">
+              <div class="col-sm-6 col-md-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                      <i class="icon-people"></i>
+                    </div>
+                    <div class="text-value"><?= $jumkelas; ?></div>
+                    <small class="text-muted text-uppercase font-weight-bold">Kelas</small>
+                    <div class="progress progress-xs mt-3 mb-0">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+              <div class="col-sm-6 col-md-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                      <i class="icon-user-follow"></i>
+                    </div>
+                    <div class="text-value"><?= $jumsiswa; ?></div>
+                    <small class="text-muted text-uppercase font-weight-bold">Siswa</small>
+                    <div class="progress progress-xs mt-3 mb-0">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+              <div class="col-sm-6 col-md-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                      <i class="icon-book-open"></i>
+                    </div>
+                    <div class="text-value"><?= $jummapel; ?></div>
+                    <small class="text-muted text-uppercase font-weight-bold">Mapel</small>
+                    <div class="progress progress-xs mt-3 mb-0">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+              <div class="col-sm-6 col-md-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                      <i class="icon-pie-chart"></i>
+                    </div>
+                    <div class="text-value"><?= $jumsoal; ?></div>
+                    <small class="text-muted text-uppercase font-weight-bold">Banksoal</small>
+                    <div class="progress progress-xs mt-3 mb-0">
+                      <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+              <div class="col-sm-6 col-md-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                      <i class="icon-speedometer"></i>
+                    </div>
+                    <div class="text-value"><?= $jumsek; ?></div>
+                    <small class="text-muted text-uppercase font-weight-bold">Sekolah</small>
+                    <div class="progress progress-xs mt-3 mb-0">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+              <div class="col-sm-6 col-md-2">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                      <i class="icon-folder"></i>
+                    </div>
+                    <div class="text-value"><?= $jummedia; ?></div>
+                    <small class="text-muted text-uppercase font-weight-bold">File media</small>
+                    <div class="progress progress-xs mt-3 mb-0">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-->
+            </div>
             </div>
           <?php }} ?>
       </div>
