@@ -65,7 +65,7 @@ $objPHPExcel->getActiveSheet()->setTitle('Data Export');
 $objPHPExcel->setActiveSheetIndex(0);
 
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment; filename="Excel-User.xls"');
+header('Content-Disposition: attachment; filename="Data-User.xls"');
 header("Cache-Control: max-age=0");
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');

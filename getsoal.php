@@ -1410,24 +1410,25 @@ $jnoc("#info").hide();
 
 <style>
 	/*fix white space*/
-	.container1 { font-size: 0; }
+	.container1 { font-size: 0; display: flex; width: 100%;
+	justify-content: space-between; }
 	/*reset font size*/
 	.container1 > div {   
-		font-size: 16px; display: inline-block; vertical-align: top; width: 30.33%; border:thin; border-color:#0000FF; box-sizing: border-box;	text-align:left; margin-left:20px;}
+		font-size: 12px;}
 	/*breakpoint*/
 	@media (max-width: 480px) { 
 		.container1 > div {display: block; width: 100%;	margin-left:20px; padding-bottom:15px;}}
 </style>
 
    
-
+<hr>
 <div class="kakisoal" id="kakisoal">
 	<section class="page-section soal-navigation">
-		<div class="container1" style="margin-right:-100px; margin-left:-50px;">
+		<div class="container1">
 			<div >
 				 <?php 	if($prev_id>0){ 
 					echo "<a href='#' data-id='".$prev_id."' class='get_pic' id='tombol'>"; } ?>
-						<button id="btnPrevSoal" style="padding-bottom:10px; padding-top:10px; width:225px" class="btn btn-default btn-prev" data-bind="click: gotoBack">SOAL SEBELUMNYA</button>
+						<button id="btnPrevSoal" class="btn btn-default btn-prev" data-bind="click: gotoBack">SOAL SEBELUMNYA</button>
 					</a>
 			</div>
 			<?php	if(isset($stu)){ 
@@ -1442,8 +1443,10 @@ $jnoc("#info").hide();
 						if($sopil>4){ if(isset($XE)){ $nilaiE = $var_ragu['$XE']; }	}
 					}
 			?>
-			<div>	<label  class="labele" style="padding-bottom:10px; padding-top:10px; width:225px">
-					<input type="checkbox" id="<?php echo $stu; ?>" onClick="toggle_select(<?php echo $stu; ?>)"<?php if(isset($ragu)){echo $ragu;} ?> />&nbsp;RAGU-RAGU</label>
+			<div>	
+				<div class="btn btn-warning" style="margin-top:-13px; width:225px">
+					<input type="checkbox"  id="<?php echo $stu; ?>" onClick="toggle_select(<?php echo $stu; ?>)"<?php if(isset($ragu)){echo $ragu;} ?> />&nbsp;RAGU-RAGU</div>
+
 			</div>
 			<div >
                     <?php	if(isset($next_id)){ if($next_id==''){echo '<a href="#" >'; ?>

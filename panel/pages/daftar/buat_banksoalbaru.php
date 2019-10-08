@@ -32,7 +32,7 @@ if(!isset($_COOKIE['beeuser'])) {
 				return false;
 			}
 
-			if(txt_kelas=="Pilih Kelas"){
+			if(txt_kelas=="Pilih Kelas"){ 
 			alert("Belum Pilih Kelas ");
 			return false;
 			}
@@ -106,7 +106,7 @@ if(!isset($_COOKIE['beeuser'])) {
 	</div>
 	<div class="col">
 		<div class="form-group">
-			<label>Jurusan</label>
+			<label>Rombel</label>
 			<select class="form-control" id="txt_jurusanz">
 				<option value="ALL" selected>SEMUA</option>
 		        <?php 

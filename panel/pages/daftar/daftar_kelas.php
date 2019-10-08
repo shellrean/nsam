@@ -63,7 +63,7 @@ if(isset($_REQUEST['tambah'])) {
               <th>Kode Sekolah</th>
               <th>Kode Level</th>
               <th>Kode Kelas</th>
-              <th>Jursan</th>
+              <th>Rombel</th>
               <th>Nama kelas</th>
               <th>Aksi</th>
             </tr>
@@ -98,7 +98,7 @@ if(isset($_REQUEST['tambah'])) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Tambah data kelas & jurusan</h5>
+          <h5 class="modal-title">Tambah data kelas & rombel</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -130,7 +130,7 @@ if(isset($_REQUEST['tambah'])) {
           	<input type="text" class="form-control" name="txt_kodlev">
           </div>
           <div class="form-gropu">
-          	<label>Jurusan</label>
+          	<label>Rombel</label>
           	<input type="text" class="form-control" name="txt_jur">
           </div>
         </div>

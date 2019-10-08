@@ -322,7 +322,7 @@ else {$hari=$Dd;}
                 <li class="nav-item">
                   <a class="nav-link" href="?modul=daftar_waktu">
                     <i class="nav-icon icon-arrow-right"></i>
-                    Edit settting ujian
+                    Edit setting ujian
                   </a>
                 </li>
                 <li class="nav-item">
@@ -373,6 +373,7 @@ else {$hari=$Dd;}
 
               /** 4 **/
               elseif($_REQUEST['modul'] == 'daftar_soal'){include "daftar/daftar_soal.php";}
+              elseif($_REQUEST['modul'] == 'cetak_banksoal'){include "daftar/cetak_banksoal.php";}
               elseif($_REQUEST['modul'] == 'edit_soal'){include "daftar/edit_daftar_soal.php";}
               elseif($_REQUEST['modul']=="tambah_soal"){
                 if($_REQUEST['jum']==5){include "soal/tambah_soal5.php";}
@@ -380,12 +381,15 @@ else {$hari=$Dd;}
                 elseif($_REQUEST['jum']==3){include "soal/tambah_soal3.php";}
                 elseif($_REQUEST['jum']==1){include "soal/tambah_soal.php";} 
               }
+              elseif($_REQUEST['modul'] == 'upl_files'){include "tools/upload_files.php";}
 
 
               /** 6 **/
               elseif($_REQUEST['modul'] == "daftar_tesbaru"){include "daftar/daftar_tesbaru.php";}
               elseif($_REQUEST['modul'] == "edit_tes"){include "daftar/edit_tes.php";}
               elseif($_REQUEST['modul'] == "aktifkan_jadwaltes"){include "daftar/daftar_tes.php";}
+              elseif($_REQUEST['modul'] == "daftar_waktu"){include "daftar/daftar_waktu.php";}
+              
 
             ?>
           </div> 
