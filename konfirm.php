@@ -118,12 +118,12 @@ if($user_ip1<>$user_ip2&&!$user_ip2==""){header('Location:login.php?salah=3');}
   					Konfirmasi data peserta
   				</div>
   				<div class="card-body">
+  					<?php 	
+						if(isset($_REQUEST['salah'])){if($_REQUEST['salah']==1) {?>
   					<div id="myerror" class="alert alert-danger rounded-0" role="alert">
-						<?php 	
-						if(isset($_REQUEST['salah'])){if($_REQUEST['salah']==1)
-							{echo "Kode TOKEN Tidak sesuai";} } 
-						?>
+						<?php echo "Kode TOKEN Tidak sesuai"; ?>
 					</div>
+					<?php } } ?>
   				  <div class="form-group row">
 				    <label class="col-sm-3 col-form-label">Kode peserta</label>
 				    <div class="col-sm-9">

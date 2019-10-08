@@ -5,7 +5,7 @@ if(!isset($_COOKIE['beeuser'])) {
 
 ?>
 
-<div class="row">
+<div class="row"> 
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header py-3">
@@ -18,7 +18,7 @@ if(!isset($_COOKIE['beeuser'])) {
       	2. Guru  : Hak fitur edit biodata banksoal dan analisa
       </div>
       <div class="card-footer">
-      	<a href="../downloads/excel/bee_user_temp.xls" target="_blank" class="btn btn-success btn-sm" >
+      	<a href="../downloads/excel/nsam_template_user.xls" target="_blank" class="btn btn-success btn-sm" >
       		<i class="icon-cloud-download"></i>
       		Download template
       	</a>

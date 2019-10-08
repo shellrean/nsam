@@ -47,7 +47,7 @@ while($p = mysql_fetch_array($hasil)){
 
 $objPHPExcel->getActiveSheet()->setTitle('Mapel');
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Excel-Mapel.xls"');
+header('Content-Disposition: attachment;filename="Data-Mapel.xls"');
 header('Cache-Control: max-age=0');
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');

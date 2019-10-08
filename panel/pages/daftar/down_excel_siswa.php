@@ -82,7 +82,7 @@ if ($log['XTingkat']=="SMA" || $log['XTingkat']=="MA"||$log['XTingkat']=="STM"){
 	$objPHPExcel->setActiveSheetIndex(0);
 
 	header('Content-Type: application/vnd.ms-excel');
-	header('Content-Disposition: attachment;filename="Excel-Siswa.xls"');
+	header('Content-Disposition: attachment;filename="Data-Siswa.xls"');
 	header('Cache-Control: max-age=0');
 
 	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
@@ -160,7 +160,7 @@ if ($log['XTingkat']=="SMA" || $log['XTingkat']=="MA"||$log['XTingkat']=="STM"){
 	$objPHPExcel->setActiveSheetIndex(0);
 
 	header('Content-Type: application/vnd.ms-excel');
-	header('Content-Disposition: attachment;filename="Excel-Siswa.xls"');
+	header('Content-Disposition: attachment;filename="Data-Siswa.xls"');
 	header('Cache-Control: max-age=0');
 
 	$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
