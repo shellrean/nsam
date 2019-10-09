@@ -1,51 +1,150 @@
 <script>
 $(document).keypress(function(e){
 	if(e.which == 13){
-		//alert('You pressed enter!');
 		$('#btnNextSoal').trigger('click');
 	}
 });
 $(document).keyup(function(e){
-	if(e.keyCode==27){//escape key maps to keycode '27'
-	//alert('You pressed escape!');
+	if(e.keyCode==27){
 	$('#btnPrevSoal').trigger('click');
 	}
 });	
 </script>
+
+
+
+
+
 <style>
 	.A{background-image:url(images/A.png);}
 	.B{background-image:url(images/B.png);}
 	.C{background-image:url(images/C.png);}
 	.D{background-image:url(images/D.png);}
-	.E{background-image:url(images/E.png);}
+	.E{background-image:url(images/E.png);} 
+
+	input[type="radio"] {opacity:0.2;  position:absolute;}  /*left:-10000;*/
+input[type="radio"] + label {cursor: pointer;}
+.jawaban {padding-bottom:10px; font-size: 10pt; border:solid; border-color:#CCC;}	
+.pilihanjawaban	{font-size: 10pt; padding-bottom:15px;}	
+.noti-jawab {position:absolute; background-color:white; color:#999; padding:4px;  -webkit-border-radius: 30px;
+    -moz-border-radius: 30px; border-radius: 30px; border-style:solid; border-color:#999; width:27px; height:27px; text-align:center;}
+.flatRoundedCheckbox {width: 120px; height: 40px; margin: 20px 50px; position: relative;}
+.flatRoundedCheckbox div {width: 100%; height:100%; background: #d3d3d3; border-radius: 50px; position: relative; top:-30px;}  		
+.cc-selector input {margin-left:0px; padding:0; -webkit-appearance:none; -moz-appearance:none; appearance:none;	margin-top:-90px; top:-90px;}
+
+.piljwb {margin-left:0; border-radius: 30px; border-style:solid; border-color:#999; list-style:none;}
+.cc-selector input:active +.drinkcard-cc {opacity: .9;}
+.cc-selector input:checked +.drinkcard-cc {background-image:url(images/pilih.png); -webkit-filter: none; -moz-filter: none; filter: none;}
+.drinkcard-cc {cursor:pointer; background-size:contain; background-repeat:no-repeat; display:inline-block; width:38px;height:28px;;}
+.drinkcard-cc:hover {-webkit-filter: brightness(1.2) grayscale(.5) opacity(.9); -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);}	
+
+
+#slideMenu.closed {right:-400px;}
+#slideMenu {position:fixed; right:0; top:120px; width:358px; height:500px; border-left:0px; background-color:#efefef; z-index:20;}
+#slideMenu a.toggleBtn {
+	position:absolute; 
+	left:-440px; 
+	margin-left:300px; 
+	top:0; 
+	outline:none; 
+	display:block; 
+	height:50px; 
+	background-color:#e46f69; 
+	width:98px; 
+	border-width:1px 1px 1px 0px; 
+	padding:0 5px 0; 
+	color:#000; 
+	text-decoration:none; 
+	font:12px/25px Verdana, Arial, Helvetica, sans-serif; 
+	z-index:0;
+	border: 1px solid red;
+}
+#slideMenu a.toggleBtnHighlight {position:absolute; right:0px; margin-right:400px; top:0; outline:none; display:block; height:47px; background-color:#e46f69; 
+	width:35px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:0;}
+.contente {margin-top:20px; margin-left:20px; margin-bottom:20px; margin-right:20px; width:330px; z-index:20; border-style:solid; border:thin;
+	border-color:#ccc; padding:20px; background-color:#FFF; overflow:scroll; height:460px; font:12px/25px Verdana, Arial, Helvetica, sans-serif;}
+
+@media (max-width: 500px) {	 /*breakpoint*/
+	#slideMenu.closed {right:-240px;}
+	#slideMenu {position:fixed; right:0; top:100px; width:238px; height:200px; border-left:0px; /*background-color:#efefef;*/ background-color:#efefef; z-index:20;}
+	#slideMenu a.toggleBtn {position:absolute;left:-260px; margin-left:160px; top:0; outline:none; display:block; height:50px; background-color:#e46f69;
+		width:98px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:0;}
+	#slideMenu a.toggleBtnHighlight {position:absolute; right:0px; margin-right:280px; top:0; outline:none; display:block; height:47px; background-color:#e46f69;	
+		width:35px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:60;}
+	.contente {margin-top:20px; margin-left:20px; margin-bottom:20px; margin-right:20px; width:200px; z-index:20; border-style:solid; border:thin;
+		border-color:#ccc; padding:20px; background-color:#FFF; overflow:scroll; height:160px; font:12px/25px Verdana, Arial, Helvetica, sans-serif;}
+}
+#noti-count {position:absolute; top:-12px; right:-15px; background-color:white; color:#313132; padding:5px; -webkit-border-radius: 30px; -moz-border-radius: 30px;
+    border-radius: 30px; border-style:solid; border-color:#313132; width:27px; height:27px; text-align:center;}
+#noti-count div {margin-top:-5px;}
+
+#awal {color:#FFF; font-family:Arial, Helvetica, sans-serif; line-height: 90%; margin:0px auto;  margin-top:20px;}
+#ahir {color:#FFF; font-family:Arial, Helvetica, sans-serif; line-height: 120%; margin:0px auto; margin-top:10px;}
+#noti-count {position:absolute; top:-12px; right:-15px; background-color:white; color:#313132; padding:5px; -webkit-border-radius: 30px;
+    -moz-border-radius: 30px; border-radius: 30px; border-style:solid; border-color:#313132; width:30px; height:30px; text-align:center;}
+#noti-count div {margin-top:-5px;}
+
+.butn {
+	width: 100px;
+	font-size: 25px;
+	position: absolute;
+	right: 20px;
+}
+.notification {
+  color: #000;
+  text-decoration: none;
+  padding: 10px 20px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  border: 3px solid #666;
+}
+
+.notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  color: #000;
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.5;
+}
+
 </style>
-<link rel="stylesheet" type="text/css" href="panel/css/getsoal.css">
+
+
 
 <div id="slideMenu" class="closed">
 	<div class="contente">
-<?php 
-include "config/server.php";
-	$xkodemapel = "GAL1";
-	$user = "$_COOKIE[PESERTA]";
+	<?php 
+		include "config/server.php";
+		$xkodemapel = "GAL1";
+		$user = "$_COOKIE[PESERTA]";
   
-	$sqluser = mysql_query("SELECT * FROM  `cbt_siswa` WHERE XNomerUjian = '$user'");
-	$su = mysql_fetch_array($sqluser);
-	$xkelz = $su['XKodeKelas'];
-	$xjurz = $su['XKodeJurusan'];  
+		$sqluser = mysql_query("SELECT * FROM  `cbt_siswa` WHERE XNomerUjian = '$user'");
+		$su = mysql_fetch_array($sqluser);
+		$xkelz = $su['XKodeKelas'];
+		$xjurz = $su['XKodeJurusan'];  
 
-	$sqlgabung = mysql_query("SELECT * FROM  `cbt_siswa` s LEFT JOIN cbt_ujian u ON (s.XKodeKelas = u.XKodeKelas or u.XKodeKelas = 'ALL') 
+		$sqlgabung = mysql_query("SELECT * FROM  `cbt_siswa` s LEFT JOIN cbt_ujian u ON (s.XKodeKelas = u.XKodeKelas or u.XKodeKelas = 'ALL') 
 		WHERE XNomerUjian = '$user' and (u.XKodeJurusan = '$xjurz' or u.XKodeJurusan = 'ALL') and (u.XKodeKelas = '$xkelz' or u.XKodeKelas = 'ALL') and u.XStatusUjian = '1'");
-	$s0 = mysql_fetch_array($sqlgabung);
-	$xkodesoal = $s0['XKodeSoal'];
-	$xtokenujian = $s0['XTokenUjian'];  
+		$s0 = mysql_fetch_array($sqlgabung);
+		$xkodesoal = $s0['XKodeSoal'];
+		$xtokenujian = $s0['XTokenUjian'];  
  
-	$sqluser = mysql_query("SELECT u.*,m.XNamaMapel FROM cbt_ujian u LEFT JOIN cbt_paketsoal p on p.XKodeSoal = u.XKodeSoal and p.XKodeMapel = u.XKodeMapel left join cbt_mapel m on u.XKodeMapel = m.XKodeMapel 
+		$sqluser = mysql_query("SELECT u.*,m.XNamaMapel FROM cbt_ujian u LEFT JOIN cbt_paketsoal p on p.XKodeSoal = u.XKodeSoal and p.XKodeMapel = u.XKodeMapel left join cbt_mapel m on u.XKodeMapel = m.XKodeMapel 
 		WHERE u.XKodeSoal='$xkodesoal' and u.XStatusUjian = '1'");
-	$so = mysql_fetch_array($sqluser);
-	$sopil = $so['XJumPilihan'];
-	$listen =$so['XListening'];
+		$so = mysql_fetch_array($sqluser);
+		$sopil = $so['XJumPilihan'];
+		$listen =$so['XListening'];
 
-	$sql = mysql_query("SELECT j.Urut as Urut, j.XJawaban as XJawaban, j.XJawabanEsai as XJawabanEsai , c.XNomerSoal as XNomerSoal, j.XRagu as XRagu, c.XJenisSoal as XJenisSoal 
+		$sql = mysql_query("SELECT j.Urut as Urut, j.XJawaban as XJawaban, j.XJawabanEsai as XJawabanEsai , c.XNomerSoal as XNomerSoal, j.XRagu as XRagu, c.XJenisSoal as XJenisSoal 
 		FROM  `cbt_soal` c LEFT JOIN cbt_jawaban j ON ( j.XNomerSoal = c.XNomerSoal AND j.XKodeSoal = c.XKodeSoal ) where c.XKodeSoal = '$xkodesoal' 
 		and j.XUserJawab = '$user' and j.XTokenUjian = '$xtokenujian' and j.XJenisSoal = '1' order by j.Urut");
 		while($s = mysql_fetch_array($sql)){		
@@ -59,27 +158,22 @@ include "config/server.php";
 			else { 	if(!$s['XJawaban']==''){$cssb = "#313132";$csst = "#fff";$noti = "noti-count";$border = "#313132";} 
 					else {$cssb = "#fff";$csst = "#313132";$noti = "noti-count";$border = "#313132";}
 				$iki = 'N';}
-echo '<a href="#" data-id="'.$s['Urut'].'" class="get_pic" id="tombil">'; ?>
-	<div class="item" id="kotakz<?php echo $s['Urut']; ?>" style="background-color:<?php echo $cssb; ?>; color:<?php echo $csst; ?>;border-color:<?php echo $border; ?>">
-		<p style="margin-top:-9px; margin-left:-9px; font-family:Arial, Helvetica, sans-serif; font-size:24px">
-		   <?php   echo "$urutansoal";	   ?>
-		</p>
-		<div  id='noti-count' style="border-color:<?php echo $border; ?>">
-			<div>
-				<?php  if($jensoal==2){
-							if(!$jwbsoal==''){echo "<img src=images/ijo.png style='margin-left:-5px;margin-top:-3px'>";} 
-							else {echo "";}
-						} else { echo $s['XJawaban']; } 
-				?>
-			</div>
-		</div>
-	</div></a>
+		?>
+		<a href="#" data-id="<?= $s['Urut']; ?>" class="get_pic notification mx-2" id="tombil kotakz<?php echo $s['Urut']; ?>" style="background-color:<?php echo $cssb; ?>; color:<?php echo $csst; ?>;border-color:<?php echo $border; ?>">
+		  <span><?php echo "$urutansoal";  ?></span>
+		  <span class="badge" style="border-color:<?php echo $border; ?>">
+		  	<?php if($jensoal==2){
+					if(!$jwbsoal==''){echo "<img src=images/ijo.png style='margin-left:-5px;margin-top:-3px'>";} 
+					else {echo "x";}
+				} else {echo $s['XJawaban']; } 
+			?>
+		  </span>
+		</a>
 <?php  } ?> 
-<br><br><br><br><br>
-</div>
-
-<div style="padding-bottom:20px; font-size:14px; color:#0066CC"> Soal Esai </div>
-<div id="container2" style="text-align:center; height:300px;">
+<hr>
+<div class="text-title"> Soal Esai </div>
+<hr>
+<div id="container2" style="text-align:center; height:300px; background-color: ">
 <?php include "config/server.php";
 	$xkodemapel = "GAL1";
 
@@ -117,7 +211,7 @@ echo '<a href="#" data-id="'.$s['Urut'].'" class="get_pic" id="tombil">'; ?>
 ?>        
 		<?php echo '<a href="#" data-id="'.$s['Urut'].'" class="get_pic" id="tombil">'; ?>
 			<div class="item" id="kotakz<?php echo $s['Urut']; ?>" style="background-color:<?php echo $cssb; ?>; color:<?php echo $csst; ?>;border-color:<?php echo $border; ?>">
-				<p style="margin-top:-9px; margin-left:-9px; font-family:Arial, Helvetica, sans-serif; font-size:24px"><?php echo "$urutansoal";  ?></p>
+				<p class="text-center"><?php echo "$urutansoal";  ?></p>
 				<div  id='noti-count' style="border-color:<?php echo $border; ?>">
 				<div>	<?php if($jensoal==2){
 								if(!$jwbsoal==''){echo "<img src=images/ijo.png style='margin-left:-5px;margin-top:-3px'>";} 
@@ -138,34 +232,6 @@ echo '<a href="#" data-id="'.$s['Urut'].'" class="get_pic" id="tombil">'; ?>
 .item 	{width: 50px; height: 50px; /* background-color: green; */ border:#313132; color:#fff; border-style:solid;  margin-bottom: 17px;
 		font-size:18px;	line-height:normal;}
 </style>
-
-<script src="panel/js/masonry.pkgd.min.js"></script>
-    <script>
-        var container = document.querySelector('#container');
-        var msnry = new Masonry( container, {columnWidth: 55, itemSelector: '.item',  gutter: 17});
-          //here we define grid system column width to be 320px. This remains constant throughout all viewport sizes. Columns are dropped when they have no space which makes them a responsive grid system similarly columns are added when viewport size increases.
-          
-          //select all grid boxes
-         
-          //gutter property here
-        
-        
-              
-    </script>
-
-    <script>
-        var container = document.querySelector('#container2');
-        var msnry = new Masonry( container, {
-          //here we define grid system column width to be 320px. This remains constant throughout all viewport sizes. Columns are dropped when they have no space which makes them a responsive grid system similarly columns are added when viewport size increases.
-          columnWidth: 55,
-          //select all grid boxes$
-          itemSelector: '.item',
-          //gutter property here
-          gutter: 17
-        });
-        
-       
-    </script>
     
 	</div>
 	<a style="top:110px; right: -42px;" href="javascript:AlertIt();" class="toggleBtn" id="toggleLink">
@@ -175,6 +241,8 @@ echo '<a href="#" data-id="'.$s['Urut'].'" class="get_pic" id="tombil">'; ?>
     <font size="-1" color="#FFFFFF">DAFTAR</font> <br><font size="-1" color="#FFFFFF"> SOAL</font>
 	</td></tr></table>
     </div></a>
+
+
 </div>
 <script type="text/javascript">
 function AlertIt() {

@@ -18,8 +18,24 @@ input[type="radio"] + label {cursor: pointer;}
 
 #slideMenu.closed {right:-400px;}
 #slideMenu {position:fixed; right:0; top:120px; width:358px; height:500px; border-left:0px; background-color:#efefef; z-index:20;}
-#slideMenu a.toggleBtn {position:absolute; left:-440px; margin-left:300px; top:0; outline:none; display:block; height:50px; background-color:#e46f69; 
-	width:98px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:0;}
+#slideMenu a.toggleBtn {
+	position:absolute; 
+	left:-440px; 
+	margin-left:300px; 
+	top:0; 
+	outline:none; 
+	display:block; 
+	height:50px; 
+	background-color:#e46f69; 
+	width:98px; 
+	border-width:1px 1px 1px 0px; 
+	padding:0 5px 0; 
+	color:#000; 
+	text-decoration:none; 
+	font:12px/25px Verdana, Arial, Helvetica, sans-serif; 
+	z-index:0;
+	border: 1px solid red;
+}
 #slideMenu a.toggleBtnHighlight {position:absolute; right:0px; margin-right:400px; top:0; outline:none; display:block; height:47px; background-color:#e46f69; 
 	width:35px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:0;}
 .contente {margin-top:20px; margin-left:20px; margin-bottom:20px; margin-right:20px; width:330px; z-index:20; border-style:solid; border:thin;
@@ -44,3 +60,11 @@ input[type="radio"] + label {cursor: pointer;}
 #noti-count {position:absolute; top:-12px; right:-15px; background-color:white; color:#313132; padding:5px; -webkit-border-radius: 30px;
     -moz-border-radius: 30px; border-radius: 30px; border-style:solid; border-color:#313132; width:30px; height:30px; text-align:center;}
 #noti-count div {margin-top:-5px;}
+
+.butn {
+	width: 100px;
+	font-size: 25px;
+	position: absolute;
+	right: 20px;
+}
+

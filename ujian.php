@@ -503,7 +503,7 @@ $xjumlahsoalpil = $xjumlahsoal - $xjumlahesai;
     <script>
       $(function(){
         $('#h_timer').countdowntimer({
-          hours : <?php echo $xjam; ?>,
+          hours : <?php echo $xjam; ?>, 
           minutes :<?php echo $xmnt; ?>,
           seconds:<?php echo $xdtk; ?>,  
           size : "lg",
