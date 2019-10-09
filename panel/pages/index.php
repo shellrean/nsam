@@ -333,6 +333,16 @@ else {$hari=$Dd;}
                 </li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?modul=daftar_peserta">
+                <i class="nav-icon icon-user"></i> Status peserta
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?modul=aktifkan_jadwaltes">
+                <i class="nav-icon icon-refresh"></i> Reset login peserta
+              </a>
+            </li>
         	  <?php endif; ?>
           </ul>
         </nav>
@@ -389,6 +399,10 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == "edit_tes"){include "daftar/edit_tes.php";}
               elseif($_REQUEST['modul'] == "aktifkan_jadwaltes"){include "daftar/daftar_tes.php";}
               elseif($_REQUEST['modul'] == "daftar_waktu"){include "daftar/daftar_waktu.php";}
+              elseif($_REQUEST['modul'] == "daftar_waktu_db"){include "daftar/daftar_waktu_db.php";}
+
+              /** 7 **/
+              elseif($_REQUEST['modul'] == "daftar_peserta"){include "daftar/daftarpeserta.php";}
               
 
             ?>

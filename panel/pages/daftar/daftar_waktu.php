@@ -124,6 +124,7 @@
  
 
 <script>
+  $('#appTable').DataTable();
   $(document).ready(function() {
     $('#myModal').on('show.bs.modal', function(e) {
       let rowid = $(e.relatedTarget).data('id');
