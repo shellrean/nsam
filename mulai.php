@@ -64,7 +64,7 @@ if(isset($xkodesoalz)){ echo "SELECT *,s.XKodeKelas as kelassiswa,u.XKodeSoal as
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Applikasi untuk memonitor sekolah">
     <meta name="author" content="Kuswandi">
-    <link rel="shortcut icon" href="images/logo-dki.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/nsam.png" type="image/x-icon">
  
     <title><?= $skull ?> </title>
     <!-- Icons-->
@@ -84,7 +84,7 @@ if(isset($xkodesoalz)){ echo "SELECT *,s.XKodeKelas as kelassiswa,u.XKodeSoal as
     <header style="background-color: #32679C;" class="headers">
       <div class="group">
         <div class="left py-2 px-2">
-          <img src="images/logo-dki.png " width="75px">
+          <img src="images/logo.png " width="150px">
         </div>
         <div class="right">
           <table width="100%" border="0" style="margin-top:10px">   

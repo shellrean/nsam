@@ -77,7 +77,7 @@ if (!$sqlconn) { die('Could not connect: '.mysql_error());}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title><?= $skull ?> | Login</title>
-    <link rel="shortcut icon" href="../../images/logo-dki.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/nsam.png" type="image/x-icon">
     <!-- Icons-->
     <link href="../../node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="../../node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
@@ -88,8 +88,14 @@ if (!$sqlconn) { die('Could not connect: '.mysql_error());}
     <link href="../vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <style>
        body {
-        overflow-x: hidden;
-    }
+        overflow: hidden;
+
+      }
+      .my-30 {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+      }
     </style>
   </head>
   <body class="app flex-row align-items-center">
@@ -97,7 +103,7 @@ if (!$sqlconn) { die('Could not connect: '.mysql_error());}
       <div class="col-md-6 bg-white">
         <img src="../../images/ef.jpg" class="img-fluid">
       </div>
-      <div class="col-md-6 bg-white my-auto">
+      <div class="col-md-6 bg-white my-30">
         <div class="row">
           <div class="col-lg-9">
             <h1>CBTSync Login</h1>

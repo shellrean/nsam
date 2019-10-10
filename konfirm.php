@@ -98,7 +98,7 @@ if($user_ip1<>$user_ip2&&!$user_ip2==""){header('Location:login.php?salah=3');}
   	<header style="background-color: #32679C;" class="headers">
   	  <div class="group">
   	  	<div class="left py-2 px-2">
-  	  		<img src="images/logo-dki.png " width="75px">
+  	  		<img src="images/logo.png " width="135px">
   	  	</div>
   	  	<div class="right">
   	  		<table width="100%" border="0" style="margin-top:10px">   
@@ -134,7 +134,7 @@ if($user_ip1<>$user_ip2&&!$user_ip2==""){header('Location:login.php?salah=3');}
 				  <div class="form-group row">
 				  	<label class="col-sm-3 col-form-label">Status peserta</label>
 				  	<div class="col-sm-9">
-				  		<input type="text" readonly class="form-control-plaintext" value="<?= $val_siswa.'('.$xkelz.'-'.$xjurz.'|'.$xnamkel.')' ?>">
+				  		<input type="text" readonly class="form-control-plaintext" value="<?= $val_siswa.' ('.$xkelz.'-'.$xjurz.' | '.$xnamkel.')' ?>">
 				  		<input id="NamaPeserta" name="NamaPeserta" type="hidden" value="glyphicon-warning-sign">
 				  	</div>
 				  </div>

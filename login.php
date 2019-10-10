@@ -38,7 +38,7 @@ $footer = "BeeSMART-CBT";}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Applikasi untuk memonitor sekolah">
     <meta name="author" content="Kuswandi">
-    <link rel="shortcut icon" href="images/logo-dki.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/nsam.png" type="image/x-icon">
  
     <title><?= $skull ?> </title>
     <!-- Icons-->
@@ -58,13 +58,13 @@ $footer = "BeeSMART-CBT";}
   	<header style="background-color: #32679C;" class="headers">
   	  <div class="group">
   	  	<div class="left py-2 px-2">
-  	  		<img src="images/logo-dki.png " width="75px">
+  	  		<img src="images/logo.png " width="135px">
   	  	</div>
   	  	<div class="right">
   	  		<table width="100%" border="0" style="margin-top:10px">   
      			<tr><td rowspan="3" width="120px" align="center"><img src="images/avatar.gif" style=" margin-left:0px;" class="foto" ></td>
-				<td>Selamat Datang Peserta Ujian</td></tr>
-				<tr><td><span class="user">Jangan Lupa Berdo'a </span></td></tr>
+				<td>Selamat datang peserta ujian</td></tr>
+				<tr><td><span class="user">Jangan lupa berdo'a </span></td></tr>
 				<tr><td><span class="log"><a href="index.php">Logout</a><span></td></tr>
 			</table>
   	  	</div>

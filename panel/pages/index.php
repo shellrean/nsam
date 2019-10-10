@@ -119,7 +119,7 @@ else {$hari=$Dd;}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Applikasi untuk memonitor sekolah">
     <meta name="author" content="Kuswandi">
-    <link rel="shortcut icon" href="../../images/logo-dki.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/nsam.png" type="image/x-icon">
  
     <title><?= $skull ?> </title>
     <!-- Icons-->
@@ -157,7 +157,7 @@ else {$hari=$Dd;}
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="../../images/logo-dki.png" width="40" alt="Logo Brand DKI">
+        <img class="navbar-brand-full" src="../../images/nsam.png" width="70" alt="Logo Brand DKI">
         <img class="navbar-brand-minimized" src="../../images/logo-dki.png" width="30" alt="Logo Brand DKI">
       </a>
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
@@ -343,6 +343,16 @@ else {$hari=$Dd;}
                 <i class="nav-icon icon-refresh"></i> Reset login peserta
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?modul=analisasoal">
+                <i class="nav-icon icon-pie-chart"></i> Analisa
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="logout.php">
+                <i class="nav-icon icon-logout"></i> Logout
+              </a>
+            </li>
         	  <?php endif; ?>
           </ul>
         </nav>
@@ -404,6 +414,8 @@ else {$hari=$Dd;}
               /** 7 **/
               elseif($_REQUEST['modul'] == "daftar_peserta"){include "daftar/daftarpeserta.php";}
               
+              /** 8 **/
+              elseif($_REQUEST['modul'] == "analisasoal"){include "soal/analisa_soal.php";}
 
             ?>
           </div> 

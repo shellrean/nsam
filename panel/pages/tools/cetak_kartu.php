@@ -26,7 +26,7 @@ function kartu($am,$kokel,$kojur) {
 						<td colspan="3" style="border-bottom:1px solid black; padding:2px" align="center">
 							<table width="98%" class="kartu" cellpadding="10px">
 							<tbody><tr>
-								<td><img src="../../images/logo-dki.png" height="50"></td>
+								<td><img src="../../images/nsam.png" height="50"></td>
 								<td align="center" style="font-weight:bold">
 									<font size="2">KARTU PESERTA USBK <?php echo $_COOKIE['beetahun']; ?></font> 
 									<br><font size="1">(UJIAN SEKOLAH BERBASIS KOMPUTER) </font></br>
