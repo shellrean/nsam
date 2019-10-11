@@ -135,6 +135,7 @@ $sql1	= mysql_query("select * from inf_lokasi where lokasi_kabupatenkota='$kab' 
 			let txt_nip2	= $('#nipadmin').val();
 			let txt_kode	= $('#txt_kode').val();
 
+
 			$.ajax({
 				type : "POST",
 				url  : "sekolah/ubahdata.php",

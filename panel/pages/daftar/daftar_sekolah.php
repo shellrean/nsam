@@ -77,7 +77,7 @@ if(isset($_REQUEST['tambah'])) {
       <div class="card-body">
         <table class="table table-responsive-sm table-bordered table-striped table-sm" id="appTable">
           <thead>
-            <tr>
+            <tr> 
               <th>No.</th>
               <th>Kode sekolah</th>
               <th>Nama sekolah</th>
@@ -87,7 +87,7 @@ if(isset($_REQUEST['tambah'])) {
               <th>Status<br>Server</th>
               <th>Aksi</th>
             </tr>
-          </thead>
+          </thead> 
           <tbody>
           	<?php
           	$sql = mysql_query("select * from server_sekolah order by XServerId");

@@ -95,12 +95,12 @@ if(!isset($_COOKIE['beeuser'])) {
 			<label>Tingkat sekolah</label>
 			<select class="form-control" id="txt_levelz">                           
 				<option value="SD" <?php if($skul=='SD'){echo "selected";} ?>>SD</option>
-				<option value="MI" <?php if($skul=='MI'){echo "selected";} ?>>MI</option>                            
+				<!-- <option value="MI" <?php if($skul=='MI'){echo "selected";} ?>>MI</option>                            
 				<option value="SMP" <?php if($skul=='SMP'){echo "selected";} ?>>SMP</option>
 				<option value="MTs" <?php if($skul=='MTs'){echo "selected";} ?>>MTs</option>                            
 				<option value="SMA" <?php if($skul=='SMA'){echo "selected";} ?>>SMA</option>
 				<option value="MA" <?php if($skul=='MA'){echo "selected";} ?>>MA</option>                            
-				<option value="SMK" <?php if($skul=='SMK'){echo "selected";} ?>>SMK</option>                            
+				<option value="SMK" <?php if($skul=='SMK'){echo "selected";} ?>>SMK</option>    -->                         
 			</select>
 		</div>
 	</div>
@@ -147,9 +147,7 @@ if(!isset($_COOKIE['beeuser'])) {
 		<div class="form-group">
 			<label>Jumlah opsi jawaban</label>
 			<select class="form-control"id="txt_jawabz">
-				<option value= '5' selected>5</option>
 				<option value='4'>4</option>
-				<option value='3'>3</option>
 			</select>
 		</div>
 	</div>

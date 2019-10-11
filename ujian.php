@@ -34,7 +34,7 @@
   $xnamamapel     = $s['XNamaMapel'];
   $xjamujian      = $s['XJamUjian']; 
   $xjumpilg       = $s['XPilGanda'];   
-  $xjumesai       = $s['XEsai'];     
+  $xjumesai       = $s['XEsai'];      
   $xacaksoal      = $s['XAcakSoal'];  
   $xjumlahpilihan = $s['XJumPilihan'];
   $xtglujian      = $s['XTglUjian'];
@@ -263,8 +263,8 @@
       }
     </script>
 
-    <link rel="stylesheet" type="text/css" href="panel/css/klien.css">
-    <link rel="stylesheet" type="text/css" href="panel/css/sikil.css">
+    <!-- <link rel="stylesheet" type="text/css" href="panel/css/klien.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="panel/css/sikil.css"> -->
     <script scr="panel/js/inline.js"></script>
 
     <?php
@@ -554,4 +554,68 @@ $xjumlahsoalpil = $xjumlahsoal - $xjumlahesai;
   <script src="panel/js/main.js"></script>
   <script src="panel/js/cookieList.js"></script>
   <script src="panel/js/backend.js"></script>
+
+  <div class="modal fade" id="modal-form" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title page-label">Konfirmasi Tes</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="inner-content">
+                        <div class="wysiwyg-content">
+                            <p>
+                                Terimakasih telah berpartisipasi dalam tes ini.<br>
+                                Silahkan klik tombol LOGOUT untuk mengakhiri test.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row" style="background-color:#fff">
+                        <div class="col-xs-offset-3 col-xs-6">
+                            <button type="submit" class="btn btn-success" data-dismiss="modal">SELESAI</button>
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">TIDAK</button>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title page-label">Konfirmasi Tes</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="inner-content">
+                        <div class="wysiwyg-content">
+                            <p>
+                                Terimakasih telah berpartisipasi dalam tes ini.<br>
+                                Silahkan klik tombol LOGOUT untuk mengakhiri test.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row" style="background-color:#fff">
+                        <div class="col-xs-offset-3 col-xs-6">
+                            <button type="submit" class="btn btn-success" data-dismiss="modal">SELESAI</button>
+                            <button type="submit" class="btn btn-danger" data-dismiss="modal">TIDAK</button>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </html>

@@ -395,14 +395,20 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == 'daftar_soal'){include "daftar/daftar_soal.php";}
               elseif($_REQUEST['modul'] == 'cetak_banksoal'){include "daftar/cetak_banksoal.php";}
               elseif($_REQUEST['modul'] == 'edit_soal'){include "daftar/edit_daftar_soal.php";}
+              elseif($_REQUEST['modul'] == 'edit_soal_esai'){include "soal/bank_soal.php";}
               elseif($_REQUEST['modul']=="tambah_soal"){
                 if($_REQUEST['jum']==5){include "soal/tambah_soal5.php";}
                 elseif($_REQUEST['jum']==4){include "soal/tambah_soal4.php";}
                 elseif($_REQUEST['jum']==3){include "soal/tambah_soal3.php";}
                 elseif($_REQUEST['jum']==1){include "soal/tambah_soal.php";} 
               }
-              elseif($_REQUEST['modul'] == 'upl_files'){include "tools/upload_files.php";}
-
+              elseif($_REQUEST['modul']=="edit_data_soal"){
+                if($_REQUEST['jum']==5){include "soal/bank_soal5.php";}
+                elseif($_REQUEST['jum']==4){include "soal/bank_soal4.php";}
+                elseif($_REQUEST['jum']==3){include "soal/bank_soal3.php";}
+                elseif($_REQUEST['jum']==1){include "soal/bank_soal.php";} 
+              }
+              elseif($_REQUEST['modul'] == 'upl_files'){include "tools/upload_files.php";}           
 
               /** 6 **/
               elseif($_REQUEST['modul'] == "daftar_tesbaru"){include "daftar/daftar_tesbaru.php";}
@@ -463,7 +469,7 @@ else {$hari=$Dd;}
     <form action="?&simpan5=yes" method="post" >
     <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Mode Server</h5>
+          <h5 class="modal-title">Mode server</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -471,41 +477,46 @@ else {$hari=$Dd;}
         <div class="modal-body">
           <div class="form-group">
             <select class="form-control" id="server1" name="server1">
-              <option value='lokal' <?php if ($mode=="lokal") {echo "selected";} ?>>Mode Server PUSAT </option>
-              <option value='pusat' <?php if ($mode=="pusat") {echo "selected";} ?>>Mode Server LOKAL </option>
+              <option value='lokal' <?php if ($mode=="lokal") {echo "selected";} ?>>Mode server pusat </option>
+              <option value='pusat' <?php if ($mode=="pusat") {echo "selected";} ?>>Mode server lokal </option>
             </select>
           </div>
-          <div class="form-group">
+          <input type="hidden" name="zona1" value="Asia/Jakarta">
+         <!--  <div class="form-group">
             <select class="form-control" id="zona1" name="zona1">
               <option value='Asia/Jakarta' <?php if ($zo=="Asia/Jakarta") {echo "selected";} ?>>Asia/Jakarta (WIB)</option>
               <option value='Asia/Makassar' <?php if ($zo=="Asia/Makassar") {echo "selected";} ?>>Asia/Makassar (WITA)</option>
               <option value='Asia/Jayapura' <?php if ($zo=="Asia/Jayapura") {echo "selected";}?>>Asia/Jayapura (WIT) </option>
             </select>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <input type="hidden" name="hakakses" value="1">
+        <!--   <div class="form-group">
             <select class="form-control" id="hakakses" name="hakakses">
               <option value='0' <?php if ($hakakses=="0") {echo "selected";} ?>>Tiga Hak Akses (Admin | Siswa | Guru)</option>
               <option value='1' <?php if ($hakakses=="1") {echo "selected";} ?>>Dua Hak Akses (Admin | Guru)</option>
             </select>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <input type="hidden" name="nilaikelas" value="0">
+         <!--  <div class="form-group">
             <select class="form-control" id="nilaikelas" name="nilaikelas">
               <option value='0' <?php if ($nilaikelas=="0") {echo "selected";} ?>>Nilai Kelas Sembunyi</option>
               <option value='1' <?php if ($nilaikelas=="1") {echo "selected";} ?>>Nilai Kelas Tampil </option>
             </select>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <input type="hidden" name="headerujian" value="0">
+          <!-- <div class="form-group">
             <select class="form-control" id="headerujian" name="headerujian">
               <option value='0' <?php if ($headerujian=="0") {echo "selected";} ?>>Header Ujian Tampil</option>
               <option value='1' <?php if ($headerujian=="1") {echo "selected";} ?>>Header Ujian Sembunyi</option>
             </select>
-          </div>
-          <div class="form-group">
+          </div> -->
+          <input type="hidden" name="header" value="0">
+<!--           <div class="form-group">
             <select class="form-control" id="header" name="header">
               <option value='0' <?php if ($header=="0") {echo "selected";} ?>>Header Modern</option>
               <option value='1' <?php if ($header=="1") {echo "selected";} ?>>Header Klasik </option>
             </select>
-          </div>
+          </div> -->
 
         </div>
         <div class="modal-footer">

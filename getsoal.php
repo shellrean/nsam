@@ -16,7 +16,7 @@ $(document).keyup(function(e){
 
 
 <style>
-	.A{background-image:url(images/A.png);}
+	.A{background-image:url(images/A.png);} 
 	.B{background-image:url(images/B.png);}
 	.C{background-image:url(images/C.png);}
 	.D{background-image:url(images/D.png);}
@@ -113,7 +113,7 @@ input[type="radio"] + label {cursor: pointer;}
   width: 30px;
   text-align: center;
   vertical-align: middle;
-  line-height: 1.5;
+  line-height: 2.5;
 }
 
 </style>
@@ -1493,10 +1493,10 @@ $jnoc("#info").hide();
 <div class="kakisoal" id="kakisoal">
 	<section class="page-section soal-navigation">
 		<div class="container1">
-			<div >
+			<div > 
 				 <?php 	if($prev_id>0){ 
 					echo "<a href='#' data-id='".$prev_id."' class='get_pic' id='tombol'>"; } ?>
-						<button id="btnPrevSoal" class="btn btn-default btn-prev" data-bind="click: gotoBack">SOAL SEBELUMNYA</button>
+						<button id="btnPrevSoal" class="btn btn-light btn-lg btn-prev rounded-0" data-bind="click: gotoBack">SOAL SEBELUMNYA</button>
 					</a>
 			</div>
 			<?php	if(isset($stu)){ 
@@ -1512,7 +1512,7 @@ $jnoc("#info").hide();
 					}
 			?>
 			<div>	
-				<div class="btn btn-warning" style="margin-top:-13px; width:225px">
+				<div class="btn btn-warning btn-lg rounded-0">
 					<input type="checkbox"  id="<?php echo $stu; ?>" onClick="toggle_select(<?php echo $stu; ?>)"<?php if(isset($ragu)){echo $ragu;} ?> />&nbsp;RAGU-RAGU</div>
 
 			</div>
@@ -1520,20 +1520,20 @@ $jnoc("#info").hide();
                     <?php	if(isset($next_id)){ if($next_id==''){echo '<a href="#" >'; ?>
 					<?php 	$cekragu = mysql_num_rows(mysql_query("select * from cbt_jawaban where XRagu ='1' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'  and XUserJawab = '$user'")); 
 							if($cekragu>0){ ?>
-							<button id="btnSelesai" style="padding-bottom:10px; padding-top:10px; width:225px" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModalR">TES SELESAI</button>
+							<button id="btnSelesai" style="padding-bottom:10px; padding-top:10px; width:225px" class="btn btn-primary btn-end btn-lg activebutton rounded-0" data-toggle="modal" data-target="#myModalR">TES SELESAI</button>
 					<?php 	} else { ?>  
-							<button id="btnSelesai" style="padding-bottom:10px; padding-top:10px; width:225px" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModal2">TES SELESAI</button>
+							<button id="btnSelesai" style="padding-bottom:10px; padding-top:10px; width:225px" class="btn btn-primary btn-end btn-lg rounded-0 activebutton" data-toggle="modal" data-target="#myModal2">TES SELESAI</button>
 					<?php 	} echo "</a>";
 							} else { echo '<a href="#" data-id="'.$next_id.'" class="get_pic" id="tomb">'; ?>  
-								<button id="btnNextSoal" class="btn btn-primary btn-next activebutton" data-bind="css: { &#39;activebutton&#39;:(currentNo() &lt; totalQuestions - 1)}, visible: (currentNo() &lt; 
+								<button id="btnNextSoal" class="btn btn-primary rounded-0 btn-next activebutton btn-lg" data-bind="css: { &#39;activebutton&#39;:(currentNo() &lt; totalQuestions - 1)}, visible: (currentNo() &lt; 
 									totalQuestions - 1),click: gotoNext" style="margin-top:-13px; width:225px">SOAL BERIKUTNYA</button>
 					<?php  	} ?>
 					<?php 	} else { ?>
 			 		<?php	$cekragu = mysql_num_rows(mysql_query("select * from cbt_jawaban where XRagu ='1' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'  and XUserJawab = '$user'")); 
 							if($cekragu>0){ ?>
-								<button id="btnSelesai" style="padding-bottom:10px; padding-top:10px; width:225px" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModalR">TES SELESAI</button>
+								<button id="btnSelesai" class="btn btn-primary rounded-0 btn-end activebutton btn-lg" data-toggle="modal" data-target="#myModalR">TES SELESAI</button>
 							<?php } else { ?>  
-								<button id="btnSelesai" style="padding-bottom:10px; padding-top:10px; width:225px" class="btn btn-primary btn-end activebutton" data-toggle="modal" data-target="#myModal2">TES SELESAI</button>
+								<button id="btnSelesai" class="btn rounded-0 btn-primary btn-end activebutton btn-lg" data-toggle="modal" data-target="#myModal2">TES SELESAI</button>
 							<?php } echo "</a>";  }?>
 			</div>
 		</div>
@@ -1568,57 +1568,46 @@ $jnoc("#info").hide();
 </div>
 
 
-<div class="modal fade" id="myModal2" role="dialog">
-    <div class="modal-dialog">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-                    <h1 class="panel-title page-label">Konfirmasi Tes</h1>
+<div class="modal fade" id="myModal2" aria-hidden="true">
+    <div class="modal-dialog ">
+    	<div class="modal-content">
+			<div class="modal-header">
+                <h5 class="modal-title">Konfirmasi tes</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+	            	<span aria-hidden="true">×</span>
+	            </button>
 			</div>
-			<div class="panel-body">
-				<div class="inner-content">
-					<div class="row" style="background-color:#fff">
-						<div class="col-xs-3">
-                                <span><img src="images/alert.png" width="150px"></span>
+			<div class="modal-body">
+					<div class="row">
+						<div class="col-md-3">
+                            <img src="images/alert.png" width="140px">
 						</div>
-						<div class="col-xs-9">
-							<div class="wysiwyg-content">
-								<p>
-                                        Apakah anda yakin ingin mengakhiri tes?<br>
-                                        Anda tidak akan bisa kembali ke soal jika sudah menekan tombol selesai.
-								</p>
-							</div>
-							<div class="assent-checkbox">
-								<input type="checkbox" data-target="#btnLanjut" id="0-ascb" onClick="document.getElementById('btnLanjut').disabled=false">
-                                    <label class="assentcb-label" for="0-ascb">
-                                        Centang, lalu klik selesai. <br>Jika Yakin Mengakhiri Tes<br>
-                                    </label>
-							</div>
+						<div class="col-md-9">
+                            Apakah anda yakin ingin mengakhiri tes?<br>
+                            Anda tidak akan bisa kembali ke soal jika sudah menekan tombol selesai. <hr>	
+                            
+							<input type="checkbox" data-target="#btnLanjut" id="0-ascb" onClick="document.getElementById('btnLanjut').disabled=false">
+                            <label class="assentcb-label" >
+                                Centang, lalu klik selesai. <br>Jika Yakin Mengakhiri Tes<br>
+                            </label>
 						</div>
 					</div>
-				</div>
 			</div>
-			<div class="panel-footer">
-				<div class="row" style="background-color:#fff">
-					<div class="col-xs-6"> 
-						<button id="btnLanjut" type="submit" class="btn btn-success btn-block" disabled onClick="location.href='akhir.php';">SELESAI</button>
-					</div>
-					<div class="col-xs-6">
-						<button type="submit" class="btn btn-danger btn-block " data-dismiss="modal">TIDAK</button>
-					</div>
-				</div>
-			</div>
-                
+			<div class="modal-footer">
+	          <button type="button" class="btn btn-secondary rounded-0" data-dismiss="modal">Batal</button>
+	          <button id="btnLanjut" type="submit" class="btn btn-success rounded-0" disabled onClick="location.href='akhir.php';">Selesai</button>
+	        </div> 
 		</div>
 	</div>
 </div>
 
 <div class="modal fade" id="myModalR" role="dialog">
     <div class="modal-dialog">
-		<div class="panel panel-default">
-                <div class="panel-heading">
+    	<div class="modal-content">
+                <div class="modal-header">
                     <h1 class="panel-title page-label">Konfirmasi Tes</h1>
                 </div>
-                <div class="panel-body">
+                <div class="modal-body">
                     <div class="inner-content">
                         <div class="row" style="background-color:#fff">
                             <div class="col-xs-3 glyphicon-left-panel">
@@ -1637,7 +1626,7 @@ $jnoc("#info").hide();
                         </div>
                     </div>
                 </div>
-                <div class="panel-footer">
+                <div class="modal-footer">
                     <div class="row" style="background-color:#fff">
                         
                         <div class="col-xs-6 col-center" style="margin-left:25%">
@@ -1645,8 +1634,7 @@ $jnoc("#info").hide();
                         </div>
                     </div>
                 </div>
-                
-            </div>
+        </div>
 	</div>
 </div>
 

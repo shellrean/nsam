@@ -196,7 +196,7 @@
 								}
 								elseif($_REQUEST['jum']<'5'){ 
 									if($sp['XKunciJawaban']=='1'){
-										$kunci1 = "<img src='../.../images/benar.png' width=20px>";
+										$kunci1 = "<img src='../../images/benar.png' width=20px>";
 									} else {$kunci1="";}
 									if($sp['XKunciJawaban']=='2'){
 										$kunci2 = "<img src='../../images/benar.png' width=20px>";
