@@ -77,7 +77,7 @@ if (!$sqlconn) { die('Could not connect: '.mysql_error());}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title><?= $skull ?> | Login</title>
-    <link rel="shortcut icon" href="../../images/nsam.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/logo3.png" type="image/x-icon">
     <!-- Icons-->
     <link href="../../node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
     <link href="../../node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">

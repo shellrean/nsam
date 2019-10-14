@@ -1,30 +1,62 @@
- <?php
+<?php
 	if(!isset($_COOKIE['beeuser'])){
 	header("Location: login.php");}
-
-	include "../../config/server.php";
-	include "../../config/fungsi_tgl.php";
+	include "../../../config/server.php";
 ?>
-  
-<!-- <script type="text/javascript" src="../../mesin/MathJax/MathJax.js?config=AM_HTMLorMML-full"></script>
-<script>
-  MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><?php echo $skull; ?>-CBT | Bank Soal</title>
+</head>
+<style>
+@media print {
+    footer {page-break-after: always; }
+	@page {
+	  size: A4;
+	  margin-bottom:60px;
+	  margin-top:40px;
+	  margin-left: 40px;
+	  margin-right: 40px;	  
+	}
 
- -->
+}
+</style>
+<style type="text/css" media="screen">
+	.pageNumber { content: counter(page) }
+	#print-footer {
+    display: none;
+}
+</style>
+
+<style type="text/css" media="print">
+#print-footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right:0;
+	font:Arial, Helvetica, sans-serif; 
+	font-size:8px;
+	color:#ccc
+}
+</style>
+<!-- script untuk refresh/reload mathjax setiap content baru !-->
+<body style="width:90%; margin:0 auto;margin-top:50px; ">
 <?php
+
+include "../../../config/fungsi_tgl.php";
+
 $var_soal = "$_REQUEST[idsoal]";
 
 $sql0 = mysql_query("select m.*, p.*,k.*, p.XKodeJurusan as XKodeJurusan, p.XKodeKelas as XKodeKelas, p.XTglBuat as TglBuat from cbt_paketsoal p 
 		LEFT JOIN cbt_mapel m on m.XKodeMapel = p.XKodeMapel 
 		LEFT JOIN cbt_kelas k ON k.XKodeKelas = p.XKodeKelas
-	
+		
 		where p.XKodeSoal = '$var_soal'"); 
 $p = mysql_fetch_array($sql0);
 $namamapel = $p['XNamaMapel'];
 $kodesoal = $p['XKodeSoal'];
-$namakelas=$p['XKodeKelas'];
-
+$namakelas=$p['XNamaKelas'];
 $namaguru=$p['XGuru'];
 $tglbuat=indonesian_date($p['TglBuat']);
 $kodekelas = $p['XKodeKelas'];
@@ -33,7 +65,7 @@ $kodejurusan = $p['XKodeJurusan'];
 if($kodekelas=="ALL") {
 	$kelas="ALL";
 } else {
-	$kelas=$namakelas;
+	$kelas=$kodekelas;
 };
 
 if($kodejurusan=="ALL") {
@@ -48,95 +80,60 @@ $sqladmin = mysql_query("SELECT * FROM cbt_admin");
 $s = mysql_fetch_array($sqladmin);
 $logo = $s['XLogo'];
 $namasekolah =$s['XSekolah'];
- $skul = $s['XTingkat'];
+$skul = $s['XTingkat'];
 if ($skul=="SMA" || $skul=="MA"||$skul=="STM"){$rombel="Jurusan";}else{$rombel="Rombel";}
 	
 if(str_replace(" ","",$logo)==""){
 $logo = "tut.jpg";} else { $foto = "$logo";}
 ?>
-<div class="row">
-	<div class="col-lg-12">
-        <div class="card">
-			<div class="card-header">
-				<iframe src="<?php echo "tools/print_banksoal.php?idsoal=$_REQUEST[idsoal]"?>" style="display:none;" name="frame"></iframe>
-				<a href="?modul=daftar_soal" class="btn btn-light btn-sm">
-					<i class="fa fa-arrow-circle-left"></i> Kembali ke Daftar Bank Soal</i>
-				</a>
-				<button type="button" class="btn btn-warning btn-sm" onClick="frames['frame'].print()" style="margin-top:5px; margin-bottom:5px">
-					<i class="glyphicon glyphicon-print"></i> Cetak Bank Soal
-				</button>
-				
-            </div>
-            
-			<div class="card-body">
-				<table width="100%" border="0">
-					<tr>
-					<h3 class="panel-title text-center">DATA BANK SOAL</h3>					
-					</tr>
-					<br/>
-					<tr>
-						<td rowspan="5" width="150">
-							<img src="../../images/logo-dki.png" width="78%"/>                         </div></td>
-						<td width=300>Mata Pelajaran | Kode Soal</td>
-						<td >: &nbsp;<?php echo "$namamapel | $kodesoal"; ?></td>                
-					</tr>
-					<tr>
-						<td>Kelas - <?php echo $rombel;?> </td>
-						<td>: &nbsp;
+
+			<table style="padding-top:1px" width="95%" border="0">
+				<tr>
+					<td rowspan="5" width="150">
+						<img src="../../../images/logo-dki.png" width="50%"/>
+					</td>
+					<td width=150>Mata Pelajaran </td>
+					<td>: &nbsp;
+					<?php echo "$namamapel I $kodesoal"; ?></td>                
+				</tr>
+				<tr>
+					<td>Kelas - <?php echo $rombel;?> </td>
+					<td>: &nbsp;
 						<?php echo "$kelas - $jurusan "; ?></td>
-					</tr>
-					<tr>
-						<td>Pembuat Soal</td>
-						<td>: &nbsp;<?php echo $namapembuat; ?></td>
-					</tr>
-					<tr>
-						<td>Tanggal Pembuatan</td>
-						<td>: &nbsp;<?php echo $tglbuat; ?></td>
-					</tr>
-					<tr>
-						<td>Satuan Pendidikan</td>
-						<td>: &nbsp;<?php echo $namasekolah; ?></td>
-					</tr>
-				</table>
-		  </div>
-        </div>  
-     </div>
-</div>
-
-<!-- <link href="../dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../lib/jquery.min.js"></script>
-<script type="text/javascript" src="../dist/jplayer/jquery.jplayer.min.js"></script> -->
-
-<div class="card">
-	<div class="card-header">
-		<table>
-			<tr>
-				<td>
-					<h4 class="panel-title">
-						Soal pilihan ganda
-					</h4>
-					
-				</td>
-				<td>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class="card-body">
-		<table>
+				</tr>
+				<tr>
+					<td>Pembuat Soal</td>
+					<td>: &nbsp;<?php echo $namapembuat; ?></td>
+				</tr>
+				<tr>
+					<td>Tanggal Pembuatan</td>
+					<td>: &nbsp;<?php echo $tglbuat; ?></td>
+				</tr>
+				<tr>
+					<td>Satuan Pendidikan</td>
+					<td>: &nbsp;<?php echo $namasekolah; ?></td>
+				</tr>
+			</table>
+		
+<br/><br/>
+<h3 class="panel-title">
+	Soal Pilihan Ganda
+</h3>
+<br/>
+<table>
 			<?php
 			$nomer = 1;
 			$sql = mysql_query("SELECT * FROM cbt_soal s 
 					LEFT JOIN cbt_paketsoal p ON p.XKodeSoal = s. XKodeSoal  
-					WHERE p.XKodeSoal = '$var_soal' order by XNomerSoal");				
+					WHERE p.XKodeSoal = '$var_soal' order by XNomerSoal");
 			while($sp = mysql_fetch_array($sql))
-			{	
-				$jumpil = $sp['XJumPilihan'];
+			{
+			$jumpil = $sp['XJumPilihan'];
 				$js = $sp['XJenisSoal'];
 				
 				if(!$sp['XGambarTanya']=='')
 				{
-					$gambarsoalnye = "<br><br><img src='../../pictures/$sp[XGambarTanya]'  align=center><br>";
+					$gambarsoalnye = "<br><br><img src='../../../pictures/$sp[XGambarTanya]' align=center><br>";
 				}
 				else
 				{
@@ -163,7 +160,7 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 				{
 					if(file_exists("../../pictures/$sp[XGambarJawab1]"))
 					{
-						$ambilfile1 = "<img src=../../pictures/$sp[XGambarJawab1] >";
+						$ambilfile1 = "<img src=../../../pictures/$sp[XGambarJawab1]>";
 					} 
 					else
 					{
@@ -179,7 +176,7 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 				{
 					if(file_exists("../../pictures/$sp[XGambarJawab2]"))
 					{
-						$ambilfile2 = "<img src=../../pictures/$sp[XGambarJawab2] >";
+						$ambilfile2 = "<img src=../../../pictures/$sp[XGambarJawab2]>";
 					} 
 					else
 					{
@@ -194,7 +191,7 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 				{
 					if(file_exists("../../pictures/$sp[XGambarJawab3]"))
 					{
-						$ambilfile3 = "<img src=../../pictures/$sp[XGambarJawab3] >";
+						$ambilfile3 = "<img src=../../../pictures/$sp[XGambarJawab3]>";
 					} 
 					else
 					{
@@ -209,7 +206,7 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 				{
 					if(file_exists("../../pictures/$sp[XGambarJawab4]"))
 					{
-						$ambilfile4 = "<img src=../../pictures/$sp[XGambarJawab4] >";
+						$ambilfile4 = "<img src=../../../pictures/$sp[XGambarJawab4]>";
 					} 
 					else
 					{
@@ -225,7 +222,7 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 				{
 					if(file_exists("../../pictures/$sp[XGambarJawab5]"))
 					{
-						$ambilfile5 = "<img src=../../pictures/$sp[XGambarJawab5] >";
+						$ambilfile5 = "<img src=../../../pictures/$sp[XGambarJawab5]>";
 					} 
 					else
 					{
@@ -242,12 +239,12 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 						 <p>$gambarsoalnye</p>";
 				}
 				
-				elseif($jumpil=='3')
+					elseif($jumpil=='3')
 				{ 						
 					//$katsoal = "Pilihan Ganda (3 Pilihan Jawaban)";<p>Pertanyaan : $katsoal dengan Opsi Jawaban $_REQUEST[jum]</p>
-						if($sp['XKunciJawaban']=='1'){$kunci1 = "<img src='images/benar.png' width=20px>";} else {$kunci1="";}
-						if($sp['XKunciJawaban']=='2'){$kunci2 = "<img src='images/benar.png' width=20px>";} else {$kunci2="";}
-						if($sp['XKunciJawaban']=='3'){$kunci3 = "<img src='images/benar.png' width=20px>";} else {$kunci3="";}
+						if($sp['XKunciJawaban']=='1'){$kunci1 = "<img src='../../../../images/benar.png' width=20px>";} else {$kunci1="";}
+						if($sp['XKunciJawaban']=='2'){$kunci2 = "<img src='../../../../images/benar.png' width=20px>";} else {$kunci2="";}
+						if($sp['XKunciJawaban']=='3'){$kunci3 = "<img src='../../../../images/benar.png' width=20px>";} else {$kunci3="";}
 										
 
 							$Jawab1 = str_replace("<p>","",$sp['XJawab1']);
@@ -298,15 +295,16 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 										</tr>
 										<br/>
 										</table>";
+										
 				} 
 				
 				elseif($jumpil=='4')
 				{ 						
 					//$katsoal = "Pilihan Ganda (4 Pilihan Jawaban)";<p>Pertanyaan : $katsoal dengan Opsi Jawaban $_REQUEST[jum]</p>
-						if($sp['XKunciJawaban']=='1'){$kunci1 = "<img src='../../images/benar.png' width=20px>";} else {$kunci1="";}
-						if($sp['XKunciJawaban']=='2'){$kunci2 = "<img src='../../images/benar.png' width=20px>";} else {$kunci2="";}
-						if($sp['XKunciJawaban']=='3'){$kunci3 = "<img src='../../images/benar.png' width=20px>";} else {$kunci3="";}
-						if($sp['XKunciJawaban']=='4'){$kunci4 = "<img src='../../images/benar.png' width=20px>";} else {$kunci4="";}
+						if($sp['XKunciJawaban']=='1'){$kunci1 = "<img src='../../../images/benar.png' width=20px>";} else {$kunci1="";}
+						if($sp['XKunciJawaban']=='2'){$kunci2 = "<img src='../../../images/benar.png' width=20px>";} else {$kunci2="";}
+						if($sp['XKunciJawaban']=='3'){$kunci3 = "<img src='../../../images/benar.png' width=20px>";} else {$kunci3="";}
+						if($sp['XKunciJawaban']=='4'){$kunci4 = "<img src='../../../images/benar.png' width=20px>";} else {$kunci4="";}
 									
 										
 							$Jawab1 = str_replace("<p>","",$sp['XJawab1']);
@@ -364,9 +362,10 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 										<tr>
 											<td width=30px>&nbsp;</td>
 											<td width=20px valign=top>D.</td>
-											<td colspan=2 valign=top>$ambilfile4 $Jawab4 $kunci4 </td>			
+											<td colspan=2>$ambilfile4 $Jawab4 $kunci4 </td>			
 										</tr><br/>
 										</table>";
+										
 				} 
 				elseif($jumpil=='5')
 				{ 
@@ -422,7 +421,7 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 											<td colspan=2 valign=top>$soalnye</td>
 											<p>$gambarsoalnye</p>
 										</tr>
-										<tr>											
+										<tr>
 											<td width=30px valign=top>&nbsp;</td>
 											<td width=20px valign=top>A.</td>
 											<td colspan=2 valign=top>$ambilfile1 $Jawab1 $kunci1 </td>
@@ -438,25 +437,25 @@ $logo = "tut.jpg";} else { $foto = "$logo";}
 											<td colspan=2 valign=top>$ambilfile3 $Jawab3 $kunci3 </td>
 										</tr>
 										<tr>
-											<td width=30px>&nbsp;</td>
+											<td width=30px valign=top>&nbsp;</td>
 											<td width=20px valign=top>D.</td>
 											<td colspan=2 valign=top>$ambilfile4 $Jawab4 $kunci4 </td>	
 										<tr>
-											<td width=30px>&nbsp;</td>
+											<td width=30px valign=top>&nbsp;</td>
 											<td width=20px valign=top>E.</td>
 											<td colspan=2 valign=top>$ambilfile5 $Jawab5 $kunci5 </td>											
-										</tr><br/>";
+										</tr>
+										<br/></table>";
+										
 				} 
-				
-				$nomer++;
-			}			
-
+			$nomer++;
+			}
+			?>            
+            <?php 
+			echo "<div id='print-footer'>					
+					<div></div>
+				</div>";
 			?>
-		</table>                              
-	</div>
-</div>
-</div>
-</div>
+</table>   
 </body>
-</html>	
-				
+</html>

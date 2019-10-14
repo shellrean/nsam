@@ -78,7 +78,7 @@ if($user_ip1<>$user_ip2&&!$user_ip2==""){header('Location:login.php?salah=3');}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Applikasi untuk memonitor sekolah">
     <meta name="author" content="Kuswandi">
-    <link rel="shortcut icon" href="images/logo-dki.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/logo3.png" type="image/x-icon">
  
     <title><?= $skull ?> </title>
     <!-- Icons-->
@@ -98,7 +98,7 @@ if($user_ip1<>$user_ip2&&!$user_ip2==""){header('Location:login.php?salah=3');}
   	<header style="background-color: #32679C;" class="headers">
   	  <div class="group">
   	  	<div class="left py-2 px-2">
-  	  		<img src="images/logo.png " width="135px">
+  	  		<img src="images/logo3.png " width="110px">
   	  	</div>
   	  	<div class="right">
   	  		<table width="100%" border="0" style="margin-top:10px">   

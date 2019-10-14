@@ -1526,7 +1526,7 @@ $jnoc("#info").hide();
 					<?php 	} echo "</a>";
 							} else { echo '<a href="#" data-id="'.$next_id.'" class="get_pic" id="tomb">'; ?>  
 								<button id="btnNextSoal" class="btn btn-primary rounded-0 btn-next activebutton btn-lg" data-bind="css: { &#39;activebutton&#39;:(currentNo() &lt; totalQuestions - 1)}, visible: (currentNo() &lt; 
-									totalQuestions - 1),click: gotoNext" style="margin-top:-13px; width:225px">SOAL BERIKUTNYA</button>
+									totalQuestions - 1),click: gotoNext">SOAL BERIKUTNYA</button>
 					<?php  	} ?>
 					<?php 	} else { ?>
 			 		<?php	$cekragu = mysql_num_rows(mysql_query("select * from cbt_jawaban where XRagu ='1' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'  and XUserJawab = '$user'")); 

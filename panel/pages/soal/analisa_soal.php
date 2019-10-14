@@ -49,9 +49,9 @@
             $sqljawab = mysql_num_rows(mysql_query("select * from cbt_jawaban where XKodeSoal = '$s[XKodeSoal]'"));
             $sqlpakai = mysql_num_rows(mysql_query("select * from cbt_nilai where XKodeSoal = '$s[XKodeSoal]'"));
             $sqlpakai2 = mysql_num_rows(mysql_query("select * from cbt_siswa_ujian where XKodeSoal = '$s[XKodeSoal]' and XStatusUjian = '1'"));
-            if($sqlsoal<1){$kata="disabled";$alink="";}  else {$kata=""; $alink = "rekapexcel.php?soal=$s[XKodeSoal]&mapel=$s[XKodeMapel]&kelas=$s[XKodeKelas]";} 
-            if($sqlpakai2>0){$katapakai="disabled";$alink="";}  else {$katapakai="";$alink = "rekapexcel.php?soal=$s[XKodeSoal]&mapel=$s[XKodeMapel]&kelas=$s[XKodeKelas]";}
-            if($sqljawab<1){$katapakai="disabled";$alink="";}  else {$katapakai="";$alink = "rekapexcel.php?soal=$s[XKodeSoal]&mapel=$s[XKodeMapel]&kelas=$s[XKodeKelas]";}
+            if($sqlsoal<1){$kata="disabled";$alink="";}  else {$kata=""; $alink = "tools/rekapexcel.php?soal=$s[XKodeSoal]&mapel=$s[XKodeMapel]&kelas=$s[XKodeKelas]";} 
+            if($sqlpakai2>0){$katapakai="disabled";$alink="";}  else {$katapakai="";$alink = "tools/rekapexcel.php?soal=$s[XKodeSoal]&mapel=$s[XKodeMapel]&kelas=$s[XKodeKelas]";}
+            if($sqljawab<1){$katapakai="disabled";$alink="";}  else {$katapakai="";$alink = "tools/rekapexcel.php?soal=$s[XKodeSoal]&mapel=$s[XKodeMapel]&kelas=$s[XKodeKelas]";}
             if($sqlpakai2>0){$katapakai2="disabled";$alink2="";}  else {$katapakai2="";$alink2 = "?modul=analisajawaban&soal=$s[XKodeSoal]&kelas=$s[XKodeKelas]";}                
             $no++  ;
           ?>

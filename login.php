@@ -38,7 +38,7 @@ $footer = "BeeSMART-CBT";}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Applikasi untuk memonitor sekolah">
     <meta name="author" content="Kuswandi">
-    <link rel="shortcut icon" href="images/nsam.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/logo3.png" type="image/x-icon">
  
     <title><?= $skull ?> </title>
     <!-- Icons-->
@@ -58,14 +58,13 @@ $footer = "BeeSMART-CBT";}
   	<header style="background-color: #32679C;" class="headers">
   	  <div class="group">
   	  	<div class="left py-2 px-2">
-  	  		<img src="images/logo.png " width="135px">
+  	  		<img src="images/logo3.png " width="110px">
   	  	</div>
   	  	<div class="right">
   	  		<table width="100%" border="0" style="margin-top:10px">   
      			<tr><td rowspan="3" width="120px" align="center"><img src="images/avatar.gif" style=" margin-left:0px;" class="foto" ></td>
 				<td>Selamat datang peserta ujian</td></tr>
 				<tr><td><span class="user">Jangan lupa berdo'a </span></td></tr>
-				<tr><td><span class="log"><a href="index.php">Logout</a><span></td></tr>
 			</table>
   	  	</div>
   	</header>
@@ -77,7 +76,12 @@ $footer = "BeeSMART-CBT";}
     <div class="col-sm">
       <div class="card">
       	<div class="card-header">
-      		<h4>Login peserta</h4>
+          <table>
+            <tr>
+              <td><img src="images/logo1.png" width="40px"></td>
+              <td><h4 class="mx-2">Login peserta</h4></td>
+            </tr>
+          </table>
       	</div>
       	<div class="card-body py-5">
       		<form action="konfirm.php" method="post">
@@ -113,6 +117,9 @@ $footer = "BeeSMART-CBT";}
 			   </div>
 			</form>
       	</div>
+        <div class="card-footer">
+          <i class="icon-info text-info"></i> Masukkan username dan password untuk masuk ke dalam system
+        </div>
       </div>
     </div>
     <div class="col-3">

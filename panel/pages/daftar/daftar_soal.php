@@ -19,7 +19,7 @@
         if($xserver == "lokal"): 
         ?>
         <button class="btn btn-success btn-sm pull-right" id='custId' data-toggle='modal' data-id='' data-target="#myModal">Buat banksoal</button>
-        <a href="daftar/down_excel_kelas.php" target="_blank" class="btn btn-success btn-sm pull-right mx-2">
+        <a href="../downloads/excel/bee_soal_temp.xls" target="_blank" class="btn btn-success btn-sm pull-right mx-2">
           <i class="icon-cloud-download"></i> Template soal umum
         </a>
         <a href="?modul=upl_kelas" class="btn btn-primary btn-sm pull-right">
@@ -90,7 +90,7 @@
               <td>
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myCopy<?= $s['Urutan'] ?>"><i class="icon-docs"></i>
                 </button>
-                <a href="?modul=upl_soal&soal=<?= $s['XKodeSoal'] ?>" class="btn btn-warning btn-sm">
+                <a href="?modul=upl_soal&soal=<?= $s['XKodeSoal'] ?>&mapel=<?= $s['XKodeMapel']; ?>" class="btn btn-warning btn-sm">
                   <i class="icon-cloud-upload"></i>
                 </a>
                 <a href="?modul=edit_soal&jum=<?= $s['XJumPilihan'] ?>&soal=<?= $s['XKodeSoal'] ?>" class="btn btn-primary btn-sm <?= $katapakai ?>">

@@ -119,7 +119,7 @@ else {$hari=$Dd;}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Applikasi untuk memonitor sekolah">
     <meta name="author" content="Kuswandi">
-    <link rel="shortcut icon" href="../../images/nsam.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../images/logo3.png" type="image/x-icon">
  
     <title><?= $skull ?> </title>
     <!-- Icons-->
@@ -157,8 +157,8 @@ else {$hari=$Dd;}
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="../../images/nsam.png" width="70" alt="Logo Brand DKI">
-        <img class="navbar-brand-minimized" src="../../images/logo-dki.png" width="30" alt="Logo Brand DKI">
+        <img class="navbar-brand-full" src="../../images/logo3.png" width="70" alt="Logo Brand DKI">
+        <img class="navbar-brand-minimized" src="../../images/logo3.png" width="30" alt="Logo Brand DKI">
       </a>
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
         <span class="navbar-toggler-icon"></span>
@@ -408,7 +408,8 @@ else {$hari=$Dd;}
                 elseif($_REQUEST['jum']==3){include "soal/bank_soal3.php";}
                 elseif($_REQUEST['jum']==1){include "soal/bank_soal.php";} 
               }
-              elseif($_REQUEST['modul'] == 'upl_files'){include "tools/upload_files.php";}           
+              elseif($_REQUEST['modul'] == 'upl_files'){include "tools/upload_files.php";}
+              elseif($_REQUEST['modul'] == 'upl_soal' ||$_REQUEST['modul']=="uploadsoal"){include "soal/upload_soal.php";}           
 
               /** 6 **/
               elseif($_REQUEST['modul'] == "daftar_tesbaru"){include "daftar/daftar_tesbaru.php";}
@@ -422,7 +423,7 @@ else {$hari=$Dd;}
               
               /** 8 **/
               elseif($_REQUEST['modul'] == "analisasoal"){include "soal/analisa_soal.php";}
-
+              elseif($_REQUEST['modul']=="analisajawaban"){include "soal/analisa_jawaban.php";}  
             ?>
           </div> 
         </div>

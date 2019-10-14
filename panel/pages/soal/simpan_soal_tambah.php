@@ -43,3 +43,10 @@ $sql0 = mysql_query("insert into cbt_soal (XTanya,XJawab1,XJawab2,XJawab3,XJawab
 ('$sss','$_REQUEST[txt_jawab1]','$_REQUEST[txt_jawab2]','$_REQUEST[txt_jawab3]','$_REQUEST[txt_jawab4]','$_REQUEST[txt_jawab5]',
 '$_REQUEST[txt_kunci]','$_REQUEST[txt_gbr1]','$_REQUEST[txt_gbr2]','$_REQUEST[txt_gbr3]','$_REQUEST[txt_gbr4]','$_REQUEST[txt_gbr5]','$_REQUEST[txt_soal]',
 '$_REQUEST[txt_nomax]','$_REQUEST[txt_mapel]','$gambar','$audio','$video','$_REQUEST[txt_kate]','$_REQUEST[txt_kes]','$_REQUEST[txt_aca]','$_REQUEST[txt_ops]','$_REQUEST[txt_ag]')");
+
+if($sql) {
+	echo 'oke';
+}
+else {
+	echo 'pars';
+}
