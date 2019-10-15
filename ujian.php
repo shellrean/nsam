@@ -239,8 +239,8 @@
     <script type="text/javascript" src="panel/js/sidein_menu.js"></script>
     <script>
       function toggle_select(id) {
-        let anu = $('#id');
-        let X = $('#id');
+        var anu = document.getElementById(id);
+        var X = document.getElementById(id);
         if(X.checked == true) {
           X.value = "1"
         }
@@ -492,7 +492,7 @@ $xjumlahsoalpil = $xjumlahsoal - $xjumlahesai;
         </div>
       </li>
       <li class="list-group-item bg-light">
-        <span id="hurufsoal"> Ukuran font soal : <a id="jfontsize-m2" href="#" style="font-size:16px; text-decoration:none">&nbsp; A &nbsp;</a> <a id="jfontsize-d2" href="#" style="font-size:18px; text-decoration:none">&nbsp; A &nbsp;</a> <a id="jfontsize-p2" href="#" style="font-size:24px; text-decoration:none">&nbsp; A &nbsp;</a></span>
+        <!-- <span id="hurufsoal"> Ukuran font soal : <a id="jfontsize-m2" href="#" style="font-size:16px; text-decoration:none">&nbsp; A &nbsp;</a> <a id="jfontsize-d2" href="#" style="font-size:18px; text-decoration:none">&nbsp; A &nbsp;</a> <a id="jfontsize-p2" href="#" style="font-size:24px; text-decoration:none">&nbsp; A &nbsp;</a></span> -->
       </li>
       <li class="list-group-item">
         <script src="panel/js/jquery.countdownTimer.js"></script>

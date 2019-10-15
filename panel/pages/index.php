@@ -423,7 +423,8 @@ else {$hari=$Dd;}
               
               /** 8 **/
               elseif($_REQUEST['modul'] == "analisasoal"){include "soal/analisa_soal.php";}
-              elseif($_REQUEST['modul']=="analisajawaban"){include "soal/analisa_jawaban.php";}  
+              elseif($_REQUEST['modul'] == "analisajawaban"){include "soal/analisa_jawaban.php";}  
+              elseif($_REQUEST['modul'] == "jawabansiswa"){include "soal/jawabansiswa.php";}
             ?>
           </div> 
         </div>

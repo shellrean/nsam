@@ -22,99 +22,279 @@ $(document).keyup(function(e){
 	.D{background-image:url(images/D.png);}
 	.E{background-image:url(images/E.png);} 
 
-	input[type="radio"] {opacity:0.2;  position:absolute;}  /*left:-10000;*/
-input[type="radio"] + label {cursor: pointer;}
-.jawaban {padding-bottom:10px; font-size: 10pt; border:solid; border-color:#CCC;}	
-.pilihanjawaban	{font-size: 10pt; padding-bottom:15px;}	
-.noti-jawab {position:absolute; background-color:white; color:#999; padding:4px;  -webkit-border-radius: 30px;
-    -moz-border-radius: 30px; border-radius: 30px; border-style:solid; border-color:#999; width:27px; height:27px; text-align:center;}
-.flatRoundedCheckbox {width: 120px; height: 40px; margin: 20px 50px; position: relative;}
-.flatRoundedCheckbox div {width: 100%; height:100%; background: #d3d3d3; border-radius: 50px; position: relative; top:-30px;}  		
-.cc-selector input {margin-left:0px; padding:0; -webkit-appearance:none; -moz-appearance:none; appearance:none;	margin-top:-90px; top:-90px;}
+	input[type="radio"] {
+		opacity:0.2;  
+		position:absolute;
+	}
+	input[type="radio"] + label {cursor: pointer;}
+	.jawaban {
+		padding-bottom:10px; 
+		font-size: 10pt; 
+		border:solid;
+		border-color:#CCC;
+	}	
+	.pilihanjawaban	{font-size: 10pt; padding-bottom:15px;}	
+	.noti-jawab {
+		position:absolute; 
+		background-color:white; 
+		color:#999; 
+		padding:4px;  
+		-webkit-border-radius: 30px;
+   		-moz-border-radius: 30px; 
+   		border-radius: 30px; 
+   		border-style:solid; 
+   		border-color:#999;
+   		width:27px; 
+   		height:27px; 
+   		text-align:center;
+   	}
+	.flatRoundedCheckbox {
+		width: 120px; 
+		height: 40px; 
+		margin: 20px 50px; 
+		position: relative;
+	}
+	.flatRoundedCheckbox div {
+		width: 100%; 
+		height:100%; 
+		background: #d3d3d3; 
+		border-radius: 50px; 
+		position: relative; 
+		top:-30px;
+	}  		
+	.cc-selector input {
+		margin-left:0px; 
+		padding:0; 
+		-webkit-appearance:none; 
+		-moz-appearance:none; 
+		appearance:none;	
+		margin-top:-90px; 
+		top:-90px;
+	}
 
-.piljwb {margin-left:0; border-radius: 30px; border-style:solid; border-color:#999; list-style:none;}
-.cc-selector input:active +.drinkcard-cc {opacity: .9;}
-.cc-selector input:checked +.drinkcard-cc {background-image:url(images/pilih.png); -webkit-filter: none; -moz-filter: none; filter: none;}
-.drinkcard-cc {cursor:pointer; background-size:contain; background-repeat:no-repeat; display:inline-block; width:38px;height:28px;;}
-.drinkcard-cc:hover {-webkit-filter: brightness(1.2) grayscale(.5) opacity(.9); -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
-            filter: brightness(1.2) grayscale(.5) opacity(.9);}	
+	.piljwb {
+		margin-left:0; 
+		border-radius: 30px;
+		border-style:solid; 
+		border-color:#999; 
+		list-style:none;
+	}
+	.cc-selector input:active +.drinkcard-cc {opacity: .9;}
+	.cc-selector input:checked +.drinkcard-cc {background-image:url(images/pilih.png); -webkit-filter: none; -moz-filter: none; filter: none;}
+	.drinkcard-cc {cursor:pointer; background-size:contain; background-repeat:no-repeat; display:inline-block; width:38px;height:28px;;}	
+	.drinkcard-cc:hover {
+		-webkit-filter: brightness(1.2) grayscale(.5) opacity(.9); 
+		-moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+      }	
 
 
-#slideMenu.closed {right:-400px;}
-#slideMenu {position:fixed; right:0; top:120px; width:358px; height:500px; border-left:0px; background-color:#efefef; z-index:20;}
-#slideMenu a.toggleBtn {
-	position:absolute; 
-	left:-440px; 
-	margin-left:300px; 
-	top:0; 
-	outline:none; 
-	display:block; 
-	height:50px; 
-	background-color:#e46f69; 
-	width:98px; 
-	border-width:1px 1px 1px 0px; 
-	padding:0 5px 0; 
-	color:#000; 
-	text-decoration:none; 
-	font:12px/25px Verdana, Arial, Helvetica, sans-serif; 
-	z-index:0;
-	border: 1px solid red;
-}
-#slideMenu a.toggleBtnHighlight {position:absolute; right:0px; margin-right:400px; top:0; outline:none; display:block; height:47px; background-color:#e46f69; 
-	width:35px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:0;}
-.contente {margin-top:20px; margin-left:20px; margin-bottom:20px; margin-right:20px; width:330px; z-index:20; border-style:solid; border:thin;
-	border-color:#ccc; padding:20px; background-color:#FFF; overflow:scroll; height:460px; font:12px/25px Verdana, Arial, Helvetica, sans-serif;}
+	#slideMenu.closed {right:-400px;}
+	#slideMenu {
+		position:fixed; 
+		right:0; 
+		top:120px; 
+		width:358px; 
+		height:500px; 
+		border-left:0px; 
+		background-color:#efefef; 
+		z-index:20;
+	}
+	#slideMenu a.toggleBtn {
+		position:absolute; 
+		left:-440px; 
+		margin-left:300px; 
+		top:0; 
+		outline:none; 
+		display:block; 
+		height:50px; 
+		background-color:#e46f69; 
+		width:98px; 
+		border-width:1px 1px 1px 0px; 
+		padding:0 5px 0; 
+		color:#000; 
+		text-decoration:none; 
+		font:12px/25px Verdana, Arial, Helvetica, sans-serif; 
+		z-index:0;
+		border: 1px solid red;
+	}
+	#slideMenu a.toggleBtnHighlight {
+		position:absolute; 
+		right:0px; 
+		margin-right:400px; 
+		top:0; 
+		outline:none; 
+		display:block; 
+		height:47px; 
+		background-color:#e46f69; 
+		width:35px; 
+		border-width:1px 1px 1px 0px; 
+		padding:0 5px 0; color:#000; 
+		text-decoration:none; 
+		font:12px/25px Verdana, Arial, Helvetica, sans-serif; 
+		z-index:0;
+	}
+	.contente {
+		margin-top:20px; 
+		margin-left:20px; 
+		margin-bottom:20px; 
+		margin-right:20px; 
+		width:330px;
+		z-index:20; 
+		border-style:solid; 
+		border:thin;
+		border-color:#ccc; 
+		padding:20px; 
+		background-color:#FFF;
+		overflow:scroll; 
+		height:460px; 
+		font:12px/25px Verdana, Arial, Helvetica, sans-serif;
+	}
 
-@media (max-width: 500px) {	 /*breakpoint*/
-	#slideMenu.closed {right:-240px;}
-	#slideMenu {position:fixed; right:0; top:100px; width:238px; height:200px; border-left:0px; /*background-color:#efefef;*/ background-color:#efefef; z-index:20;}
-	#slideMenu a.toggleBtn {position:absolute;left:-260px; margin-left:160px; top:0; outline:none; display:block; height:50px; background-color:#e46f69;
-		width:98px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:0;}
-	#slideMenu a.toggleBtnHighlight {position:absolute; right:0px; margin-right:280px; top:0; outline:none; display:block; height:47px; background-color:#e46f69;	
-		width:35px; border-width:1px 1px 1px 0px; padding:0 5px 0; color:#000; text-decoration:none; font:12px/25px Verdana, Arial, Helvetica, sans-serif; z-index:60;}
-	.contente {margin-top:20px; margin-left:20px; margin-bottom:20px; margin-right:20px; width:200px; z-index:20; border-style:solid; border:thin;
-		border-color:#ccc; padding:20px; background-color:#FFF; overflow:scroll; height:160px; font:12px/25px Verdana, Arial, Helvetica, sans-serif;}
-}
-#noti-count {position:absolute; top:-12px; right:-15px; background-color:white; color:#313132; padding:5px; -webkit-border-radius: 30px; -moz-border-radius: 30px;
-    border-radius: 30px; border-style:solid; border-color:#313132; width:27px; height:27px; text-align:center;}
-#noti-count div {margin-top:-5px;}
 
-#awal {color:#FFF; font-family:Arial, Helvetica, sans-serif; line-height: 90%; margin:0px auto;  margin-top:20px;}
-#ahir {color:#FFF; font-family:Arial, Helvetica, sans-serif; line-height: 120%; margin:0px auto; margin-top:10px;}
-#noti-count {position:absolute; top:-12px; right:-15px; background-color:white; color:#313132; padding:5px; -webkit-border-radius: 30px;
-    -moz-border-radius: 30px; border-radius: 30px; border-style:solid; border-color:#313132; width:30px; height:30px; text-align:center;}
-#noti-count div {margin-top:-5px;}
+	@media (max-width: 500px) {	 /*breakpoint*/
+		#slideMenu.closed {right:-240px;}
+		#slideMenu {
+			position:fixed; 
+			right:0; 
+			top:100px; 
+			width:238px; 
+			height:200px; 
+			border-left:0px; 
+			background-color:#efefef; 
+			z-index:20;
+		}
+		#slideMenu a.toggleBtn {
+			position:absolute;
+			left:-260px; 
+			margin-left:160px; 
+			top:0; 
+			outline:none; 
+			display:block; 
+			height:50px; 
+			background-color:#e46f69;
+			width:98px; 
+			border-width:1px 1px 1px 0px; 
+			padding:0 5px 0; 
+			color:#000; 
+			text-decoration:none; 
+			font:12px/25px Verdana, Arial, Helvetica, sans-serif; 
+			z-index:0;
+		}
+		#slideMenu a.toggleBtnHighlight {
+			position:absolute; 
+			right:0px; 
+			margin-right:280px; 
+			top:0; 
+			outline:none; 
+			display:block; 
+			height:47px; 
+			background-color:#e46f69;	
+			width:35px; 
+			border-width:1px 1px 1px 0px; 
+			padding:0 5px 0; 
+			color:#000; 
+			text-decoration:none; 
+			font:12px/25px Verdana, Arial, Helvetica, sans-serif; 
+			z-index:60;
+		}
+		.contente {
+			margin-top:20px; 
+			margin-left:20px; 
+			margin-bottom:20px; 
+			margin-right:20px; 
+			width:200px; 
+			z-index:20; 
+			border-style:solid; 
+			border:thin;
+			border-color:#ccc; 
+			padding:20px; 
+			background-color:#FFF; 
+			overflow:scroll; 
+			height:160px; 
+			font:12px/25px Verdana, Arial, Helvetica, sans-serif;
+		}
+	}
+	#noti-count {
+		position:absolute; 
+		top:-12px; 
+		right:-15px; 
+		background-color:white; 
+		color:#313132; 
+		padding:5px; 
+		-webkit-border-radius: 30px; 
+		-moz-border-radius: 30px;
+    	border-radius: 30px; 
+    	border-style:solid; 
+    	border-color:#313132; 
+    	width:27px; 
+    	height:27px; 
+    	text-align:center;
+    }
+	#noti-count div {margin-top:-5px;}
 
-.butn {
-	width: 100px;
-	font-size: 25px;
-	position: absolute;
-	right: 20px;
-}
-.notification {
-  color: #000;
-  text-decoration: none;
-  padding: 10px 20px;
-  position: relative;
-  display: inline-block;
-  border-radius: 2px;
-  border: 3px solid #666;
-}
+	#awal {
+		color:#FFF; 
+		font-family:Arial, Helvetica, sans-serif; 
+		line-height: 90%; 
+		margin:0px auto;  
+		margin-top:20px;
+	}
+	#ahir {
+		color:#FFF; 
+		font-family:Arial, Helvetica, sans-serif;
+		line-height: 120%; 
+		margin:0px auto; 
+		margin-top:10px;
+	}
+	#noti-count {
+		position:absolute; 
+		top:-12px; 
+		right:-15px; 
+		background-color:white; 
+		color:#313132; 
+		padding:5px; 
+		-webkit-border-radius: 30px;
+    	-moz-border-radius: 30px; 
+    	border-radius: 30px; 
+    	border-style:solid; 
+    	border-color:#313132; 
+    	width:30px; 
+    	height:30px; 
+    	text-align:center;
+    }
+	#noti-count div {margin-top:-5px;}
 
-.notification .badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  border-radius: 50%;
-  border: 2px solid #000;
-  color: #000;
-  background-color: white;
-  height: 30px;
-  width: 30px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 2.5;
-}
+	.butn {
+		width: 100px;
+		font-size: 25px;
+		position: absolute;
+		right: 20px;
+	}
+	.notification {
+	  color: #000;
+	  text-decoration: none;
+	  padding: 10px 20px;
+	  position: relative;
+	  display: inline-block;
+	  border-radius: 2px;
+	  border: 3px solid #666;
+	}
+
+	.notification .badge {
+	  position: absolute;
+	  top: -10px;
+	  right: -10px;
+	  border-radius: 50%;
+	  border: 2px solid #000;
+	  color: #000;
+	  background-color: white;
+	  height: 30px;
+	  width: 30px;
+	  text-align: center;
+	  vertical-align: middle;
+	  line-height: 2.5;
+	}
 
 </style>
 
@@ -159,7 +339,7 @@ input[type="radio"] + label {cursor: pointer;}
 					else {$cssb = "#fff";$csst = "#313132";$noti = "noti-count";$border = "#313132";}
 				$iki = 'N';}
 		?>
-		<a href="#" data-id="<?= $s['Urut']; ?>" class="get_pic notification mx-2" id="tombil kotakz<?php echo $s['Urut']; ?>" style="background-color:<?php echo $cssb; ?>; color:<?php echo $csst; ?>;border-color:<?php echo $border; ?>">
+		<a href="#" data-id="<?= $s['Urut']; ?>" class="get_pic notification my-2 mx-2" id="tombil kotakz<?php echo $s['Urut']; ?>" style="background-color:<?php echo $cssb; ?>; color:<?php echo $csst; ?>;border-color:<?php echo $border; ?>">
 		  <span><?php echo "$urutansoal";  ?></span>
 		  <span class="badge" style="border-color:<?php echo $border; ?>">
 		  	<?php if($jensoal==2){
@@ -173,7 +353,7 @@ input[type="radio"] + label {cursor: pointer;}
 <hr>
 <div class="text-title"> Soal Esai </div>
 <hr>
-<div id="container2" style="text-align:center; height:300px; background-color: ">
+<div id="container2" style="height:300px;">
 <?php include "config/server.php";
 	$xkodemapel = "GAL1";
 
@@ -209,28 +389,32 @@ input[type="radio"] + label {cursor: pointer;}
 				else {$cssb = "#fff";$csst = "#313132";$noti = "noti-count";$border = "#313132";}
 				$iki = 'N';	}
 ?>        
-		<?php echo '<a href="#" data-id="'.$s['Urut'].'" class="get_pic" id="tombil">'; ?>
-			<div class="item" id="kotakz<?php echo $s['Urut']; ?>" style="background-color:<?php echo $cssb; ?>; color:<?php echo $csst; ?>;border-color:<?php echo $border; ?>">
-				<p class="text-center"><?php echo "$urutansoal";  ?></p>
-				<div  id='noti-count' style="border-color:<?php echo $border; ?>">
-				<div>	<?php if($jensoal==2){
-								if(!$jwbsoal==''){echo "<img src=images/ijo.png style='margin-left:-5px;margin-top:-3px'>";} 
-								else {echo "";}
-							} else {echo $s['XJawaban']; } 
-						?>
-				</div>
-				</div>
-			</div>
+		<a href="#" data-id="<?= $s['Urut']; ?>" class="get_pic notification my-2 mx-2" id="tombil kotakz<?php echo $s['Urut']; ?>" style="background-color:<?php echo $cssb; ?>; color:<?php echo $csst; ?>;border-color:<?php echo $border; ?>">
+		  <span><?php echo "$urutansoal";  ?></span>
+		  <span class="badge" style="border-color:<?php echo $border; ?>">
+		  	<?php if($jensoal==2){
+					if(!$jwbsoal==''){echo "<img src=images/ijo.png style='margin-left:-3px;margin-top:-1px'>";} 
+					else {echo "x";}
+				} else {echo $s['XJawaban']; } 
+			?>
+		  </span>
 		</a>
 	<?php  } ?> 
-           <br><br><br><br><br>
         </div>
 </body>
 
 <style>
 #container {height:300px;}
-.item 	{width: 50px; height: 50px; /* background-color: green; */ border:#313132; color:#fff; border-style:solid;  margin-bottom: 17px;
-		font-size:18px;	line-height:normal;}
+.item {
+	width: 50px; 
+	height: 50px; 
+	border:#313132; 
+	color:#fff; 
+	border-style:solid;  
+	margin-bottom: 17px;
+	font-size:18px;	
+	line-height:normal;
+}
 </style>
     
 	</div>
@@ -289,7 +473,7 @@ $("#ahir").css("display", "block");
 			}//if close
 }
 </script>
-<script type="text/javascript" src="panel/js/jquery.js"></script>
+<!-- <script type="text/javascript" src="panel/js/jquery.js"></script> -->
 
 
 
@@ -505,7 +689,7 @@ if($result){
 <div id="lembaran">
 <div id="lembaransoal">
 <div class="cc-selector">
-
+<!-- 
 <link type="text/css" rel="stylesheet" href="panel/css/jfontsize.css" />
 <link type="text/css" rel="stylesheet" href="panel/css/shCoreDefault.css" />
 
@@ -535,7 +719,7 @@ if($result){
                             btnPlusMaxHits: 4,
                             sizeChange: 5
                         });
-</script> 
+</script>  -->
 
 
 <?php
@@ -574,7 +758,7 @@ if(str_replace(" ","",$result['XAudioTanya'])!==''){
 		</font><br><br>"; 
 } }?>
 <link href="panel/dist/skin/blue.monday/css/jplayer.blue.monday.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="panel/js/jquery.js"></script>
+<!-- <script type="text/javascript" src="panel/js/jquery.js"></script> -->
 <script type="text/javascript" src="panel/dist/jplayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -1085,9 +1269,7 @@ $str = str_replace("'<","`<",$str);
 	if($result['XGambarTanya']==''){} else {
 	echo "<a href='#'  data-toggle='modal' data-target='#myModalP'>";
 	
-	echo "<img src='./pictures/$result[XGambarTanya]' ></a></p>";} //perintah tampilakan Soal Gambar dengan lebar dalam pixcel
-	//echo "<img src='./pictures/$result[XGambarTanya]' ></a></p>";} //Tampil soal Gambar Penuh Sesuai besar gambar aslinya
-	//////perintah tampilakan Soal Pilihan Ganda//////
+	echo "<img src='./pictures/$result[XGambarTanya]' ></a></p>";} 
 	echo " <p class=jawab>$str<br />";
 	echo "</p>";
 ?>
@@ -1133,26 +1315,25 @@ textarea
 <?php 
 if($jensoal==2){ 
 ?>
-<script src="panel/js/jquery.js"></script>
-<script>
-var $jnoc = jQuery.noConflict();   
-$jnoc(document).ready(function(){
-$jnoc("#info").hide();
-    $jnoc(".masuk").mouseleave(function(){
+<!-- <script src="panel/js/jquery.min.js"></script> -->
+<script> 
+$(document).ready(function(){
+$("#info").hide();
+    $(".masuk").mouseout(function(){
               //alert("keluar" + <?php echo $current_picture; ?>);	
 			  	  	var putar = $('#anu').val();  
 			   		var A = $('#rules').val();
-                    var soale = $jnoc('#soale').val();		
+                    var soale = $('#soale').val();		
 			   		var data = 'nama=' + A + '& soale=' + soale;
-                    $jnoc.ajax({
+                    $.ajax({
                         type: 'POST',
                         url: "simpan.php?kode=<?php echo $xkodesoal; ?> &putar=" + putar,
                         data: data,
                         success: function() {
 						//alert("sudah tersimpan");
-								$jnoc("#info").fadeIn(2000);
-								$jnoc("#info").html("Jawaban sudah diSimpan");
-								$jnoc("#info").fadeOut(2000);
+								$("#info").fadeIn(2000);
+								$("#info").html("Jawaban sudah diSimpan");
+								$("#info").fadeOut(2000);
 						
                             //$('#tampil').load("lihat.php");
                         }
@@ -1254,7 +1435,7 @@ $jnoc("#info").hide();
                 });
             });
         </script>
-  
+ <hr>
 <table border="0" cellpadding="0px" cellspacing="0px">
 	<tr><td valign="top"><input id="A" type="radio" name="credit-card" value="A" <?php echo $nilaiA; ?>>
 			<label class="drinkcard-cc A" for="A">&nbsp;</label>
@@ -1513,7 +1694,7 @@ $jnoc("#info").hide();
 			?>
 			<div>	
 				<div class="btn btn-warning btn-lg rounded-0">
-					<input type="checkbox"  id="<?php echo $stu; ?>" onClick="toggle_select(<?php echo $stu; ?>)"<?php if(isset($ragu)){echo $ragu;} ?> />&nbsp;RAGU-RAGU</div>
+					<input type="checkbox"  id="<?php echo $stu; ?>" onClick="toggle_select(<?php echo $stu; ?>)" <?php if(isset($ragu)){echo $ragu;} ?> />&nbsp;RAGU-RAGU</div>
 
 			</div>
 			<div >
@@ -1527,6 +1708,7 @@ $jnoc("#info").hide();
 							} else { echo '<a href="#" data-id="'.$next_id.'" class="get_pic" id="tomb">'; ?>  
 								<button id="btnNextSoal" class="btn btn-primary rounded-0 btn-next activebutton btn-lg" data-bind="css: { &#39;activebutton&#39;:(currentNo() &lt; totalQuestions - 1)}, visible: (currentNo() &lt; 
 									totalQuestions - 1),click: gotoNext">SOAL BERIKUTNYA</button>
+								</a>
 					<?php  	} ?>
 					<?php 	} else { ?>
 			 		<?php	$cekragu = mysql_num_rows(mysql_query("select * from cbt_jawaban where XRagu ='1' and XKodeSoal ='$xkodesoal' and XTokenUjian = '$xtokenujian'  and XUserJawab = '$user'")); 
@@ -1605,10 +1787,12 @@ $jnoc("#info").hide();
     <div class="modal-dialog">
     	<div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="panel-title page-label">Konfirmasi Tes</h1>
+                    <h5 class="modal-title">Konfirmasi tes</h5>
+	                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		            	<span aria-hidden="true">×</span>
+		            </button>
                 </div>
                 <div class="modal-body">
-                    <div class="inner-content">
                         <div class="row" style="background-color:#fff">
                             <div class="col-xs-3 glyphicon-left-panel">
                                 <span><img src="images/alert.png" width="150px"></span>
@@ -1623,16 +1807,11 @@ $jnoc("#info").hide();
                                 </div>
                                 
                             </div>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <div class="row" style="background-color:#fff">
-                        
-                        <div class="col-xs-6 col-center" style="margin-left:25%">
-                            <button data-bind="click: handleNotConfirm" type="submit" class="btn btn-danger btn-block"  data-dismiss="modal" id="lanjut">LANJUT</button></a>
-                        </div>
-                    </div>
+                     <button data-bind="click: handleNotConfirm" type="submit" class="btn btn-danger btn-block"  data-dismiss="modal" id="lanjut">LANJUT</button></a>
+
                 </div>
         </div>
 	</div>

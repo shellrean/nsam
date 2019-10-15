@@ -29,6 +29,7 @@ $jawab_esai = str_replace("  ","",mysql_real_escape_string($_REQUEST['nama']));
 $ambiljawaban = "X$nomber";
 
 $sqljwb = mysql_query("select *,$ambiljawaban as hasile from cbt_jawaban where Urut='$soalnja' and XKodeSoal = '$xkodesoal' and XUserJawab = '$user' and XTokenUjian = '$xtokenujian'");
+echo mysql_error();
 $uj = mysql_fetch_array($sqljwb);
 $jwb = $uj['hasile'];
 $tkn = $uj['XTokenUjian'];
