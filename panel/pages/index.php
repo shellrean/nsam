@@ -420,11 +420,13 @@ else {$hari=$Dd;}
 
               /** 7 **/
               elseif($_REQUEST['modul'] == "daftar_peserta"){include "daftar/daftarpeserta.php";}
+              elseif($_REQUEST['modul'] == "reset_peserta"){include "tools/resetpeserta.php";}
               
               /** 8 **/
               elseif($_REQUEST['modul'] == "analisasoal"){include "soal/analisa_soal.php";}
               elseif($_REQUEST['modul'] == "analisajawaban"){include "soal/analisa_jawaban.php";}  
               elseif($_REQUEST['modul'] == "jawabansiswa"){include "soal/jawabansiswa.php";}
+              elseif($_REQUEST['modul'] == "lks"){include "soal/lks.php";}
             ?>
           </div> 
         </div>
