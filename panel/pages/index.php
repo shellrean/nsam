@@ -294,7 +294,7 @@ else {$hari=$Dd;}
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="?modul=upl_files">
+                  <a class="nav-link" href="?modul=file_pendukung">
                     <i class="nav-icon icon-arrow-right"></i>
                     File pendukung soal
                   </a>
@@ -408,8 +408,9 @@ else {$hari=$Dd;}
                 elseif($_REQUEST['jum']==3){include "soal/bank_soal3.php";}
                 elseif($_REQUEST['jum']==1){include "soal/bank_soal.php";} 
               }
-              elseif($_REQUEST['modul'] == 'upl_files'){include "tools/upload_files.php";}
-              elseif($_REQUEST['modul'] == 'upl_soal' ||$_REQUEST['modul']=="uploadsoal"){include "soal/upload_soal.php";}           
+              elseif($_REQUEST['modul'] == 'file_pendukung'){include "soal/gambar.php";}
+              elseif($_REQUEST['modul'] == 'upl_soal' ||$_REQUEST['modul']=="uploadsoal"){include "soal/upload_soal.php";}
+              elseif($_REQUEST['modul'] == 'upl_filesoal'){ include "soal/upload_file.php";}           
 
               /** 6 **/
               elseif($_REQUEST['modul'] == "daftar_tesbaru"){include "daftar/daftar_tesbaru.php";}

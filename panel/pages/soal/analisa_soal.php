@@ -12,7 +12,7 @@
       <div class="card-header py-3">
         <i class="fa fa-align-justify"></i> Daftar hasil ujian
         <?php $esai = mysql_num_rows(mysql_query("SELECT * FROM cbt_jawaban where XJenisSoal='2'"));
-        if ($esai>0){$herf="down_excel_esai.php"; $kata="";}
+        if ($esai>0){$herf="daftar/down_excel_esai.php"; $kata="";}
         else{$herf=""; $kata="disabled";}?>
         <a href="<?= $herf; ?>" target="_blank">
           <button type="button" class="btn btn-success btn-sm pull-right" id="download" <?= $kata; ?>> <i class='fa fa-cloud-download  '></i> Jawaban ESAI Excel </button>
