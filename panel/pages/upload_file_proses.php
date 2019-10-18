@@ -39,7 +39,7 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
 			   $uploaddir = "../../../audio/"; //a directory inside
 			   }
 			    elseif($ext=='pdf'){
-			   $uploaddir = "../../../file-pdf/"; //a directory inside
+			   $uploaddir = "../../../file-pdf/";
 			   }
 			   else{
 			   $uploaddir = "../../pictures/";
@@ -62,11 +62,9 @@ if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST")
 			   echo "<img src='../../../images/pdf.png' class='imgList'>";
 			   $fold = "file-pdf";} 
 			   else {
-			   echo "<img src='".$uploaddir2.$image_name."' class='imgList'>";
+			   echo "<img src='".$uploaddir.$image_name."' class='imgList'>";
 			   $fold = "pictures";}
 
-		   
-		   //echo "<img src='".$uploaddir.$image_name."' class='imgList'>";
 		   $newname=$uploaddir.$image_name;
            
            if (move_uploaded_file($_FILES['photos']['tmp_name'][$name], $newname)) 

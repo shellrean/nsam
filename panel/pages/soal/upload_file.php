@@ -54,7 +54,7 @@ float:left;
 		</div>
     <div class="card-body">       
 	
-	<form id="imageform" method="post" enctype="multipart/form-data" action='soal/upload_file_proses.php'>
+	<form id="imageform" method="post" enctype="multipart/form-data" action='upload_file_proses.php'>
 		<div class="alert alert-danger"  id="ndelik" style="width:100%">
 	        <ul>
 	        	<li>Pastikan File PHP.ini sudah di Set (upload_max_filesize=3000M, post_max_size = 3000M) !!!!</li>

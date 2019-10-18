@@ -333,6 +333,32 @@ else {$hari=$Dd;}
                 </li>
               </ul>
             </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-printer"></i>
+                Cetak
+              </a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="modal" data-target="#myDaftarHadir">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Daftar hadir
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=berita_acara">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Berita acara
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_tesbaru">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Daftar nilai
+                  </a>
+                </li>
+              </ul>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="?modul=daftar_peserta">
                 <i class="nav-icon icon-user"></i> Status peserta
@@ -428,6 +454,8 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == "analisajawaban"){include "soal/analisa_jawaban.php";}  
               elseif($_REQUEST['modul'] == "jawabansiswa"){include "soal/jawabansiswa.php";}
               elseif($_REQUEST['modul'] == "lks"){include "soal/lks.php";}
+              elseif($_REQUEST['modul'] == "berita_acara"){include "soal/berita_acara.php";}
+              elseif($_REQUEST['modul'] == "cetak_berita"){include "soal/cetak_berita.php";}
             ?>
           </div> 
         </div>
@@ -487,42 +515,10 @@ else {$hari=$Dd;}
             </select>
           </div>
           <input type="hidden" name="zona1" value="Asia/Jakarta">
-         <!--  <div class="form-group">
-            <select class="form-control" id="zona1" name="zona1">
-              <option value='Asia/Jakarta' <?php if ($zo=="Asia/Jakarta") {echo "selected";} ?>>Asia/Jakarta (WIB)</option>
-              <option value='Asia/Makassar' <?php if ($zo=="Asia/Makassar") {echo "selected";} ?>>Asia/Makassar (WITA)</option>
-              <option value='Asia/Jayapura' <?php if ($zo=="Asia/Jayapura") {echo "selected";}?>>Asia/Jayapura (WIT) </option>
-            </select>
-          </div> -->
           <input type="hidden" name="hakakses" value="1">
-        <!--   <div class="form-group">
-            <select class="form-control" id="hakakses" name="hakakses">
-              <option value='0' <?php if ($hakakses=="0") {echo "selected";} ?>>Tiga Hak Akses (Admin | Siswa | Guru)</option>
-              <option value='1' <?php if ($hakakses=="1") {echo "selected";} ?>>Dua Hak Akses (Admin | Guru)</option>
-            </select>
-          </div> -->
           <input type="hidden" name="nilaikelas" value="0">
-         <!--  <div class="form-group">
-            <select class="form-control" id="nilaikelas" name="nilaikelas">
-              <option value='0' <?php if ($nilaikelas=="0") {echo "selected";} ?>>Nilai Kelas Sembunyi</option>
-              <option value='1' <?php if ($nilaikelas=="1") {echo "selected";} ?>>Nilai Kelas Tampil </option>
-            </select>
-          </div> -->
           <input type="hidden" name="headerujian" value="0">
-          <!-- <div class="form-group">
-            <select class="form-control" id="headerujian" name="headerujian">
-              <option value='0' <?php if ($headerujian=="0") {echo "selected";} ?>>Header Ujian Tampil</option>
-              <option value='1' <?php if ($headerujian=="1") {echo "selected";} ?>>Header Ujian Sembunyi</option>
-            </select>
-          </div> -->
           <input type="hidden" name="header" value="0">
-<!--           <div class="form-group">
-            <select class="form-control" id="header" name="header">
-              <option value='0' <?php if ($header=="0") {echo "selected";} ?>>Header Modern</option>
-              <option value='1' <?php if ($header=="1") {echo "selected";} ?>>Header Klasik </option>
-            </select>
-          </div> -->
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
@@ -560,5 +556,91 @@ else {$hari=$Dd;}
     </form>
   </div>
   </div>
+
+<div class="modal fade" id="myDaftarHadir" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Daftar hadir</h5>
+    </div>
+    <div class="modal-body">
+      <form action="?modul=cetak_absensi" method="post">
+        <table width="100%">
+          <tr height="30px">
+            <td><?php echo $rombel;?> </td><td>: &nbsp;&nbsp;<td>                          
+              <select class="form-control" id="jur1"  name="jur1">
+              <?php
+              $sqk = mysql_query("select * from cbt_kelas group by XKodeJurusan");
+              while($rs = mysql_fetch_array($sqk)){echo "<option value='$rs[XKodeJurusan]'>$rs[XKodeJurusan]</option>";} 
+              ?>                                
+              </select>
+            </td>
+          </tr> 
+          <tr height="30px">
+            <td width="30%">Kelas </td><td>: <td>
+              <select class="form-control" id="iki1"  name="iki1">
+              <?php   
+              $sqk = mysql_query("select * from cbt_kelas group by XKodeKelas");
+              while($rs = mysql_fetch_array($sqk)){
+              echo "<option value='$rs[XKodeKelas]'>$rs[XKodeKelas]</option>";} 
+              ?>                                
+              </select>
+            </td>
+          </tr>
+          <tr height="30px">
+            <td width="30%">Sesi </td><td>: <td>
+              <select class="form-control" id="sesi1"  name="sesi1">
+              <?php 
+              $sqk = mysql_query("select * from cbt_siswa group by XSesi");
+              while($rs = mysql_fetch_array($sqk)){echo "<option value='$rs[XSesi]'>$rs[XSesi]</option>";} 
+              ?>                                
+              </select>
+            </td>
+          </tr> 
+          <tr height="30px">
+            <td width="30%">Ruang </td><td>: <td>
+            <select class="form-control" id="ruang1"  name="ruang1">
+            <?php 
+            $sqk = mysql_query("select * from cbt_siswa group by XRuang");
+            while($rs = mysql_fetch_array($sqk)){echo "<option value='$rs[XRuang]'>$rs[XRuang]</option>";} 
+            ?>                                
+            </select>
+            </td>
+          </tr>          
+          <tr height="30px">
+            <td width="30%">Mata Pelajaran </td><td>: <td>
+            <select class="form-control" id="mapel1"  name="mapel1">
+            <?php
+            $sqk = mysql_query("select * from cbt_mapel group by XKodeMapel");
+            while($rs = mysql_fetch_array($sqk)){echo "<option value='$rs[XNamaMapel]'>$rs[XKodeMapel] - $rs[XNamaMapel]</option>";} 
+            ?>                              
+            </select>
+            </td>
+          </tr>
+          <tr height="30px">
+            <td width="30%">Tanggal </td><td>: <td>
+              <input class="form-control" id="tanggal1" name="tanggal1" type="text"/>
+              <?php $tanggal1 = !empty($_POST['tanggal1']) ? $_POST['tanggal1'] : ''; ?> 
+              <tr height="30px">
+                <td width="30%">Jam Mulai </td><td>: <td>
+                <input class="form-control" id="mulai1" name="mulai1" type="text"/>
+                <?php $mulai1 = !empty($_POST['mulai1']) ? $_POST['mulai1'] : ''; ?> 
+                </td>
+              </tr>
+              <tr height="30px"><td width="30%">Jam Selesai </td><td>: <td>
+              <input class="form-control" id="akhir1" name="akhir1" type="text"/>
+              <?php $akhir1 = !empty($_POST['akhir1']) ? $_POST['akhir1'] : ''; ?> 
+                </td>
+              </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary btn-sm">
+        <i class="icon-printer"></i> Print Preview</button>
+        <button type="submit" class="btn btn-secondary btn-sm" data-dismiss="modal">Tutup</button>
+    </div>
+    </form>
+  </div>
+</div>
   </body>
 </html>

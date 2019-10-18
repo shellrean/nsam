@@ -1254,7 +1254,7 @@ Ganti angka 1 menjadi 2 atau 3
 !-->
 
 <?php 
-if($jensoal==2){ echo "<span style='color:red; font-size:12px;'>Pertanyaan Essai : Jawablah Pertanyaan Berikut ini<br></span>"; } ?>
+if($jensoal==2){ echo "<span style='color:red; font-size:12px;'>Pertanyaan Essai : Jawablah pertanyaan berikut ini<br></span>"; } ?>
 
 
 <?php //output html
@@ -1351,7 +1351,7 @@ $("#info").hide();
  $ce = mysql_fetch_array($cekesai);
  $jwbesai = $ce['XJawabanEsai'];
 ?>
-<br>Jawaban :<br> <span style="color:#0066CC;font-size:12px">Ketik Jawaban didalam kotak dibawah ini, Jawaban akan otomatis tersimpan Bila Cursor keluar dari Kotak</span><br>
+<br>Jawaban :<br> <span style="color:#0066CC;font-size:12px">Ketik jawaban didalam kotak dibawah ini, jawaban akan otomatis tersimpan bila cursor keluar dari kotak</span><br>
 
 <textarea id="rules" name="rules" class="masuk"><?php echo "$jwbesai"; ?></textarea>
  							<div class="alert alert-success " id="info">
