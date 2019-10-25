@@ -22,12 +22,12 @@
         <a href="../downloads/excel/bee_soal_temp.xls" target="_blank" class="btn btn-success btn-sm pull-right mx-2">
           <i class="icon-cloud-download"></i> Template soal umum
         </a>
-        <a href="?modul=upl_kelas" class="btn btn-primary btn-sm pull-right">
+        <!-- <a href="?modul=upl_kelas" class="btn btn-primary btn-sm pull-right">
           <i class="icon-cloud-download"></i> Template soal perminatan
         </a>
         <a href="?modul=upl_kelas" class="btn btn-primary btn-sm mx-2 pull-right">
           <i class="icon-cloud-download"></i> Template soal agama
-        </a>
+        </a> -->
         <?php endif; ?>
       </div>
       <div class="card-body">
@@ -88,8 +88,6 @@
                 <?= $s['kokel'].'-'.$s['XKodeJurusan']; ?>
               </td>
               <td>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myCopy<?= $s['Urutan'] ?>"><i class="icon-docs"></i>
-                </button>
                 <a href="?modul=upl_soal&soal=<?= $s['XKodeSoal'] ?>&mapel=<?= $s['XKodeMapel']; ?>" class="btn btn-warning btn-sm">
                   <i class="icon-cloud-upload"></i>
                 </a>

@@ -352,7 +352,7 @@ else {$hari=$Dd;}
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="?modul=daftar_tesbaru">
+                  <a class="nav-link" href="#" data-toggle="modal" data-target="#myCetakHasil">
                     <i class="nav-icon icon-arrow-right"></i>
                     Daftar nilai
                   </a>
@@ -380,6 +380,44 @@ else {$hari=$Dd;}
               </a>
             </li>
         	  <?php endif; ?>
+            <?php if ($loginx == "2"): ?>
+              <li class="nav-item">
+                <a class="nav-link" href="?modul=edit_biodata">
+                  <i class="nav-icon icon-user"></i> Edit biodata
+                </a>
+              </li>
+              <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-printer"></i>
+                Bank soal
+              </a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=daftar_soal">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Bank soal
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="?modul=upl_files">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    File pendukug soal
+                  </a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="?modul=upl_tugas">
+                    <i class="nav-icon icon-arrow-right"></i>
+                    Upload nilai tugas
+                  </a>
+                </li> -->
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?modul=analisasoal">
+                <i class="nav-icon icon-pie-chart"></i> Analisa
+              </a>
+            </li>
+            <?php endif; ?>
           </ul>
         </nav>
         <button class="sidebar-minimizer brand-minimizer" type="button"></button>
@@ -456,6 +494,10 @@ else {$hari=$Dd;}
               elseif($_REQUEST['modul'] == "lks"){include "soal/lks.php";}
               elseif($_REQUEST['modul'] == "berita_acara"){include "soal/berita_acara.php";}
               elseif($_REQUEST['modul'] == "cetak_berita"){include "soal/cetak_berita.php";}
+              elseif($_REQUEST['modul']=="cetak_hasil"){include "tools/cetak_hasil_ujian.php";} 
+
+              elseif($_REQUEST['modul'] == "upl_files"){include "soal/upload_files.php";}
+              elseif($_REQUEST['modul'] == "edit_biodata"){include "edit_biodata.php";}
             ?>
           </div> 
         </div>
@@ -529,6 +571,75 @@ else {$hari=$Dd;}
   </div>
   </div>
 
+<div class="modal fade" id="myCetakHasil" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hasil ujian ujian</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hiden="true">x</span>
+        </button>
+      </div>
+      <form action="?modul=cetak_hasil" method="post">
+      <div class="modal-body">
+        <div class="inner-content">
+          <div class="wysiwyg-content">
+          <p>
+            <table width="100%">
+              <tr height="40px"><td>Jenis Tes</td><td>: &nbsp;&nbsp;<td>                                  
+                <select class="form-control" id="tes3"  name="tes3">
+                  <?php $sqk = mysql_query("select * from cbt_tes");
+                    echo "<option value='ALL' selected>SEMUA</option>"; 
+                    while($rs = mysql_fetch_array($sqk)){echo "<option value=$rs[XKodeUjian]>$rs[XNamaUjian]</option>";}              
+                  ?>  
+                </select>
+                </td>
+              </tr>        
+              <tr height="40px"><td width="30%">Semester</td><td>:<td>  
+                <select class="form-control" id="sem3"  name="sem3">
+                  <option class="form-control" value="1">SEMUA</option>
+                  <option value=1>Ganjil</option>; 
+                  <option value=2>Genap</option>; 
+                </select>
+                </td>
+              </tr>
+              <tr height="40px"><td><?php echo $rombel;?> </td><td>:<td>                                  
+                <select class="form-control" id="jur3"  name="jur3">
+                  <?php $sqk = mysql_query("select * from cbt_kelas group by XKodeJurusan");
+                  while($rs = mysql_fetch_array($sqk)){echo "<option value='$rs[XKodeJurusan]'>$rs[XKodeJurusan]</option>";} 
+                  ?>                                
+                </select>
+                </td>
+              </tr> 
+              <tr height="40px"><td width="30%">Kelas </td><td>:<td>  
+                <select class="form-control" id="iki3"  name="iki3">
+                  <?php $sqk = mysql_query("select * from cbt_kelas group by XKodeKelas");
+                  while($rs = mysql_fetch_array($sqk)){echo "<option value='$rs[XKodeKelas]'>$rs[XKodeKelas]</option>";}
+                  ?>                                
+                </select>
+                </td>
+              </tr>
+              <tr height="40px"><td>Mata Pelajaran </td><td>:<td>                               
+                <select class="form-control" id="map3"  name="map3">
+                  <?php $sqk = mysql_query("select * from cbt_mapel");
+                  while($rs = mysql_fetch_array($sqk)){echo "<option value='$rs[XKodeMapel]'>$rs[XKodeMapel] - $rs[XNamaMapel]</option>";} 
+                  ?>                                
+                </select>
+                </td>
+              </tr> 
+            </table>
+          </p>
+        </div>
+      </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-print"></i> Print preview</button>
+        <button type="submit" class="btn btn-secondary btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-minus-sign"></i> Tutup</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- Modal Database Server  -->
   <div class="modal fade" id="db_server" aria-hidden="true">
@@ -556,6 +667,8 @@ else {$hari=$Dd;}
     </form>
   </div>
   </div>
+
+
 
 <div class="modal fade" id="myDaftarHadir" role="dialog">
   <div class="modal-dialog">
@@ -642,5 +755,6 @@ else {$hari=$Dd;}
     </form>
   </div>
 </div>
+
   </body>
 </html>
